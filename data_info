@@ -1,0 +1,33 @@
+$11c0 .. $15bb = object names (x34)
+
+$4000 .. $5180 = sprites
+
+$???? .. $???? = solidity bitmap
+$???? .. $???? = 8x8 screen/border colour attribs
+$???? .. $???? = hw sprite "pointers"
+
+$???? .. $???? = screen memory
+
+$8000 .. $81fd = roomtable (x255)
+$81fe .. $a9fa = roomdata
+
+$???? .. $???? = fliptable
+$ab60 .. $acff = frmtable (x208)
+$ad00 .. $c969 = frmdefs
+
+$???? .. $???? = objects (static)
+
+$???? .. $???? = objects (ingame)
+
+$???? .. $???? = strings
+
+
+----
+
+frame gaps
+----------
+014f..08f3 - foliage/sand/door/STORE/window/skull/chest/totem
+125b..132c - big fish
+19b6..1a11 - small fish shoal
+
+
