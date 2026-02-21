@@ -62,7 +62,7 @@ int main()
         printf("\n");
       }
       else
-        printf("%d : 0x%.4x (Empty room)\n", room, start);
+        printf("%d : 0x%.4x (Empty room 0)\n", room, start);
     }
 
     free(roomdata);
