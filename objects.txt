@@ -1,34 +1,41 @@
-::::::AN:OLD:SOLID:CHEST::::::
-:::::::::::A:BIBLE::::::::::::
-:::::::A:RUBBER:SNORKEL:::::::
-:::::::A:MICROWAVE:OVEN:::::::
-:::::A:TUBE:OF:TOOTHPASTE:::::
-::::::::A:BAG:OF:GOLD:::::::::
-::::::::A:RUSTY:BUCKET::::::::
-::::::::A:CAN:OF:PETROL:::::::
-:::::A:SMALL:VIDEO:CAMERA:::::
-:::::SINCLAIR:ABUSER:MAG::::::
-::::::A:DEHYDRATED:BOAT@::::::
-::::::AN:OUTBOARD:MOTOR:::::::
-:::::::::A:GOLDEN:KEY:::::::::
-:::::::THE:IGNITION:KEY:::::::
-:::::A:SHARP:GLASS:SWORD::::::
-::::AN:INFRA=RED:DETONATOR::::
-::::TWO:STICKS:OF:DYNAMITE::::
-::::::A:SALT=WATER:SPADE::::::
-::::::A:WOODCUTTER;S:AXE::::::
-:::::THE:CURSED:TREASURE::::::
-::::AN:EXTINCT:SPECIES@@::::::
-:::::A:WOODEN:SAFETY:RAIL:::::
-:::::A:BIT:OF:TREE:TRUNK::::::
-:::::A:BIT:OF:TREE:TRUNK::::::
-:::::A:WOODEN:SAFETY:RAIL:::::
-:::::A:CLUMP:OF:MUSHROOMS:::::
-:::::A:MISTY:GLASS:WINDOW:::::
-::::AN:ENDANGERED:SPECIES:::::
-:::::A:PROTECTED:SPECIES::::::
-::::::AN:IMITATION:SKULL::::::
-::::::AN:IMITATION:SKULL::::::
-:::::A:BIG:RED:HEAVY:ROCK:::::
-::::AN:ENDANGERED:SPECIES:::::
+id name                           room  x   y   attrib  frame
+0  ::::::AN:OLD:SOLID:CHEST:::::: 76    78  106 10       150 
+1  :::::::::::A:BIBLE:::::::::::: 85                     151
+2  :::::::A:RUBBER:SNORKEL::::::: 164                    152
+3  :::::::A:MICROWAVE:OVEN::::::: 21                     153
+4  :::::A:TUBE:OF:TOOTHPASTE::::: 105                    54
+5  ::::::::A:BAG:OF:GOLD::::::::: 98                     55
+6  ::::::::A:RUSTY:BUCKET:::::::: 86                     56
+7  ::::::::A:CAN:OF:PETROL::::::: 254                    57
+8  :::::A:SMALL:VIDEO:CAMERA::::: 167                    58
+9  :::::SINCLAIR:ABUSER:MAG:::::: 102                    59
+10 ::::::A:DEHYDRATED:BOAT@:::::: 254                    61
+11 ::::::AN:OUTBOARD:MOTOR::::::: 254                    62
+12 :::::::::A:GOLDEN:KEY::::::::: 88                     63
+13 :::::::THE:IGNITION:KEY::::::: 254                    63
+14 :::::A:SHARP:GLASS:SWORD:::::: 167                    64
+15 ::::AN:INFRA=RED:DETONATOR:::: 166                    65
+16 ::::TWO:STICKS:OF:DYNAMITE:::: 50                     66
+17 ::::::A:SALT=WATER:SPADE:::::: 48                     68
+18 ::::::A:WOODCUTTER;S:AXE:::::: 83                     69
+19 :::::THE:CURSED:TREASURE:::::: 75                     150
+
+20 coin #1
+...
+49 coin #30
+
+50 ::::AN:EXTINCT:SPECIES@@:::::: 99                     16
+51 :::::A:WOODEN:SAFETY:RAIL::::: 165                    141
+52 :::::A:BIT:OF:TREE:TRUNK:::::: 133                    135
+53 :::::A:BIT:OF:TREE:TRUNK:::::: 101                    135
+54 :::::A:WOODEN:SAFETY:RAIL::::: 102                    141
+55 :::::A:CLUMP:OF:MUSHROOMS::::: 103                    17
+56 :::::A:MISTY:GLASS:WINDOW::::: 104                    116
+57 ::::AN:ENDANGERED:SPECIES::::: 106                    16
+58 :::::A:PROTECTED:SPECIES:::::: 77                     16
+59 ::::::AN:IMITATION:SKULL:::::: 48                     33
+60 ::::::AN:IMITATION:SKULL:::::: 52                     33
+61 :::::A:BIG:RED:HEAVY:ROCK::::: 85                     248
+62 ::::AN:ENDANGERED:SPECIES::::: 87                     16
+
 :::::::::::NOTHING::::::::::::
