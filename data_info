@@ -15,11 +15,46 @@ $???? .. $???? = fliptable
 $ab00 .. $acff = frmtable (x256)
 $ad00 .. $c969 = frmdefs
 
-$???? .. $???? = objects (static)
-
-$???? .. $???? = objects (ingame)
+$52c0 .. $555d = objects (static)
+$555e .. $57fb = objects (ingame)
 
 $???? .. $???? = strings
 
 
+-----
 
+03e5 : roomno (start room = 77)
+
+2183 : set start room
+
+2808 : go right
+281d : go left
+2839 : go down
+2857 : go up
+
+2a0a : room comparison
+2a10 :    76  beach by cliff
+2a28 :    49  underwater bubble "lift"
+2a3b :    83  headstone to break with sword
+2a63 :    53  smuggler's cave barrel to break
+2a7b :   106  bridge which can be chopped with axe
+2a9b :    98  mine
+2abd :    98  mine
+...
+2af9 :    86  shopkeeper
+
+3498 : drawroom()
+
+# Startup objects x134
+52c0[] : room no
+5346[] : x pos
+53cc[] : y pos
+5452[] : attrib
+54d8[] : frame no
+
+# Active objects x134
+555e[] : room no
+55e4[] : x pos
+566a[] : y pos
+56f0[] : attrib
+5776[] : frame no
