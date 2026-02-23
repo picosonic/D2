@@ -61,7 +61,7 @@
  65 Barrel top
  66 Barrel bottom
  67 Long ledge
- 68 Circle block
+ 68 A misty glass window
  69 Ledge (V)
  70
  71
@@ -95,26 +95,27 @@
  99 Branch4
 100 Branch5
 101 Branch6
-102 Treasure chest
-103 Bible
-104 Scuba mask
-105 TV
-106 Toothpaste
-107 Bag
-108 Bucket
-109 Jerry can
-110 Video camera
-111 SA
+
+102 An old solid chest
+103 A bible
+104 A Rubber snorkel
+105 A microwave oven
+106 A tube of toothpaste
+107 A bag of gold
+108 A rusty bucket
+109 A can of petrol
+110 A small video camera
+111 Sinclair abuser magazine
 112 Snake
-113 Boat
-114
-115 Key
-116 Sword
-117 Plunger
-118 Dynamite
+113 A dehydrated boat
+114 An outboard motor
+115 A golden key
+116 A sharp glass sword
+117 An infrared detonator
+118 Two sticks of dynamite
 119 Coin
-120 Spade
-121 Axe
+120 A salt water spade
+121 A woodcutter's axe
 ..
 135 Rope fence diagonal
 136 Bubble
@@ -160,7 +161,7 @@
 176 Squid
 177 Squid2
 178 Squid3
-179 SS DIZZY Shipwreck
+179 SS DIZZY ship
 180
 181
 ..
