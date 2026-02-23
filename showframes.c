@@ -9,11 +9,11 @@
 #define BITSPERBYTE 8
 #define HEADERBYTES 2
 
-#define NUMFRAMES 208
+#define NUMFRAMES 256
 
-void drawbin(const unsigned char *data)
+void drawbin(const uint8_t *data)
 {
-  unsigned char mask=0x80;
+  uint8_t mask=0x80;
 
   while (mask>0)
   {
@@ -24,9 +24,9 @@ void drawbin(const unsigned char *data)
   }
 }
 
-void drawbin_width(const unsigned char *data, const unsigned char width)
+void drawbin_width(const uint8_t *data, const uint8_t width)
 {
-  unsigned char done=0;
+  uint8_t done=0;
 
   printf("|");
   
@@ -54,7 +54,9 @@ int main()
 
   if (framedata!=NULL)
   {
-    int frame;
+    uint8_t frame;
+    uint16_t start;
+    uint16_t end;
 
     fread(framedata, fs.st_size, 1, rd);
     fclose(rd);
@@ -62,24 +64,23 @@ int main()
     // Process it
     for (frame=0; frame<(NUMFRAMES-1); frame++)
     {
-      int start;
-
       start=(framedata[frame*2]);
       start=((framedata[(frame*2)+1]<<8)+start);
 
       // Check for valid pointer
       if (start<0xff00)
       {
-        int width, height;
-        int offs;
-        int y;
-
-        printf("%d [%.2x] : 0x%.4x", frame, frame, start);
+        uint8_t width, height;
+        uint16_t offs;
+        uint8_t y;
 
         width=framedata[(NUMFRAMES*2)+start]*4;
         height=framedata[(NUMFRAMES*2)+start+1];
 
-        printf(" (%dx%d)\n", width, height);
+        // Calculate where the end should be given the width and height
+        end=start+2+((width*height)/8)-1;
+
+        printf("%d [%.2x] : 0x%.4x .. 0x%.4x (%dx%d)\n", frame, frame, start, end, width, height);
 
         // Decode the framedata
         offs=0;
@@ -91,6 +92,8 @@ int main()
 
         printf("\n");
       }
+      else
+        printf("%d [%.2x] : 0x%.4x\n", frame, frame, start); // Show where null frames are
     }
 
     free(framedata);
