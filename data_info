@@ -58,3 +58,23 @@ $???? .. $???? = strings
 566a[] : y pos
 56f0[] : attrib
 5776[] : frame no
+
+------
+
+rooms
+0 = title
+1 = offscreen not used (hidden coins / lightning / boat / bubble / chest / dynamite)
+21 = [incomplete] extra blue "2" shown
+46 = [incomplete] beach, missing jellyfish and small piece of shipwreck
+47 = [incomplete] shipwreck, missing jellyfish and small pieces of shipwreck
+48 = [incompelte] shipwreck front, missing sand and grass, extra treetrunk
+49 = [incomplete] seabed, missing jellyfish / shoal / squid, some seabed and rocks, extra "x"
+50 = [incomplete] seacave, missing rocks, crab, big fish, extra letters
+51 = [incomplete] missing rocks, extra rocks
+52 = [incomplete] smugglers cave, missing some blue floor, bottom of table, flames
+53 = [incomplete] missing blue floor, lots of rocks
+54 = [incomplete] missing rocks, floor, blue floor
+74 = [incomplete] under gravestone
+etc
+87 = [incompete] missing tree, huts
+89 = [incomplete] missing water, floor, pier, extra tree roots, snakex2, spade
