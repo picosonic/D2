@@ -3,21 +3,21 @@ id name                           room  x   y   attrib  frame
 1  :::::::::::A:BIBLE:::::::::::: 85                     151
 2  :::::::A:RUBBER:SNORKEL::::::: 164                    152
 3  :::::::A:MICROWAVE:OVEN::::::: 21                     153
-4  :::::A:TUBE:OF:TOOTHPASTE::::: 105                    54
-5  ::::::::A:BAG:OF:GOLD::::::::: 98                     55
-6  ::::::::A:RUSTY:BUCKET:::::::: 86                     56
-7  ::::::::A:CAN:OF:PETROL::::::: 254                    57
-8  :::::A:SMALL:VIDEO:CAMERA::::: 167                    58
-9  :::::SINCLAIR:ABUSER:MAG:::::: 102                    59
-10 ::::::A:DEHYDRATED:BOAT@:::::: 254                    61
-11 ::::::AN:OUTBOARD:MOTOR::::::: 254                    62
-12 :::::::::A:GOLDEN:KEY::::::::: 88                     63
-13 :::::::THE:IGNITION:KEY::::::: 254                    63
-14 :::::A:SHARP:GLASS:SWORD:::::: 167                    64
-15 ::::AN:INFRA=RED:DETONATOR:::: 166                    65
-16 ::::TWO:STICKS:OF:DYNAMITE:::: 50                     66
-17 ::::::A:SALT=WATER:SPADE:::::: 48                     68
-18 ::::::A:WOODCUTTER;S:AXE:::::: 83                     69
+4  :::::A:TUBE:OF:TOOTHPASTE::::: 105                    154
+5  ::::::::A:BAG:OF:GOLD::::::::: 98                     155
+6  ::::::::A:RUSTY:BUCKET:::::::: 86                     156
+7  ::::::::A:CAN:OF:PETROL::::::: 254                    157
+8  :::::A:SMALL:VIDEO:CAMERA::::: 167                    158
+9  :::::SINCLAIR:ABUSER:MAG:::::: 102                    159
+10 ::::::A:DEHYDRATED:BOAT@:::::: 254                    161
+11 ::::::AN:OUTBOARD:MOTOR::::::: 254                    162
+12 :::::::::A:GOLDEN:KEY::::::::: 88                     163
+13 :::::::THE:IGNITION:KEY::::::: 254                    163
+14 :::::A:SHARP:GLASS:SWORD:::::: 167                    164
+15 ::::AN:INFRA=RED:DETONATOR:::: 166                    165
+16 ::::TWO:STICKS:OF:DYNAMITE:::: 50                     166
+17 ::::::A:SALT=WATER:SPADE:::::: 48                     168
+18 ::::::A:WOODCUTTER;S:AXE:::::: 83                     169
 19 :::::THE:CURSED:TREASURE:::::: 75                     150
 
 20 coin #1
