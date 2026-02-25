@@ -48,7 +48,8 @@ int main()
 
         for (i=start; i<end; i+=3)
         {
-          printf("[%.2x ", roomdata[(NUMROOMS*2)+i]); // frameNum
+          //printf("[%.2x ", roomdata[(NUMROOMS*2)+i]); // frameNum
+          printf("[%d ", roomdata[(NUMROOMS*2)+i]); // frameNum
           printf("%dx%d", (roomdata[(NUMROOMS*2)+i+1]&0x7f)*2, roomdata[(NUMROOMS*2)+i+2]); // frameX,frameY
           if (!(roomdata[(NUMROOMS*2)+i+1] & 0x80))
           {
