@@ -15,49 +15,60 @@ $???? .. $???? = fliptable
 $ab00 .. $acff = frmtable (x256)
 $ad00 .. $c969 = frmdefs
 
-$52c0 .. $555d = objects (static)
-$555e .. $57fb = objects (ingame)
+$52c0 .. $555d = objects (static x134)
+  52c0[] : room no
+  5346[] : x pos
+  53cc[] : y pos
+  5452[] : attrib
+  54d8[] : frame no
+$555e .. $57fb = objects (ingame x134)
+  555e[] : room no
+  55e4[] : x pos
+  566a[] : y pos
+  56f0[] : attrib
+  5776[] : frame no
 
 $???? .. $???? = strings
 
 
 -----
 
+0352 : dizzy x
+035c : dizzy y
 03e5 : roomno (start room = 77)
 
+20d9
+20da
+20db
+20dc
+20dd
+
+2135 : set title room
+
 2183 : set start room
+
+21b5 : resetobjects()
 
 2808 : go right
 281d : go left
 2839 : go down
 2857 : go up
 
+2942 : is this object in current room
+294a : compare this object X and Y positions
+
 2a0a : room comparison
-2a10 :    76  beach by cliff
-2a28 :    49  underwater bubble "lift"
-2a3b :    83  headstone to break with sword
-2a63 :    53  smuggler's cave barrel to break
-2a7b :   106  bridge which can be chopped with axe
-2a9b :    98  mine
-2abd :    98  mine
+2a10 :    76  beach by cliff # placement of chest -> "step" [150 0x96]
+2a28 :    49  underwater bubble "lift" # dig with spade [168 0xab]
+2a3b :    83  headstone # break with glass sword [164 0xa4]
+2a63 :    53  smuggler's cave # barrel to break
+2a7b :   106  bridge # chopped with axe [169 0xa9]
+2a9b :    98  mine # dynamite [166 0xa6]
+2abd :    98  mine # detonator [165 0xa5]
 ...
 2af9 :    86  shopkeeper
 
 3498 : drawroom()
-
-# Startup objects x134
-52c0[] : room no
-5346[] : x pos
-53cc[] : y pos
-5452[] : attrib
-54d8[] : frame no
-
-# Active objects x134
-555e[] : room no
-55e4[] : x pos
-566a[] : y pos
-56f0[] : attrib
-5776[] : frame no
 
 ------
 
