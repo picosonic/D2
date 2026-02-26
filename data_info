@@ -1,3 +1,5 @@
+$0993 .. $0fe2 = "strings" (xor 128)
+
 $11c0 .. $15bb = object names (x34)
 
 $4000 .. $5180 = sprites
