@@ -1,41 +1,41 @@
-id name                           room  x   y   attrib  frame
-0  ::::::AN:OLD:SOLID:CHEST:::::: 76    78  106 10       150 
-1  :::::::::::A:BIBLE:::::::::::: 85                     151
-2  :::::::A:RUBBER:SNORKEL::::::: 164                    152
-3  :::::::A:MICROWAVE:OVEN::::::: 21                     153
-4  :::::A:TUBE:OF:TOOTHPASTE::::: 105                    154
-5  ::::::::A:BAG:OF:GOLD::::::::: 98                     155
-6  ::::::::A:RUSTY:BUCKET:::::::: 86                     156
-7  ::::::::A:CAN:OF:PETROL::::::: 254                    157
-8  :::::A:SMALL:VIDEO:CAMERA::::: 167                    158
-9  :::::SINCLAIR:ABUSER:MAG:::::: 102                    159
-10 ::::::A:DEHYDRATED:BOAT@:::::: 254                    161
-11 ::::::AN:OUTBOARD:MOTOR::::::: 254                    162
-12 :::::::::A:GOLDEN:KEY::::::::: 88                     163
-13 :::::::THE:IGNITION:KEY::::::: 254                    163
-14 :::::A:SHARP:GLASS:SWORD:::::: 167                    164
-15 ::::AN:INFRA=RED:DETONATOR:::: 166                    165
-16 ::::TWO:STICKS:OF:DYNAMITE:::: 50                     166
-17 ::::::A:SALT=WATER:SPADE:::::: 48                     168
-18 ::::::A:WOODCUTTER;S:AXE:::::: 83                     169
-19 :::::THE:CURSED:TREASURE:::::: 75                     150
+id name                           room  x   y    attrib  frame
+0  ::::::AN:OLD:SOLID:CHEST:::::: 76    78  106  10      150
+1  :::::::::::A:BIBLE:::::::::::: 85    58  144  10      151
+2  :::::::A:RUBBER:SNORKEL::::::: 164   52  112  15      152
+3  :::::::A:MICROWAVE:OVEN::::::: 21    46  96   15      153
+4  :::::A:TUBE:OF:TOOTHPASTE::::: 105   72  152  15      154
+5  ::::::::A:BAG:OF:GOLD::::::::: 98    40  160  14      155
+6  ::::::::A:RUSTY:BUCKET:::::::: 86    58  72   14      156
+7  ::::::::A:CAN:OF:PETROL::::::: 254   0   0    13      157
+8  :::::A:SMALL:VIDEO:CAMERA::::: 167   42  128  14      158
+9  :::::SINCLAIR:ABUSER:MAG:::::: 102   56  152  13      159
+10 ::::::A:DEHYDRATED:BOAT@:::::: 254   0   0    13      161
+11 ::::::AN:OUTBOARD:MOTOR::::::: 254   0   0    13      162
+12 :::::::::A:GOLDEN:KEY::::::::: 88    70  136  14      163
+13 :::::::THE:IGNITION:KEY::::::: 254   0   0    13      163
+14 :::::A:SHARP:GLASS:SWORD:::::: 167   74  88   15      164
+15 ::::AN:INFRA=RED:DETONATOR:::: 166   38  88   10      165
+16 ::::TWO:STICKS:OF:DYNAMITE:::: 50    86  124  10      166
+17 ::::::A:SALT=WATER:SPADE:::::: 48    54  104  13      168
+18 ::::::A:WOODCUTTER;S:AXE:::::: 83    72  136  10      169
+19 :::::THE:CURSED:TREASURE:::::: 75    56  96   10      150
 
 20 coin #1
 ...
 49 coin #30
 
-50 ::::AN:EXTINCT:SPECIES@@:::::: 99                     16
-51 :::::A:WOODEN:SAFETY:RAIL::::: 165                    141
-52 :::::A:BIT:OF:TREE:TRUNK:::::: 133                    135
-53 :::::A:BIT:OF:TREE:TRUNK:::::: 101                    135
-54 :::::A:WOODEN:SAFETY:RAIL::::: 102                    141
-55 :::::A:CLUMP:OF:MUSHROOMS::::: 103                    17
-56 :::::A:MISTY:GLASS:WINDOW::::: 104                    116
-57 ::::AN:ENDANGERED:SPECIES::::: 106                    16
-58 :::::A:PROTECTED:SPECIES:::::: 77                     16
-59 ::::::AN:IMITATION:SKULL:::::: 48                     33
-60 ::::::AN:IMITATION:SKULL:::::: 52                     33
-61 :::::A:BIG:RED:HEAVY:ROCK::::: 85                     248
-62 ::::AN:ENDANGERED:SPECIES::::: 87                     16
+50 ::::AN:EXTINCT:SPECIES@@:::::: 99    44  80   12      16
+51 :::::A:WOODEN:SAFETY:RAIL::::: 165   90  128  10      141
+52 :::::A:BIT:OF:TREE:TRUNK:::::: 133   56  112  10      135
+53 :::::A:BIT:OF:TREE:TRUNK:::::: 101   56  96   10      135
+54 :::::A:WOODEN:SAFETY:RAIL::::: 102   76  80   10      141
+55 :::::A:CLUMP:OF:MUSHROOMS::::: 103   42  160  14      17
+56 :::::A:MISTY:GLASS:WINDOW::::: 104   58  120  10      116
+57 ::::AN:ENDANGERED:SPECIES::::: 106   88  152  12      16
+58 :::::A:PROTECTED:SPECIES:::::: 77    38  104  12      16
+59 ::::::AN:IMITATION:SKULL:::::: 48    52  152  15      33
+60 ::::::AN:IMITATION:SKULL:::::: 52    60  144  15      33
+61 :::::A:BIG:RED:HEAVY:ROCK::::: 85    82  160  10      248
+62 ::::AN:ENDANGERED:SPECIES::::: 87    60  160  12      16
 
 :::::::::::NOTHING::::::::::::
