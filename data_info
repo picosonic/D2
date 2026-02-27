@@ -1,21 +1,8 @@
-$0993 .. $0fe2 = "strings" (xor 128)
+$0993 .. $0fe2 = "strings" (&7f)
 
 $11c0 .. $15bb = object names (x34)
 
 $4000 .. $5180 = sprites
-
-$???? .. $???? = solidity bitmap
-$???? .. $???? = 8x8 screen/border colour attribs
-$???? .. $???? = hw sprite "pointers"
-
-$???? .. $???? = screen memory
-
-$8000 .. $81fd = roomtable (x255)
-$81fe .. $a9fa = roomdata
-
-$???? .. $???? = fliptable
-$ab00 .. $acff = frmtable (x256)
-$ad00 .. $c969 = frmdefs
 
 $52c0 .. $555d = objects (static x134)
   52c0[] : room no
@@ -30,8 +17,18 @@ $555e .. $57fb = objects (ingame x134)
   56f0[] : attrib
   5776[] : frame no
 
-$???? .. $???? = strings
+$???? .. $???? = solidity bitmap
+$???? .. $???? = 8x8 screen/border colour attribs
+$???? .. $???? = hw sprite "pointers"
 
+$???? .. $???? = screen memory
+
+$8000 .. $81fd = roomtable (x255)
+$81fe .. $a9fa = roomdata
+
+$???? .. $???? = fliptable
+$ab00 .. $acff = frmtable (x256)
+$ad00 .. $c969 = frmdefs
 
 -----
 
