@@ -40,13 +40,14 @@ int main()
 
       if (end!=start)
       {
-        int i;
+        int i=0;
 
         printf("%d : 0x%.4x to 0x%.4x (len %d)\n", room, start, end-1, end-start);
+        printf("{%.2x %.2x}\n", roomdata[(NUMROOMS*2)+i], roomdata[(NUMROOMS*2)+i+1]);
 
         printf("  ");
 
-        for (i=start; i<end; i+=3)
+        for (i=start+2; i<end; i+=3)
         {
           printf("[%d ", roomdata[(NUMROOMS*2)+i]); // frameNum
           printf("%dx%d", (roomdata[(NUMROOMS*2)+i+1]&0x7f)*2, roomdata[(NUMROOMS*2)+i+2]); // frameX,frameY
