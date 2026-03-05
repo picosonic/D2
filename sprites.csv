@@ -119,13 +119,13 @@ id,name,null
 103,Water4,
 104,Water5,
 105,Scroll,
-106,?,used on room 135
-107,?,not used in room data
-108,Ledge (H),
-109,?,not used in room data
-110,?,used in rooms 49/167
-111,?,not used in room data
-112,?,used in rooms 47/76/87/99/103/133/134/135/165/167
+106,Scroll end,used on room 135
+107,Scroll end2,
+108,Scroll (H),
+109,Scroll edge,
+110,Scroll edge2,used in rooms 49/167
+111,Scroll edge3,
+112,Scroll edge4,used in rooms 47/76/87/99/103/133/134/135/165/167
 113,Barrel top,
 114,Barrel bottom,
 115,Long ledge,
