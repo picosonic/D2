@@ -94,11 +94,21 @@ $ad00 .. $c969 = frmdefs
 035c : dizzy y
 03e5 : roomno (start room = 77)
 
-20d9
-20da
-20db
-20dc
-20dd
+20d9 : just dropped object ??
+20da : holding object 1 (default ff)
+20db : holding object 2
+20dc : holding object 3
+20dd : just picked up object ??
+
+20de : score (hundred thousands)
+20df : score (ten thousands)
+20e0 : score (thousands)
+20e1 : score (hundreds)
+20e2 : score (tens)
+20e3 : score (units)
+
+20e5 : coins (tens)
+20e5 : coins (units)
 
 2135 : set title room
 
