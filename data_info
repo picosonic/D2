@@ -1,3 +1,10 @@
+033A : framex
+033B : framey
+
+0352 : dizzy x
+035c : dizzy y
+03e5 : roomno (start room = 77)
+
 $0947 .. $0960 = room for scroll n
   98 - mine
   99 - mine
@@ -57,42 +64,9 @@ $0993 .. $0fe4 = "strings" (&7f)
 
 $11c0 .. $15bb = object names (x34)
 
-$4000 .. $5180 = sprites
+1900 .. 19FF : ?? data read at 386B/387E ??
 
-$52c0 .. $555d = objects (static x134)
-  52c0[] : room no
-  5346[] : x pos
-  53cc[] : y pos
-  5452[] : attrib
-  54d8[] : frame no
-$555e .. $57fb = objects (ingame x134)
-  555e[] : room no
-  55e4[] : x pos
-  566a[] : y pos
-  56f0[] : attrib
-  5776[] : frame no
-
-$???? .. $???? = solidity bitmap
-$???? .. $???? = 8x8 screen/border colour attribs
-$???? .. $???? = hw sprite "pointers"
-
-$???? .. $???? = screen memory
-
-$8000 .. $81fd = roomtable (x255)
-$81fe .. $a9fa = roomdata
-
-$???? .. $???? = fliptable
-$ab00 .. $acff = frmtable (x256)
-$ad00 .. $c969 = frmdefs
-
------
-
-033A : framex
-033B : framey
-
-0352 : dizzy x
-035c : dizzy y
-03e5 : roomno (start room = 77)
+2000 : entry_from_rom() # via stack at 013b ??
 
 20d9 : just dropped object ??
 20da : holding object 1 (default ff)
@@ -109,6 +83,10 @@ $ad00 .. $c969 = frmdefs
 
 20e5 : coins (tens)
 20e5 : coins (units)
+
+20e7 : startup() ??
+
+2105 : restart() ??
 
 2135 : set title room
 
@@ -139,12 +117,50 @@ $ad00 .. $c969 = frmdefs
 2fa7 : draw ASCII char
 2fc2 : draw ASCII char
 
+2fc8 .. 2fde : ?? unknown comparison with 00c5 ??
+
+3060 .. 307f : ?? unknown data ??
+
+309e : raster count
+
+30a0 : vblank()
+
 3132 : drawframe(A)
 
 3498 : drawroom()
 
 392f : rubobject(X)
 394a : drawobject(X)
+
+3c3f .. 3c51 : ?? data used by 3cbe ??
+
+$4000 .. $5180 = sprites
+
+$52c0 .. $555d = objects (static x134)
+  52c0[] : room no
+  5346[] : x pos
+  53cc[] : y pos
+  5452[] : attrib
+  54d8[] : frame no
+$555e .. $57fb = objects (ingame x134)
+  555e[] : room no
+  55e4[] : x pos
+  566a[] : y pos
+  56f0[] : attrib
+  5776[] : frame no
+
+$5A00 .. $5BFF = solidity bitmap
+$5C00 .. $5FE7 = 8x8 screen/border colour attribs
+$5FF8 .. $5FFF = hw sprite "pointers"
+
+$6000 .. $7F3F = screen memory
+
+$8000 .. $81fd = roomtable (x255)
+$81fe .. $a9fa = roomdata
+
+$???? .. $???? = fliptable
+$ab00 .. $acff = frmtable (x256)
+$ad00 .. $c969 = frmdefs
 
 cb00 : scroll drawing ??
 cc30 : ""       ""    ??
