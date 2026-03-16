@@ -5,9 +5,9 @@
 035c : dizzy y
 03e5 : roomno (start room = 77)
 
-$0947 .. $0960 = room for scroll n
-  98 - mine
-  99 - mine
+$0947 .. $0960 = room for info scroll n
+  98 - mines
+  99 - mines
   104 - snoggles treehouse hut
   105 - hookjaw grave
   51 - cave under grave
@@ -158,7 +158,6 @@ $6000 .. $7F3F = screen memory
 $8000 .. $81fd = roomtable (x255)
 $81fe .. $a9fa = roomdata
 
-$???? .. $???? = fliptable
 $ab00 .. $acff = frmtable (x256)
 $ad00 .. $c969 = frmdefs
 
