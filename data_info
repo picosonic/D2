@@ -64,9 +64,11 @@ $0993 .. $0fe4 = "strings" (&7f)
 
 $11c0 .. $15bb = object names (x34)
 
-1900 .. 19FF : ?? data read at 386B/387E ??
+1900 .. 19FF = ?? data read at 386B/387E ??
 
 2000 : entry_from_rom() # via stack at 013b ??
+
+20b8 .. 20d0 = lowercase alphabet
 
 20d9 : just dropped object ??
 20da : holding object 1 (default ff)
@@ -82,7 +84,7 @@ $11c0 .. $15bb = object names (x34)
 20e3 : score (units)
 
 20e5 : coins (tens)
-20e5 : coins (units)
+20e6 : coins (units)
 
 20e7 : startup() ??
 
@@ -117,9 +119,9 @@ $11c0 .. $15bb = object names (x34)
 2fa7 : draw ASCII char
 2fc2 : draw ASCII char
 
-2fc8 .. 2fde : ?? unknown comparison with 00c5 ??
+2fc8 .. 2fde = ?? unknown comparison with 00c5 ??
 
-3060 .. 307f : ?? unknown data ??
+3060 .. 307f = ?? unknown data ??
 
 309e : raster count
 
@@ -132,7 +134,7 @@ $11c0 .. $15bb = object names (x34)
 392f : rubobject(X)
 394a : drawobject(X)
 
-3c3f .. 3c51 : ?? data used by 3cbe ??
+3c3f .. 3c51 = ?? data used by 3cbe ??
 
 $4000 .. $5180 = sprites
 
