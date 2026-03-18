@@ -1,280 +1,280 @@
-id,name,null
-0,Big fish,
-1,Big fish2,
-2,Big fish3,
-3,Shoal of fish,
-4,Shoal of fish2,
-,,
-5,,x
-6,,x
-7,,x
-,,
-8,Bush,
-,,
-9,,x
-,,
-10,Plant,
-11,Coral,
-12,Coral2,
-,,
-13,,x
-,,
-14,Bush2,
-15,Plant2,
-,,
-16,An extinct species,
-17,A clump of mushrooms,
-18,Palm tree canopy,
-19,Palm tree canopy2,
-20,Palm tree canopy3,
-21,Palm tree canopy4,
-22,Palm tree base,
-23,Palm tree trunk,
-,,
-24,,x
-,,
-25,Palm tree trunk2,
-26,Palm tree trunk3,
-27,Branch,
-28,Beach sand,
-29,Cloud,
-30,Long grass,
-31,Short grass,
-32,Ground,
-33,An imitation skull,
-,,
-34,,x but used in rooms 21/50/98
-35,,x but used in rooms 53/78
-,,
-36,Totem,
-37,Totem2,
-38,Totem3,
-39,Totem top,
-40,Square window,
-41,Edge (V),
-42,Store sign,
-43,Roof edge,
-44,Hut door,
-45,Hut roof,
-46,Hut roof2,
-47,Edge (H),
-,,
-48,0,
-49,1,
-50,2,
-51,3,
-52,4,
-53,5,
-54,6,
-55,7,
-56,8,
-57,9,
-58,SPACE, ascii :
-59,', ascii ;
-60,",", ascii <
-61,-, ascii =
-62,., ascii >
-63,?,
-64,!, ascii @
-65,A,
-66,B,
-67,C,
-68,D,
-69,E,
-70,F,
-71,G,
-72,H,
-73,I,
-74,J,
-75,K,
-76,L,
-77,M,
-78,N,
-79,O,
-80,P,
-81,Q,
-82,R,
-83,S,
-84,T,
-85,U,
-86,V,
-87,W,
-88,X,
-89,Y,
-90,Z,
-,,
-91,,x but used in rooms 73/135/164
-92,,x but used in rooms 133/136
-93,,x but used in room 46
-94,,x but used in room 167
-95,,x but used in room 164
-96,,x but used in rooms 49/53/85/87/103/133/134/165
-,,
-97,Flame,
-98,Flame2,
-99,Flame3,
-100,Water,
-101,Water2,
-102,Water3,
-103,Water4,
-104,Water5,
-105,Scroll,
-106,Scroll end,used on room 135
-107,Scroll end2,
-108,Scroll (H),
-109,Scroll edge,
-110,Scroll edge2,used in rooms 49/167
-111,Scroll edge3,
-112,Scroll edge4,used in rooms 47/76/87/99/103/133/134/135/165/167
-113,Barrel top,
-114,Barrel bottom,
-115,Long ledge,
-116,A misty glass window,
-117,Ledge (V),
-118,Wood,
-119,Wood2,
-120,Wood3,
-121,Wood4,
-122,Cage,
-123,Flaming torch handle,
-124,Roof/Sand slope,
-125,Roof2,
-126,Roof3,
-127,Roof4,
-128,Roof5,
-129,Sand/Soil,not used in room data
-130,Sand2,
-131,Sand3/Soil,
-132,Sand4,
-133,Trunk,
-134,Trunk2,
-135,A bit of tree trunk,
-136,Treetop,
-137,Treetop2,
-138,Treetop3,
-139,Log floor,
-140,Fence,
-141,A wooden safety rail,
-142,Rope fence,
-143,Stick,
-144,Branch,
-145,Branch2,
-146,Branch3,
-147,Branch4,
-148,Branch5,
-149,Branch6,
-,,
-150,An old solid chest,
-151,A bible,
-152,A Rubber snorkel,
-153,A microwave oven,
-154,A tube of toothpaste,
-155,A bag of gold,
-156,A rusty bucket,
-157,A can of petrol,
-158,A small video camera,
-159,Sinclair abuser magazine,
-160,Snake?,
-161,A dehydrated boat,
-162,An outboard motor,
-163,A golden key,
-164,A sharp glass sword,
-165,An infrared detonator,
-166,Two sticks of dynamite,
-167,Coin,
-168,A salt water spade,
-169,A woodcutter's axe,
-,,
-170,,x but used in rooms 86/87/103
-171,,x but used in room 48
-172,,x but used in rooms 48/84
-173,,x
-174,,x
-175,,x but used in rooms 49/53
-176,,x but used in rooms 48/49/53/77/78/85/86/87/88/89/98/99/103/105/107/108/133/134/164/167
-177,,x but used in rooms 83/105
-178,,x
-179,,x but used in rooms 48/83
-180,,x
-181,,x
-182,,x
-,,
-183,Rope fence diagonal,
-184,Bubble,
-185,Bubble2,
-,,
-186,Small font SPACE,
-187,',
-188,",",
-189,-,
-190,.,
-191,?,
-192,!,
-193,A,
-194,B,
-195,C,
-196,D,
-197,E,
-198,F,
-199,G,
-200,H,
-201,I,
-202,J,
-203,K,
-204,L,
-205,M,
-206,N,
-207,O,
-208,P,
-209,Q,
-210,R,
-211,S,
-212,T,
-213,U,
-214,V,
-215,W,
-216,X,
-217,Y,
-218,Z,
-,,
-219,Crab,
-220,Headstone,
-221,Shopkeeper,
-222,Jellyfish,
-223,Lightning,
-224,Squid,
-225,Squid2,
-226,Squid3,
-227,SS DIZZY ship,
-228,?,not used in room data
-229,?,not used in room data
-,,
-230,,x
-,,
-231,Trunk,
-232,Tree roots,
-233,Branches,
-234,Branches2,
-235,Plank,
-,,
-236,,x
-,,
-237,Stalagtite,
-238,Stalagtite2,
-239,Stalagtite3,
-240,Stalagtite4,
-241,Bush3,
-242,Rock,
-243,Rock2,
-244,Rock3,
-245,Rock4,
-246,Rock5,
-247,Rock6,
-248,A big red heavy rock,
-249,Rock8,
-250,Rock9,
-251,Rock10,
-252,Rock11,
-253,Rock12,
-,,
-254,,x
+id,name,null,usage
+0,Big fish,,1
+1,Big fish2,,0
+2,Big fish3,,0
+3,Shoal of fish,,2
+4,Shoal of fish2,,1
+,,,
+5,,x,x
+6,,x,x
+7,,x,x
+,,,
+8,Bush,,6
+,,,
+9,,x,x
+,,,
+10,Plant,,6
+11,Coral,,1
+12,Coral2,,3
+,,,
+13,,x,x
+,,,
+14,Bush2,,7
+15,Plant2,,6
+,,,
+16,An extinct species,,18
+17,A clump of mushrooms,,17
+18,Palm tree canopy,,9
+19,Palm tree canopy2,,4
+20,Palm tree canopy3,,8
+21,Palm tree canopy4,,7
+22,Palm tree base,,10
+23,Palm tree trunk,,12
+,,,
+24,,x,x
+,,,
+25,Palm tree trunk2,,1
+26,Palm tree trunk3,,8
+27,Branch,,2
+28,Beach sand,,58
+29,Cloud,,31
+30,Long grass,,19
+31,Short grass,,50
+32,Ground,,95
+33,An imitation skull,,3
+,,,
+34,,x,x
+35,,x,x
+,,,
+36,Totem,,2
+37,Totem2,,1
+38,Totem3,,2
+39,Totem top,,1
+40,Square window,,18
+41,Edge (V),,11
+42,Store sign,,1
+43,Roof edge,,22
+44,Hut door,,9
+45,Hut roof,,86
+46,Hut roof2,,52
+47,Edge (H),,20
+,,,
+48,0,,5
+49,1,,1
+50,2,,0
+51,3,,1
+52,4,,0
+53,5,,0
+54,6,,0
+55,7,,0
+56,8,,0
+57,9,,1
+58,SPACE, ascii :,16
+59,', ascii ;,0
+60,",", ascii <,0
+61,-, ascii =,0
+62,., ascii >,0
+63,?,,0
+64,!, ascii @,0
+65,A,,0
+66,B,,0
+67,C,,0
+68,D,,0
+69,E,,0
+70,F,,0
+71,G,,0
+72,H,,0
+73,I,,0
+74,J,,0
+75,K,,0
+76,L,,0
+77,M,,0
+78,N,,0
+79,O,,0
+80,P,,0
+81,Q,,0
+82,R,,0
+83,S,,0
+84,T,,0
+85,U,,0
+86,V,,0
+87,W,,0
+88,X,,0
+89,Y,,0
+90,Z,,0
+,,,
+91,,x,x
+92,,x,x
+93,,x,x
+94,,x,x
+95,,x,x
+96,,x,x
+,,,
+97,Flame,,0
+98,Flame2,,0
+99,Flame3,,0
+100,Water,,69
+101,Water2,,0
+102,Water3,,0
+103,Water4,,0
+104,Water5,,0
+105,Scroll,,1
+106,Scroll end,,0
+107,Scroll end2,,0
+108,Scroll (H),,0
+109,Scroll edge,,0
+110,Scroll edge2,,0
+111,Scroll edge3,,0
+112,Scroll edge4,,0
+113,Barrel top,,8
+114,Barrel bottom,,8
+115,Long ledge,,45
+116,A misty glass window,,5
+117,Ledge (V),,35
+118,Wood,,13
+119,Wood2,,21
+120,Wood3,,22
+121,Wood4,,17
+122,Cage,,2
+123,Flaming torch handle,,6
+124,Roof/Sand slope,,10
+125,Roof2,,2
+126,Roof3,,6
+127,Roof4,,4
+128,Roof5,,4
+129,Sand/Soil,,0
+130,Sand2,,1
+131,Sand3/Soil,,21
+132,Sand4,,24
+133,Trunk,,109
+134,Trunk2,,101
+135,A bit of tree trunk,,85
+136,Treetop,,6
+137,Treetop2,,4
+138,Treetop3,,5
+139,Log floor,,291
+140,Fence,,26
+141,A wooden safety rail,,25
+142,Rope fence,,66
+143,Stick,,6
+144,Branch,,6
+145,Branch2,,11
+146,Branch3,,25
+147,Branch4,,16
+148,Branch5,,6
+149,Branch6,,2
+,,,
+150,An old solid chest,,0
+151,A bible,,0
+152,A Rubber snorkel,,1
+153,A microwave oven,,0
+154,A tube of toothpaste,,0
+155,A bag of gold,,0
+156,A rusty bucket,,0
+157,A can of petrol,,0
+158,A small video camera,,0
+159,Sinclair abuser magazine,,0
+160,Snake?,,0
+161,A dehydrated boat,,0
+162,An outboard motor,,0
+163,A golden key,,0
+164,A sharp glass sword,,0
+165,An infrared detonator,,0
+166,Two sticks of dynamite,,0
+167,Coin,,0
+168,A salt water spade,,0
+169,A woodcutter's axe,,0
+,,,
+170,,x,x
+171,,x,x
+172,,x,x
+173,,x,x
+174,,x,x
+175,,x,x
+176,,x,x
+177,,x,x
+178,,x,x
+179,,x,x
+180,,x,x
+181,,x,x
+182,,x,x
+,,,
+183,Rope fence diagonal,,55
+184,Bubble,,0
+185,Bubble2,,0
+,,,
+186,Small font SPACE,,0
+187,',,0
+188,",",,0
+189,-,,0
+190,.,,0
+191,?,,0
+192,!,,0
+193,A,,0
+194,B,,0
+195,C,,0
+196,D,,0
+197,E,,0
+198,F,,0
+199,G,,0
+200,H,,0
+201,I,,0
+202,J,,0
+203,K,,0
+204,L,,0
+205,M,,0
+206,N,,0
+207,O,,0
+208,P,,0
+209,Q,,0
+210,R,,0
+211,S,,0
+212,T,,0
+213,U,,0
+214,V,,0
+215,W,,0
+216,X,,0
+217,Y,,0
+218,Z,,0
+,,,
+219,Crab,,1
+220,Headstone,,0
+221,Shopkeeper,,0
+222,Jellyfish,,0
+223,Lightning,,0
+224,Squid,,0
+225,Squid2,,0
+226,Squid3,,0
+227,SS DIZZY ship,,0
+228,?,,0
+229,?,,0
+,,,
+230,,x,x
+,,,
+231,Trunk4,,10
+232,Tree roots,,9
+233,Branches,,4
+234,Branches2,,4
+235,Plank,,15
+,,,
+236,,x,x
+,,,
+237,Stalagtite,,10
+238,Stalagtite2,,14
+239,Stalagtite3,,8
+240,Stalagtite4,,11
+241,Bush3,,213
+242,Rock,,2
+243,Rock2,,24
+244,Rock3,,8
+245,Rock4,,45
+246,Rock5,,21
+247,Rock6,,20
+248,A big red heavy rock,,53
+249,Rock8,,24
+250,Rock9,,76
+251,Rock10,,103
+252,Rock11,,53
+253,Rock12,,43
+,,,
+254,,x,x
