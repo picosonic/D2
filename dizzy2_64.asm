@@ -13,34 +13,46 @@ INCLUDE "gamevars.asm"
 .framedefs
 ;INCBIN "framedefs.bin"
 
-.v0001
-.v0002
-.v0035
-.v0036
-.v0045
-.v00AC
-.v00AD
-.v00AE
-.v00AF
-.v00B0
-.v00B1
-.v00B2
-.v00B3
-.v00B4
-.v00B5
-.v00B6
-.v00B7
-.v00BE
-.v00C2
-.v00C3
-.v00C4
-.v00C5
-.v00CC
-.v00FB
-.v00FC
-.v00FD
-.v00FE
-.v00FF
+; Zero page vars
+v0001 = &01
+v0002 = &02
+
+v0035 = &35
+v0036 = &36
+
+v0045 = &45
+
+v00AC = &AC
+v00AD = &AD
+v00AE = &AE
+v00AF = &AF
+v00B0 = &B0
+v00B1 = &B1
+v00B2 = &B2
+v00B3 = &B3
+v00B4 = &B4
+v00B5 = &B5
+v00B6 = &B6
+v00B7 = &B7
+
+v00BE = &BE
+
+v00C2 = &C2
+v00C3 = &C3
+v00C4 = &C4
+v00C5 = &C5
+
+v00CC = &CC
+
+; Cache for something
+v00FB = &FB
+v00FC = &FC
+v00FD = &FD
+v00FE = &FE
+v00FF = &FF
+
+; 6502 stack
+ORG &0100
   LDA #$00
   STA v00FB
   STA v00FC
@@ -70,82 +82,85 @@ INCLUDE "gamevars.asm"
   JSR l1B00
   CLI
   JMP l2000
-.v0200
-.v0282
-.v028D
-.v0288
-.v0300
-.v0314
-.v0315
-.v0339
-.v033A
-.v033B
-.v033C
-.v033D
-.v033E
-.v033F
-.v0340
-.v0342
-.v0343
-.v0344
-.v0345
-.v0346
-.v0347
-.v0349
-.v034A
-.v034B
-.v034E
-.v0352
-.v0354
-.v0355
-.v0356
-.v0357
-.v035C
-.v035E
-.v035F
-.v0360
-.v0361
-.v0366
-.v0368
-.v0369
-.v036A
-.v036B
-.v0370
-.v037A
-.v0384
-.v038E
-.v0398
-.v03A2
-.v03AC
-.v03B6
-.v03C0
-.v03C1
-.v03C2
-.v03C3
-.v03C4
-.v03C5
-.v03C6
-.v03C7
-.v03C8
-.v03C9
-.v03D5
-.v03D6
-.v03D7
-.v03D8
-.v03D9
-.v03DA
-.v03DB
-.v03DC
-.v03DD
-.v03DF
-.v03E0
-.v03E1
-.v03E2
-.v03E3
-.v03E4
-.v03E5
-.v03E7
-.v0600
+
+v0200 = &0200
+v0282 = &0282
+v028D = &028D
+v0288 = &0288
+v0300 = &0300
+v0314 = &0314
+v0315 = &0315
+v0339 = &0339
+v033A = &033A
+v033B = &033B
+v033C = &033C
+v033D = &033D
+v033E = &033E
+v033F = &033F
+v0340 = &0340
+v0342 = &0342
+v0343 = &0343
+v0344 = &0344
+v0345 = &0345
+v0346 = &0346
+v0347 = &0347
+v0349 = &0349
+v034A = &034A
+v034B = &034B
+v034E = &034E
+v0352 = &0352
+v0354 = &0354
+v0355 = &0355
+v0356 = &0356
+v0357 = &0357
+v035C = &035C
+v035E = &035E
+v035F = &035F
+v0360 = &0360
+v0361 = &0361
+v0366 = &0366
+v0368 = &0368
+v0369 = &0369
+v036A = &036A
+v036B = &036B
+v0370 = &0370
+v037A = &037A
+v0384 = &0384
+v038E = &038E
+v0398 = &0398
+v03A2 = &03A2
+v03AC = &03AC
+v03B6 = &03B6
+v03C0 = &03C0
+v03C1 = &03C1
+v03C2 = &03C2
+v03C3 = &03C3
+v03C4 = &03C4
+v03C5 = &03C5
+v03C6 = &03C6
+v03C7 = &03C7
+v03C8 = &03C8
+v03C9 = &03C9
+v03D5 = &03D5
+v03D6 = &03D6
+v03D7 = &03D7
+v03D8 = &03D8
+v03D9 = &03D9
+v03DA = &03DA
+v03DB = &03DB
+v03DC = &03DC
+v03DD = &03DD
+v03DF = &03DF
+v03E0 = &03E0
+v03E1 = &03E1
+v03E2 = &03E2
+v03E3 = &03E3
+v03E4 = &03E4
+v03E5 = &03E5
+v03E7 = &03E7
+v0600 = &0600
+
+ORG &087F
   LDA #$00
   TAY
 .l0882
@@ -240,8 +255,10 @@ INCLUDE "gamevars.asm"
 .l1B00
 .v1B39
 .v1B72
+
 .l2000
   JMP l20E7
+
 .v200E
 .v2028
 .v2077
@@ -262,6 +279,7 @@ INCLUDE "gamevars.asm"
 .v20E5
 .v20E6
 
+ORG &20E7
 .l20E7
   JSR l3080
   LDX #$C9
@@ -2167,92 +2185,123 @@ cheatcodelen = * - eclipse
 .l305F
   RTS
 .v3060
+
 .l3080
+{
   SEI
-  LDA #$A0
-  STA ISR
-  LDA #$30
-  STA ISR+1
+
+  LDA #HI(isr_routine):STA ISR
+  LDA #LO(isr_routine):STA ISR+1
+
   LDA #$00
   STA v309E
   STA v309F
   STA vE000
   STA vF084
+
   JSR l30D9
+
   CLI
+
   RTS
+}
+
 .v309E
 .v309F
+
+; ISR routine
+ORG &30A0
+.isr_routine
+{
   LDA CPU_CONFIG
   AND #$F8
   ORA #$05
   STA CPU_CONFIG
+
   LDA v309F
   BEQ l30B9
+
   JSR l30FE
   JSR lEE04
   JSR l3118
   JMP l30CE
+
 .l30B9
   INC v309E
   LDA v309E
   AND #$07
   CMP #$07
   BEQ l30CE
+
   JSR l30FE
   JSR lE002
   JSR l3118
+
 .l30CE
   LDA CPU_CONFIG
   AND #$F8
   ORA #$06
   STA CPU_CONFIG
+
   JMP lEA31
+}
+
 .l30D9
+{
   SEI
+
   LDA CPU_CONFIG
   AND #$F8
   ORA #$05
   STA CPU_CONFIG
+
   JSR l30FE
   JSR lEE00
   JSR l3118
+
   LDA CPU_CONFIG
   AND #$F8
   ORA #$06
   STA CPU_CONFIG
+
   CLI
+
   RTS
+}
+
 .l30F5
+{
   JSR l30D9
-  LDA #$01
-  STA v309F
+
+  LDA #$01:STA v309F
+
   RTS
+}
+
 .l30FE
-  LDA v00FB
-  STA vF3FB
-  LDA v00FC
-  STA vF3FC
-  LDA v00FD
-  STA vF3FD
-  LDA v00FE
-  STA vF3FE
-  LDA v00FF
-  STA vF3FF
+{
+  LDA v00FB:STA vF3FB
+  LDA v00FC:STA vF3FC
+  LDA v00FD:STA vF3FD
+  LDA v00FE:STA vF3FE
+  LDA v00FF:STA vF3FF
+
   RTS
+}
+
 .l3118
-  LDA vF3FB
-  STA v00FB
-  LDA vF3FC
-  STA v00FC
-  LDA vF3FD
-  STA v00FD
-  LDA vF3FE
-  STA v00FE
-  LDA vF3FF
-  STA v00FF
+{
+  LDA vF3FB:STA v00FB
+  LDA vF3FC:STA v00FC
+  LDA vF3FD:STA v00FD
+  LDA vF3FE:STA v00FE
+  LDA vF3FF:STA v00FF
+
   RTS
+}
+
 .l3132
+{
   STA v00FB
   STA v0340
   STX v0345
@@ -2434,8 +2483,7 @@ cheatcodelen = * - eclipse
   TAY
   LDA v3060,X
   AND v03DF
-.v3287
-v3288 = * + 1
+.^v3287
   EOR ($FB),Y
   STA ($FB),Y
   LDA v0349
@@ -2519,6 +2567,8 @@ v3288 = * + 1
   STA v00FD
   STA v0035
   JMP l324E
+}
+
 .l3327
   LDX v033D
   LDA #$00
@@ -2585,11 +2635,11 @@ v3288 = * + 1
   LSR  A
   BNE l33AC
   LDA #$EA
-  STA v3288
+  STA v3287+1
   JMP l33BC
 .l33AC
   LDX #$FB
-  STX v3288
+  STX v3287+1
   CMP #$01
   BNE l33BA
   LDA #$51
