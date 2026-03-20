@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -x
-
 # Compare 2x binary files
 
 if [ $# -lt 2 ]
