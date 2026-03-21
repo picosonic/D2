@@ -41,6 +41,16 @@ int main()
       if (end!=start)
       {
         int i=0;
+        char roomname[50];
+        FILE *fp;
+
+        sprintf(roomname, "rooms/room%d.bin", room);
+        fp=fopen(roomname, "w+");
+        if (fp!=NULL)
+        {
+          fwrite(&roomdata[(NUMROOMS*2)+start], end-start, 1, fp);
+          fclose(fp);
+        }
 
         printf("%d : 0x%.4x to 0x%.4x (len %d)\n", room, start, end-1, end-start);
         printf("{%.2x %.2x}\n", roomdata[(NUMROOMS*2)+i], roomdata[(NUMROOMS*2)+i+1]);

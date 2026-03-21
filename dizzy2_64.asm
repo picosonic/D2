@@ -182,12 +182,12 @@ ORG &087F
   LDA #$08
   STA v00BE
   LDY #$80
-  LDA v8000
+  LDA roomtable
   TAX
   EOR #$FF
-  STA v8000
-  CMP v8000
-  STX v8000
+  STA roomtable
+  CMP roomtable
+  STX roomtable
   BNE l08B7
   LDY #$A0
 .l08B7
@@ -3877,12 +3877,12 @@ ORG &30A0
   LDA #$08
   STA v00BE
   LDY #$80
-  LDA v8000
+  LDA roomtable
   TAX
   EOR #$FF
-  STA v8000
-  CMP v8000
-  STX v8000
+  STA roomtable
+  CMP roomtable
+  STX roomtable
   BNE l3DB7
   LDY #$A0
 .l3DB7
@@ -3941,7 +3941,7 @@ ORG &30A0
   LDX #$05
 .l3E33
   LDA vFD0F,X
-  CMP v8003,X
+  CMP roomtable+3,X
   BNE l3E3E
   DEX
   BNE l3E33
@@ -3984,12 +3984,12 @@ ORG &30A0
   LDA #$08
   STA v00BE
   LDY #$80
-  LDA v8000
+  LDA roomtable
   TAX
   EOR #$FF
-  STA v8000
-  CMP v8000
-  STX v8000
+  STA roomtable
+  CMP roomtable
+  STX roomtable
   BNE l3EB7
   LDY #$A0
 .l3EB7
@@ -4048,7 +4048,7 @@ ORG &30A0
   LDX #$05
 .l3F33
   LDA vFD0F,X
-  CMP v8003,X
+  CMP roomtable+3,X
   BNE l3F3E
   DEX
   BNE l3F33
@@ -4075,12 +4075,12 @@ ORG &30A0
   LDA #$08
   STA v00BE
   LDY #$80
-  LDA v8000
+  LDA roomtable
   TAX
   EOR #$FF
-  STA v8000
-  CMP v8000
-  STX v8000
+  STA roomtable
+  CMP roomtable
+  STX roomtable
   BNE l3FB7
   LDY #$A0
 .l3FB7
@@ -4117,12 +4117,12 @@ ORG &30A0
   LDA #$08
   STA v00BE
   LDY #$80
-  LDA v8000
+  LDA roomtable
   TAX
   EOR #$FF
-  STA v8000
-  CMP v8000
-  STX v8000
+  STA roomtable
+  CMP roomtable
+  STX roomtable
   BNE l51B7
   LDY #$A0
 .l51B7
@@ -4181,7 +4181,7 @@ ORG &30A0
   LDX #$05
 .l5233
   LDA vFD0F,X
-  CMP v8003,X
+  CMP roomtable+3,X
   BNE l523E
   DEX
   BNE l5233
@@ -4224,12 +4224,12 @@ ORG &30A0
   LDA #$08
   STA v00BE
   LDY #$80
-  LDA v8000
+  LDA roomtable
   TAX
   EOR #$FF
-  STA v8000
-  CMP v8000
-  STX v8000
+  STA roomtable
+  CMP roomtable
+  STX roomtable
   BNE l52B7
   LDY #$A0
 .l52B7
@@ -4324,12 +4324,12 @@ ORG &30A0
   LDA #$08
   STA v00BE
   LDY #$80
-  LDA v8000
+  LDA roomtable
   TAX
   EOR #$FF
-  STA v8000
-  CMP v8000
-  STX v8000
+  STA roomtable
+  CMP roomtable
+  STX roomtable
   BNE l7FB7
   LDY #$A0
 .l7FB7
@@ -4359,8 +4359,13 @@ ORG &30A0
   STX vDC02
   LDA #$07
   STA CIA2_PRA
-.v8000
-.v8003
+
+ORG &8000
+.roomtable
+INCBIN "RMTABLE"
+.roomdata
+INCBIN "RMDATA"
+
 .vAA00
 .vCA00
 .lCB00
@@ -4876,7 +4881,7 @@ ORG &30A0
   LDX #$05
 .lCF33
   LDA vFD0F,X
-  CMP v8003,X
+  CMP roomtable+3,X
   BNE lCF3E
   DEX
   BNE lCF33
@@ -4919,12 +4924,12 @@ ORG &30A0
   LDA #$08
   STA v00BE
   LDY #$80
-  LDA v8000
+  LDA roomtable
   TAX
   EOR #$FF
-  STA v8000
-  CMP v8000
-  STX v8000
+  STA roomtable
+  CMP roomtable
+  STX roomtable
   BNE lCFB7
   LDY #$A0
 .lCFB7
