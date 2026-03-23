@@ -411,20 +411,24 @@ ORG &2000
 .v2077
 .v2097
 .v209F
-.v20B8
+.v20B8 ; lowercase alphabet
 .v20D1
 .v20D8
-.v20D9
-.v20DA
-.v20DB
-.v20DC
-.v20DD
-.v20DE
-.v20E0
-.v20E1
+
+.v20D9 ; ?? just dropped object id ??
+.v20DA ; holding object id #1
+.v20DB ; holding object id #2
+.v20DC ; holding object id #3
+.v20DD ; ?? just picked up object id ??
+
+.v20DE ; score (hundred thousands)
+.v20E0 ; score (thousands)
+.v20E1 ; score (hundreds)
+
 .v20E4
-.v20E5
-.v20E6
+
+.v20E5 ; coins (tens)
+.v20E6 ; score (units)
 
 ORG &20E7
 .l20E7
@@ -2353,7 +2357,7 @@ cheatcodelen = * - eclipse
   RTS
 }
 
-.v309E
+.v309E ; raster count
 .v309F
 
 ; ISR routine
@@ -4272,6 +4276,12 @@ ORG &30A0
   STX roomtable
   BNE l51B7
   LDY #$A0
+
+; Sprites
+ORG &4000
+; TODO
+
+ORG &51B7
 .l51B7
   LDX #$00
   STY v00C2
@@ -4384,13 +4394,18 @@ ORG &30A0
   STY v00C2
   CLC
   JSR lFE2D
-.v52C0
-.v5346
-.v53CC
-.v5452
-.v54D8
+
+; Static objects
+.v52C0 ; room no[]
+.v5346 ; x pos[]
+.v53CC ; y pos[]
+.v5452 ; attrib[]
+.v54D8 ; frame no[]
+
 .v5551
-.v555E
+
+; In-game objects
+.v555E ; room no[]
 .v555F
 .v5560
 .v5565
@@ -4410,25 +4425,26 @@ ORG &30A0
 .v55AD
 .v55AF
 .v55C0
-.v55E4
+.v55E4 ; x pos[]
 .v5629
 .v562B
 .v5638
 .v5646
-.v566A
+.v566A ; y pos[]
 .v56B7
 .v56BB
 .v56BF
 .v56C0
 .v56C2
 .v56C4
-.v56F0
+.v56F0 ; attrib[]
 .v56F6
 .v5736
 .v5737
 .v5752
-.v5776
+.v5776 ; frame no[]
 .v57C7
+
 .v5800
 .v58C8
 .v5900
@@ -4436,7 +4452,8 @@ ORG &30A0
 .v5A58
 .v5A6C
 .v5B20
-.v5FF8
+.v5FF8 ; hw sprite "pointers"
+
 .l7F40
   LDA #$78
   STA GFX_MEM_PTR
@@ -4512,6 +4529,11 @@ ORG &8000
 INCBIN "RMTABLE"
 .roomdata
 INCBIN "RMDATA"
+
+; Frame table
+; TODO
+; Frame defs
+; TODO
 
 .vAA00
 .vCA00
