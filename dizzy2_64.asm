@@ -231,63 +231,64 @@ EQUB &F9
 
 ORG &0961
 .stringptr_lo
-EQUB LO(string0)
-EQUB LO(string1)
-EQUB LO(string2)
-EQUB LO(string3)
-EQUB LO(string4)
-EQUB LO(string5)
-EQUB LO(string6)
-EQUB LO(string7)
-EQUB LO(string8)
-EQUB LO(string9)
-EQUB LO(string10)
-EQUB LO(string11)
-EQUB LO(string12)
-EQUB LO(string13)
-EQUB LO(string14)
-EQUB LO(string15)
-EQUB LO(string16)
-EQUB LO(string17)
-EQUB LO(string18)
-EQUB LO(string19)
-EQUB LO(string20)
-EQUB LO(string21)
-EQUB LO(string22)
-EQUB LO(string23)
-EQUB LO(string24)
+{
+  EQUB LO(string0)
+  EQUB LO(string1)
+  EQUB LO(string2)
+  EQUB LO(string3)
+  EQUB LO(string4)
+  EQUB LO(string5)
+  EQUB LO(string6)
+  EQUB LO(string7)
+  EQUB LO(string8)
+  EQUB LO(string9)
+  EQUB LO(string10)
+  EQUB LO(string11)
+  EQUB LO(string12)
+  EQUB LO(string13)
+  EQUB LO(string14)
+  EQUB LO(string15)
+  EQUB LO(string16)
+  EQUB LO(string17)
+  EQUB LO(string18)
+  EQUB LO(string19)
+  EQUB LO(string20)
+  EQUB LO(string21)
+  EQUB LO(string22)
+  EQUB LO(string23)
+  EQUB LO(string24)
+}
 .stringptr_hi
-EQUB HI(string0)
-EQUB HI(string1)
-EQUB HI(string2)
-EQUB HI(string3)
-EQUB HI(string4)
-EQUB HI(string5)
-EQUB HI(string6)
-EQUB HI(string7)
-EQUB HI(string8)
-EQUB HI(string9)
-EQUB HI(string10)
-EQUB HI(string11)
-EQUB HI(string12)
-EQUB HI(string13)
-EQUB HI(string14)
-EQUB HI(string15)
-EQUB HI(string16)
-EQUB HI(string17)
-EQUB HI(string18)
-EQUB HI(string19)
-EQUB HI(string20)
-EQUB HI(string21)
-EQUB HI(string22)
-EQUB HI(string23)
-EQUB HI(string24)
+{
+  EQUB HI(string0)
+  EQUB HI(string1)
+  EQUB HI(string2)
+  EQUB HI(string3)
+  EQUB HI(string4)
+  EQUB HI(string5)
+  EQUB HI(string6)
+  EQUB HI(string7)
+  EQUB HI(string8)
+  EQUB HI(string9)
+  EQUB HI(string10)
+  EQUB HI(string11)
+  EQUB HI(string12)
+  EQUB HI(string13)
+  EQUB HI(string14)
+  EQUB HI(string15)
+  EQUB HI(string16)
+  EQUB HI(string17)
+  EQUB HI(string18)
+  EQUB HI(string19)
+  EQUB HI(string20)
+  EQUB HI(string21)
+  EQUB HI(string22)
+  EQUB HI(string23)
+  EQUB HI(string24)
+}
 
-ORG &0993
 ; Set char mapping for small font
-MAPCHAR '@', 192
-MAPCHAR 'A','Z', 193
-; TODO
+MAPCHAR ':','Z', 186
 
 .string0 EQUS "DANGER@:BLASTING:AREA@_"
 .string1 EQUS "IF:YOU:ARE:LOOKING:FOR:MORE:COINS<:THEN:TRY:EVERYWHERE@:YOU:CAN;T:ALWAYS:SEE:THEM>:YOU:MAY:HAVE:TO:PICK:THINGS:UP:FIRST@_"
@@ -316,9 +317,7 @@ MAPCHAR 'A','Z', 193
 .string24 EQUS "_"
 
 ; Reset char mappings
-MAPCHAR '@', 64
-MAPCHAR 'A','Z', 65
-; TODO
+MAPCHAR ':','Z', 58
 
 ORG &0FE8
 {
