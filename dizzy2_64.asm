@@ -288,7 +288,7 @@ ORG &0961
 }
 
 ; Set char mapping for small font
-MAPCHAR ':','Z', 186
+MAPCHAR ';','Z', 187
 
 .string0 EQUS "DANGER@:BLASTING:AREA@_"
 .string1 EQUS "IF:YOU:ARE:LOOKING:FOR:MORE:COINS<:THEN:TRY:EVERYWHERE@:YOU:CAN;T:ALWAYS:SEE:THEM>:YOU:MAY:HAVE:TO:PICK:THINGS:UP:FIRST@_"
@@ -317,7 +317,7 @@ MAPCHAR ':','Z', 186
 .string24 EQUS "_"
 
 ; Reset char mappings
-MAPCHAR ':','Z', 58
+MAPCHAR ';','Z', 59
 
 ORG &0FE8
 {
