@@ -8,11 +8,6 @@ ORG &00
 
 INCLUDE "gamevars.asm"
 
-.frametable
-;INCBIN "frametable.bin"
-.framedefs
-;INCBIN "framedefs.bin"
-
 ; Zero page vars
 v0001 = &01
 v0002 = &02
@@ -3871,7 +3866,10 @@ ORG &30A0
   STA v0352
 .v3C3E
   RTS
+
+ORG &3C42
 .v3C42
+ORG &3C52
 .l3C52
   LDA v03DA
   BEQ l3CAD
@@ -4007,6 +4005,8 @@ ORG &30A0
   BNE l3D3A
   LDX v0345
   RTS
+
+ORG &3D7F
   LDA #$00
   TAY
 .l3D82
@@ -4046,6 +4046,8 @@ ORG &30A0
   LDA #$04
   STA v0288
   RTS
+
+ORG &3DD2
   LDA #$7F
   STA vDC0D
   STA vDD0D
@@ -4098,6 +4100,8 @@ ORG &30A0
   BNE l3E33
 .l3E3E
   RTS
+
+ORG &3E44
   LDX #$30
   LDY #$FD
   CLC
@@ -4114,6 +4118,8 @@ ORG &30A0
   DEY
   BPL l3E4F
   RTS
+
+ORG &3E7F
   LDA #$00
   TAY
 .l3E82
@@ -4153,6 +4159,8 @@ ORG &30A0
   LDA #$04
   STA v0288
   RTS
+
+ORG &3ED2
   LDA #$7F
   STA vDC0D
   STA vDD0D
@@ -4205,6 +4213,8 @@ ORG &30A0
   BNE l3F33
 .l3F3E
   RTS
+
+ORG &3F7F
   LDA #$00
   TAY
 .l3F82
@@ -4244,6 +4254,8 @@ ORG &30A0
   LDA #$04
   STA v0288
   RTS
+
+ORG &3FD2
   LDA #$7F
   STA vDC0D
   STA vDD0D
@@ -4261,21 +4273,6 @@ ORG &30A0
   STX vDC02
   LDA #$07
   STA CIA2_PRA
-  LDX #$3C
-  LDY #$03
-  STX v00B2
-  STY v00B3
-  LDA #$08
-  STA v00BE
-  LDY #$80
-  LDA roomtable
-  TAX
-  EOR #$FF
-  STA roomtable
-  CMP roomtable
-  STX roomtable
-  BNE l51B7
-  LDY #$A0
 
 ; Sprites
 ORG &4000
@@ -4530,13 +4527,19 @@ INCBIN "RMTABLE"
 .roomdata
 INCBIN "RMDATA"
 
+ORG &AB00
 ; Frame table
-; TODO
+.frametable
+INCBIN "frametable.bin"
+ORG &AD00
 ; Frame defs
-; TODO
+.framedefs
+INCBIN "framedefs.bin"
 
 .vAA00
 .vCA00
+
+ORG &CB00
 .lCB00
   LDX #$00
 .lCB02
@@ -5011,6 +5014,8 @@ INCBIN "RMDATA"
   LDA #$FF
   STA v03D5
   RTS
+
+ORG &CEE5
   STA vDC0F
   STA vDD0F
   LDX #$00
@@ -5056,6 +5061,8 @@ INCBIN "RMDATA"
   BNE lCF33
 .lCF3E
   RTS
+
+ORG &CF44
   LDX #$30
   LDY #$FD
   CLC
@@ -5072,6 +5079,8 @@ INCBIN "RMDATA"
   DEY
   BPL lCF4F
   RTS
+
+ORG &CF7F
   LDA #$00
   TAY
 .lCF82
@@ -5111,6 +5120,8 @@ INCBIN "RMDATA"
   LDA #$04
   STA v0288
   RTS
+
+ORG &CFD2
   LDA #$7F
   STA vDC0D
   STA vDD0D
@@ -5137,6 +5148,7 @@ vCFFC = * + 2
 .vCFFE
 vCFFF = * + 1
   ROR v0045
+
 .vD000
 .vD001
 .vD010
@@ -5179,6 +5191,8 @@ vCFFF = * + 1
 .vDE00
 .vE000
 .vE001
+
+ORG &E002
 .lE002
   LDX #$00
   JSR lE012
@@ -5790,6 +5804,7 @@ vE425 = * + 2
   JMP lE8A7
 .lE54F
   JMP lE12A
+
 .vE552
 .vE553
 .vE554
@@ -5854,6 +5869,8 @@ vE425 = * + 2
 .vE6BA
 .vE6D4
 .vE6D7
+
+ORG &E712
   LDA #$27:STA ISR
   LDA #$E7:STA ISR+1
   LDX #$00:STX vDC0E
@@ -5874,9 +5891,12 @@ vE425 = * + 2
   DEC GFX_BORDER_COLOUR
 
   JMP lEA31
+
 .vE755
 .vE756
 .vE759
+
+ORG &E75A
 .lE75A
   PHA
   AND #$0F
@@ -5928,6 +5948,8 @@ vE425 = * + 2
 .vE895
 .vE89B
 .vE8A1
+
+ORG &E8A7
 .lE8A7
   LDA v00FC
   PHA
@@ -5972,8 +5994,11 @@ vE425 = * + 2
   PLA
   STA v00FC
   JMP lE12A
+
 .vE901
 .lEA31
+
+ORG &EE00
 .lEE00
   JSR lEF6D
   RTS
@@ -6081,6 +6106,7 @@ vE425 = * + 2
   LDA vF19D,Y
   STA vEF22,X
   JMP lEE81
+
 .vEEF7
 .vEEF8
 .vEEF9
@@ -6105,6 +6131,8 @@ vE425 = * + 2
 .vEF2B
 .vEF31
 .vEF32
+
+ORG &EF36
 .lEF36
   LDA vEF0D,X
   LDY vEF0C,X
@@ -6251,6 +6279,7 @@ vE425 = * + 2
   STA vEF0F,X
 .lF081
   JMP lF012
+
 .vF084
 .vF085
 .vF08F
