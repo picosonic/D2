@@ -520,16 +520,16 @@ ORG &20E7
   LDX #$86
 .l21B7
   DEX
-  LDA v52C0,X
-  STA v555E,X
-  LDA v5346,X
-  STA v55E4,X
-  LDA v53CC,X
-  STA v566A,X
-  LDA v5452,X
-  STA v56F0,X
-  LDA v54D8,X
-  STA v5776,X
+  LDA orig_rooms,X
+  STA objs_rooms,X
+  LDA orig_xlocs,X
+  STA objs_xlocs,X
+  LDA orig_ylocs,X
+  STA objs_ylocs,X
+  LDA orig_attrs,X
+  STA objs_attrs,X
+  LDA orig_frames,X
+  STA objs_frames,X
   CPX #$00
   BNE l21B7
   LDA #$1C
@@ -1435,15 +1435,15 @@ ORG &20E7
   LDX #$00
   STX v03D9
 .l2942
-  LDA v555E,X
+  LDA objs_rooms,X
   CMP roomno
   BNE l296D
-  LDA v55E4,X
+  LDA objs_xlocs,X
   CMP v033A
   BCC l296D
   CMP v033C
   BCS l296D
-  LDA v566A,X
+  LDA objs_ylocs,X
   CMP v033B
   BCC l296D
   CMP v033D
@@ -1697,7 +1697,7 @@ ORG &20E7
 .l2B81
   STX v20DD
   LDA #$02
-  STA v555E,X
+  STA objs_rooms,X
   JMP l2C10
 .l2B8C
   LDA roomno
@@ -1793,27 +1793,27 @@ ORG &20E7
   CPX #$FF
   BEQ l2C5A
   LDA #$02
-  STA v555E,X
+  STA objs_rooms,X
   JSR l2F35
 .l2C5A
   LDX v20D9
   CPX #$FF
   BEQ l2C85
-  LDA v555E,X
+  LDA objs_rooms,X
   CMP #$FD
   BEQ l2C85
   LDX v20DA
   LDA roomno
-  STA v555E,X
+  STA objs_rooms,X
   LDA v0352
   CLC
   ADC #$21
   AND #$FE
-  STA v55E4,X
+  STA objs_xlocs,X
   LDA v035C
   CLC
   ADC #$2D
-  STA v566A,X
+  STA objs_ylocs,X
 .l2C85
   LDA #$3F
   STA v03DD
@@ -2077,7 +2077,7 @@ ORG &20E7
   STA vCFF8
   LDX v20DA
   LDA #$FD
-  STA v555E,X
+  STA objs_rooms,X
   STX v20D9
   LDX v034E
   RTS
@@ -2138,7 +2138,7 @@ ORG &20E7
   CPX #$32
   BCS l2F65
   LDA #$FE
-  STA v555E,X
+  STA objs_rooms,X
   LDA #$06
   JSR l392B
   LDA #$0F
@@ -3507,26 +3507,26 @@ ORG &30A0
   STA vF084
   RTS
 .l392F
-  LDA v55E4,X
+  LDA objs_xlocs,X
   STA v033A
-  LDA v566A,X
+  LDA objs_ylocs,X
   STA v033B
   LDA #$00
   STA v033C
   STA v033F
-  LDA v5776,X
+  LDA objs_frames,X
   JSR l3132
   RTS
 .l394A
-  LDA v55E4,X
+  LDA objs_xlocs,X
   STA v033A
-  LDA v566A,X
+  LDA objs_ylocs,X
   STA v033B
-  LDA v56F0,X
+  LDA objs_attrs,X
   STA v033C
   LDA #$00
   STA v033F
-  LDA v5776,X
+  LDA objs_frames,X
   JSR l3132
   RTS
 .l3968
@@ -3541,15 +3541,15 @@ ORG &30A0
   RTS
 .l397A
   DEX
-  LDA v555E,X
+  LDA objs_rooms,X
   BEQ l396B
   CMP roomno
   BNE l396B
-  LDA v55E4,X
+  LDA objs_xlocs,X
   STA v033A
-  LDA v566A,X
+  LDA objs_ylocs,X
   STA v033B
-  LDA v56F0,X
+  LDA objs_attrs,X
   STA v033C
   LDY #$00
   CPX #$3F
@@ -3567,7 +3567,7 @@ ORG &30A0
   STY v033F
   LDA #$58
   STA v03DC
-  LDA v5776,X
+  LDA objs_frames,X
   JSR l3132
   JMP l396B
 .l39C3
@@ -3575,14 +3575,14 @@ ORG &30A0
   STA v00FF
   LDA v03D5
   BEQ l39E8
-  LDA v555E,X
-  CMP v52C0,X
+  LDA objs_rooms,X
+  CMP orig_rooms,X
   BNE l39E8
-  LDA v55E4,X
-  CMP v5346,X
+  LDA objs_xlocs,X
+  CMP orig_xlocs,X
   BNE l39E8
-  LDA v566A,X
-  CMP v53CC,X
+  LDA objs_ylocs,X
+  CMP orig_ylocs,X
   BNE l39E8
   LDA #$00
   STA v00FF
@@ -4392,55 +4392,7 @@ ORG &51B7
   CLC
   JSR lFE2D
 
-; Static objects
-.v52C0 ; room no[]
-.v5346 ; x pos[]
-.v53CC ; y pos[]
-.v5452 ; attrib[]
-.v54D8 ; frame no[]
-
-.v5551
-
-; In-game objects
-.v555E ; room no[]
-.v555F
-.v5560
-.v5565
-.v5569
-.v556B
-.v5571
-.v559D
-.v55A0
-.v55A2
-.v55A4
-.v55A5
-.v55A6
-.v55A8
-.v55A9
-.v55AA
-.v55AC
-.v55AD
-.v55AF
-.v55C0
-.v55E4 ; x pos[]
-.v5629
-.v562B
-.v5638
-.v5646
-.v566A ; y pos[]
-.v56B7
-.v56BB
-.v56BF
-.v56C0
-.v56C2
-.v56C4
-.v56F0 ; attrib[]
-.v56F6
-.v5736
-.v5737
-.v5752
-.v5776 ; frame no[]
-.v57C7
+INCLUDE "objects.asm"
 
 .v5800
 .v58C8
