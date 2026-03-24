@@ -540,7 +540,7 @@ ORG &20E7
   STA v035C
   JSR l2F77
   LDA #$06
-  STA v56F6
+  STA v56F6 ; bucket attrib
   LDX #$00
   TXA
 .l21F5
@@ -1608,7 +1608,7 @@ ORG &20E7
   CMP #$62
   BNE l2AF3
   LDA #$07
-  STA v5736
+  STA v5736 ; dynamite attrib
   LDX #$46
   JSR l2ED1
   JSR l2EB0
@@ -1883,13 +1883,13 @@ ORG &20E7
   CMP #$86
   BNE l2D33
 .l2D16
-  LDA v56C0
+  LDA v56C0 ; cage Y pos
   CMP #$3C
   BCS l2D30
   LDA #$05
   JSR delay
-  INC v56C0
-  INC v56C0
+  INC v56C0 ; cage Y pos
+  INC v56C0 ; cage Y pos
   LDX #$56
   JSR l394A
   JMP l2D16
@@ -1900,13 +1900,13 @@ ORG &20E7
   CMP #$64
   BNE l2D54
 .l2D3A
-  LDA v56C2
+  LDA v56C2 ; cage Y pos
   CMP #$2A
   BCS l2D30
   LDA #$05
   JSR delay
-  INC v56C2
-  INC v56C2
+  INC v56C2 ; cage Y pos
+  INC v56C2 ; cage Y pos
   LDX #$58
   JSR l394A
   JMP l2D3A
@@ -1915,13 +1915,13 @@ ORG &20E7
   CMP #$66
   BNE l2D75
 .l2D5B
-  LDA v56C4
+  LDA v56C4 ; cage Y pos
   CMP #$8A
   BCS l2D30
   LDA #$05
   JSR delay
-  INC v56C4
-  INC v56C4
+  INC v56C4 ; cage Y pos
+  INC v56C4 ; cage Y pos
   LDX #$5A
   JSR l394A
   JMP l2D5B
@@ -1969,18 +1969,18 @@ ORG &20E7
   BNE l2DEF
   LDX #$51
   JSR l392F
-  DEC v56BB
-  LDA v56BB
+  DEC v56BB ; bubble Y pos
+  LDA v56BB ; bubble Y pos
   CMP #$1E
   BCS l2DE1
   LDA #$A0
-  STA v56BB
+  STA v56BB ; bubble Y pos
 .l2DE1
   AND #$02
   LSR  A
   CLC
   ADC #$B8
-  STA v57C7
+  STA v57C7 ; bubble frame
   LDX #$51
   JSR l394A
 .l2DEF
