@@ -1,6 +1,7 @@
+INCLUDE "hardware.asm"
 INCLUDE "consts.asm"
 INCLUDE "sprites.asm"
-INCLUDE "hardware.asm"
+INCLUDE "rooms.asm"
 
 ORG &00
 
