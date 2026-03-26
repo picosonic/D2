@@ -3100,275 +3100,362 @@ ORG &30A0
   STA v00FB
   STA v0340
   STX v0345
+
   LDA frmx
   CMP #$5D
   BCC l3142
+
   RTS
+
 .l3142
   JSR lCD19
   BCC l3148
+
   RTS
+
 .l3148
   STA v00B5
+
   LDA frmy
   LSR  A
   LSR  A
   LSR  A
   TAX
+
   LDA v0340
   CMP #$64
   BCC l317C
+
   CMP #$69
   BCS l3175
+
   STX v03E0
   STX v03DA
+
   LDA v033F
   ORA #$30
   STA v033F
+
   LDA frmy
   AND #$F8
   STA frmy
+
   JMP l317C
+
 .l3175
   BNE l317C
-  LDA #$10
-  STA v033F
+
+  LDA #$10:STA v033F
+
 .l317C
-  LDA v209F,X
-  STA v00FB
-  LDA v20B8,X
-  STA v00FC
+  LDA v209F,X:STA v00FB
+  LDA v20B8,X:STA v00FC
+
   LDA frmy
   AND #$07
   CLC
   ADC v00FB
   BCC l3192
+
   INC v00FC
+
 .l3192
   SEC
   SBC #$60
   BCS l3199
+
   DEC v00FC
+
 .l3199
   STA v00FB
+
   LDA frmx
   AND #$FE
   ASL  A
   CLC
   ASL  A
   BCC l31A7
+
   INC v00FC
+
 .l31A7
   CLC
   ADC v00FB
   BCC l31AE
+
   INC v00FC
+
 .l31AE
   STA v00FB
+
   LDA frmy
   LSR  A
   LSR  A
   LSR  A
   TAX
+
   LDA v2028,X
   SEC
   SBC v03DC
   STA v00FE
+
   LDA v200E,X
   SEC
   SBC #$0C
   BCS l31CA
+
   DEC v00FE
+
 .l31CA
   STA v00FD
+
   LDA frmx
   LSR  A
   CLC
   ADC v00FD
   BCC l31D7
+
   INC v00FE
+
 .l31D7
   STA v00FD
   STA v0035
+
   LDA v03DC
   BNE l31E8
+
   LDA v00FE
   SEC
   SBC #$04
+
   JMP l31ED
+
 .l31E8
   LDA v00FE
   CLC
   ADC #$54
+
 .l31ED
   STA v0036
+
   LDY #$00
   LDA ($B4),Y
   STA v033D
+
   LSR v033D
   INY
   LDA ($B4),Y
   STA v033E
+
   LDA v00B4
   CLC
   ADC #$02
   BCC l3208
+
   INC v00B5
+
 .l3208
   STA v00B4
+
   JSR l3361
+
   LDA v03E2
   BNE l3215
+
   STA v03DF
+
 .l3215
-  LDA #$00
-  STA v034A
-  LDA v033D
-  STA v034B
+  LDA #$00:STA v034A
+  LDA v033D:STA v034B
+
   LDA frmx
   AND #$FE
   CMP #$22
   BCS l3234
+
   STA v00FF
+
   LDA #$22
   SEC
   SBC v00FF
   LSR  A
   STA v034A
+
 .l3234
   LDA frmx
   AND #$FE
   STA v00FF
+
   LDA #$5E
   SEC
   SBC v00FF
   LSR  A
   CMP v034B
   BCS l3249
+
   STA v034B
+
 .l3249
-  LDA #$00
-  STA v0349
+  LDA #$00:STA v0349
+
 .l324E
   LDA frmy
   CMP v03E3
   BCS l3259
+
   JMP l32BB
+
 .l3259
   LDY #$00
+
 .l325B
-  LDA ($B4),Y
-  STA v3060,Y
+  LDA ($B4),Y:STA v3060,Y
   INY
   CPY v033D
   BCC l325B
+
   LDA frmattr
   AND #$80
   BEQ l3270
+
   JSR l33C0
+
 .l3270
   LDA frmx
   AND #$01
   BEQ l327A
+
   JSR l3327
+
 .l327A
   LDX v034A
+
 .l327D
   LDA v2077,X
   TAY
+
   LDA v3060,X
   AND v03DF
 .^v3287
   EOR ($FB),Y
   STA ($FB),Y
+
   LDA v0349
   BNE l32B5
+
   TXA
   TAY
   LDA v033F
   AND #$08
   BNE l32AC
+
   LDA v03E2
   BEQ l32A0
+
   STA ($FD),Y
+
 .l32A0
   LDA ($35),Y
   AND #$20
   ORA v033F
   STA ($35),Y
+
   JMP l32B5
+
 .l32AC
   LDA ($35),Y
   AND #$F0
   ORA v033F
   STA ($35),Y
+
 .l32B5
   INX
   CPX v034B
   BCC l327D
+
 .l32BB
   DEC v033E
   BNE l32D8
+
 .l32C0
   LDX v0345
   LDA #$FF
   STA v03DF
-  LDA #$00
-  STA v03DC
-  LDA #$30
-  STA v03E3
-  LDA #$B8
-  STA v03E1
+
+  LDA #$00:STA v03DC
+  LDA #$30:STA v03E3
+  LDA #$B8:STA v03E1
+
   RTS
+
 .l32D8
   INC frmy
+
   LDA frmy
   CMP v03E1
   BCS l32C0
+
   LDA v00B4
   CLC
   ADC v033D
   BCC l32ED
+
   INC v00B5
+
 .l32ED
   STA v00B4
+
   LDA frmy
   AND #$07
   BEQ l3305
+
   INC v0349
   INC v00FB
   BEQ l3300
+
   JMP l324E
+
 .l3300
   INC v00FC
+
   JMP l324E
+
 .l3305
   INC v00FC
   STA v0349
+
   LDA v00FB
   CLC
   ADC #$39
   BCC l3313
+
   INC v00FC
+
 .l3313
   STA v00FB
+
   LDA v00FD
   CLC
   ADC #$28
   BCC l3320
+
   INC v00FE
   INC v0036
+
 .l3320
   STA v00FD
   STA v0035
+
   JMP l324E
 }
 
 .l3327
+{
   LDX v033D
-  LDA #$00
-  STA v3060,X
-.l332F
+  LDA #$00:STA v3060,X
+
+.loop
+  {
   LDA v305F,X
   ASL  A
   ASL  A
@@ -3376,52 +3463,69 @@ ORG &30A0
   ASL  A
   ORA v3060,X
   STA v3060,X
+
   LDA v305F,X
   LSR  A
   LSR  A
   LSR  A
   LSR  A
   STA v305F,X
+
   DEX
-  BNE l332F
+  BNE loop
+  }
+
   LDA v033D
   CMP v034B
-  BCC l3360
+  BCC done
+
   LDA frmx
   LSR  A
   CLC
   ADC v033D
   CMP #$2F
-  BCS l3360
+  BCS done
+
   INC v034B
-.l3360
+
+.done
   RTS
+}
+
 .l3361
+{
   LDA frmattr
   AND #$07
   TAX
-  LDA v2097,X
-  STA v03E2
+
+  LDA v2097,X:STA v03E2
   BEQ l337E
+
   LDA frmx
   AND #$01
   BEQ l337E
+
   LDA frmattr
   ORA #$10
   STA frmattr
+
 .l337E
   LDA frmattr
   AND #$40
   BEQ l338B
+
   ORA v033F
   STA v033F
+
 .l338B
   LDA frmattr
   AND #$20
   BEQ l339A
+
   LDA v033F
   ORA #$80
   STA v033F
+
 .l339A
   LDA frmattr
   AND #$18
@@ -3429,383 +3533,503 @@ ORG &30A0
   LSR  A
   LSR  A
   BNE l33AC
-  LDA #$EA
-  STA v3287+1
+
+  LDA #$EA:STA v3287+1
+
   JMP l33BC
+
 .l33AC
-  LDX #$FB
-  STX v3287+1
+  LDX #$FB:STX v3287+1
   CMP #$01
   BNE l33BA
+
   LDA #$51
   JMP l33BC
+
 .l33BA
   LDA #$11
+
 .l33BC
   STA v3287
+
   RTS
+}
+
 .l33C0
-  LDX v033D
-  DEX
-  STX v0346
-  LDX #$00
-  STX v0347
+{
+  LDX v033D:DEX:STX v0346
+  LDX #$00:STX v0347
+
 .l33CC
   LDX v0347
   CPX v0346
   BEQ l3400
-  BCS l340A
+  BCS done
+
   LDA v3060,X
   TAY
-  LDA vAA00,Y
-  STA v00FF
+
+  LDA vAA00,Y:STA v00FF
+
   LDX v0346
+
   LDA v3060,X
   TAY
+
   LDA vAA00,Y
+
   LDX v0347
   STA v3060,X
+
   LDX v0346
   LDA v00FF
   STA v3060,X
+
   DEC v0346
   INC v0347
+
   JMP l33CC
+
 .l3400
   LDA v3060,X
   TAY
-  LDA vAA00,Y
-  STA v3060,X
-.l340A
+  LDA vAA00,Y:STA v3060,X
+
+.done
   RTS
+}
+
 .l340B
   STA v0340
+
   JSR l3528
-  LDA #$80
-  STA v00FC
+
+  LDA #$80:STA v00FC
   LDA v0340
   CLC
   ADC v0340
   BCC l3420
+
   INC v00FC
+
 .l3420
   STA v00FB
+
   LDA #$00
   STA v00B0
   STA v00B2
+
   LDA #$82
   STA v00B1
   STA v00B3
+
   LDY #$01
   LDA ($FB),Y
   CLC
   ADC v00B1
   STA v00B1
+
   DEY
   LDA ($FB),Y
   CLC
   ADC v00B0
   BCC l3441
+
   INC v00B1
+
 .l3441
   STA v00B0
+
   LDY #$03
   LDA ($FB),Y
   CLC
   ADC v00B3
   STA v00B3
+
   DEY
   LDA ($FB),Y
   CLC
   ADC v00B2
   BCC l3456
+
   INC v00B3
+
 .l3456
   STA v00B2
+
 .l3458
   LDA v00B0
   CMP v00B2
   BNE l3465
+
   LDA v00B1
   CMP v00B3
   BNE l3465
+
   RTS
+
 .l3465
   LDY #$03
   LDA ($B0),Y
   EOR #$40
   STA frmattr
-  LDA #$00
-  STA v033F
+
+  LDA #$00:STA v033F
   DEY
   LDA ($B0),Y
   STA frmy
+
   DEY
   LDA ($B0),Y
   STA frmx
+
   DEY
   LDA #$58
   STA v03DC
+
   LDA ($B0),Y
   JSR l3132
+
   LDA v00B0
   CLC
   ADC #$04
   BCC l3493
+
   INC v00B1
+
 .l3493
   STA v00B0
+
   JMP l3458
+
 .l3498
   LDA #$00
   STA SPR_ENABLE
   STA v03E0
   STA v03DA
+
   LDA v03C4
   AND #$F8
   STA v03C4
+
   LDA #$00
   TAX
+
 .l34AE
   STA v1694,X
+
   INX
   CPX #$19
   BCC l34AE
+
   LDA #$00
   TAY
+
 .l34B9
   STA v1B00,Y
   STA v1B39,Y
   STA v1B72,Y
+
   INY
   CPY #$37
   BCC l34B9
+
   JSR l3C05
+
   LDX #$01
+
 .l34CC
   JSR l3679
+
   INX
   CPX #$08
   BCC l34CC
+
   LDA SPR_COLLISION2
   LDA SPR_COLLISION2
+
   LDX roomno
   LDA v1A00,X
   TAX
   CPX #$00
   BEQ l34F4
+
   JSR l388D
+
   LDY #$00
+
 .l34EA
-  LDA ($FB),Y
-  STA v1694,Y
+  LDA ($FB),Y:STA v1694,Y
   INY
   CPY #$19
   BCC l34EA
+
 .l34F4
   LDX roomno
   LDA vCA00,X
   BNE l3504
-  LDA #$01
-  STA vCA00,X
+
+  LDA #$01:STA vCA00,X
+
   JSR l3B84
+
 .l3504
-  LDA #$FF
-  STA v03DF
+  LDA #$FF:STA v03DF
+
   LDA roomno
   JSR l340B
-  LDA #$FF
-  STA v03D5
-  LDA #$86
-  STA v03DD
+
+  LDA #$FF:STA v03D5
+  LDA #$86:STA v03DD
+
   JSR l3968
   JSR l3595
   JSR lCD37
-  LDA #$FF
-  STA SPR_ENABLE
+
+  LDA #$FF:STA SPR_ENABLE
+
   RTS
+
 .l3528
-  LDA #$06
-  STA frmx
+  LDA #$06:STA frmx
+
 .l352D
   LDX frmx
-  LDA v20B8,X
-  STA v00FC
+  LDA v20B8,X:STA v00FC
+
   LDA v209F,X
   CLC
   ADC #$28
   BCC l353F
+
   INC v00FC
+
 .l353F
   STA v00FB
-  LDA v2028,X
-  STA v00FE
+
+  LDA v2028,X:STA v00FE
+
   LDA v200E,X
   CLC
   ADC #$05
   BCC l3550
+
   INC v00FE
+
 .l3550
   STA v00FD
   STA v00B0
   STA v00B2
+
   LDA v00FE
   SEC
   SBC #$04
   STA v00B1
+
   SEC
   SBC #$54
   STA v00B3
+
   LDY #$F0
   LDA #$00
+
 .l3566
   DEY
   STA ($FB),Y
+
   CPY #$00
   BNE l3566
+
   LDY #$1E
+
 .l356F
   DEY
   STA ($B0),Y
   STA ($FD),Y
-  LDA #$10
-  STA ($B2),Y
+
+  LDA #$10:STA ($B2),Y
+
   LDA #$00
   CPY #$00
   BNE l356F
+
   INC frmx
   LDA frmx
   CMP #$17
   BCC l352D
+
   LDA #$00
   TAX
+
 .l358B
   STA v5800,X
   STA v5900,X
+
   INX
   BNE l358B
+
   RTS
+
 .l3595
   LDX #$06
+
 .l3597
   LDA v2028,X
   STA v00FC
+
   SEC
   SBC #$04
   STA v0036
+
   SEC
   SBC #$54
   STA v00FE
+
   LDA v200E,X
   STA v00FB
   STA v00FD
   STA v0035
+
   LDY #$22
+
 .l35B1
   LDA ($35),Y
   AND #$07
   BEQ l35C3
+
   STX v0346
   TAX
+
   LDA v2097,X
   LDX v0346
   BNE l35C5
+
 .l35C3
   LDA ($FD),Y
+
 .l35C5
   STA ($FB),Y
+
   DEY
   CPY #$04
   BNE l35B1
+
   INX
   CPX #$17
   BCC l3597
+
   RTS
+
 .l35D2
   LDX frmy
   CPX #$05
   BCC l35DA
+
   RTS
+
 .l35DA
-  LDA v2028,X
-  STA v00FE
+  LDA v2028,X:STA v00FE
+
   LDA v200E,X
   CLC
   ADC #$04
   BCC l35E9
+
   INC v00FE
+
 .l35E9
   STA v00FD
+
   LDY frmattr
   LDA v2097,Y
   LDY frmx
   STA ($FD),Y
-  LDA v20B8,X
-  STA v00FE
+
+  LDA v20B8,X:STA v00FE
+
   LDA v209F,X
   CLC
   ADC #$20
   BCC l3605
+
   INC v00FE
+
 .l3605
   STA v00FD
+
   LDX frmx
   LDA v2077,X
   CLC
   ADC v033D
   STA v00FF
+
   LDA v033E
   CLC
   ADC #$02
   STA v033F
+
   LDX #$02
+
 .l361E
   TXA
   TAY
   LDA ($B4),Y
   LDY v00FF
   STA ($FD),Y
+
   INC v00FF
   INX
   CPX v033F
   BCC l361E
+
   CPX #$09
   BNE l363D
+
   LDA v033D
   BNE l363D
+
   LDA #$00
   LDY v00FF
   STA ($FD),Y
+
 .l363D
   RTS
+
 .l363E
   STX v0345
+
   INX
   INX
-  LDA frmx
-  STA dizzyx,X
-  LDA frmy
-  STA dizzyy,X
-  LDA frmattr
-  STA v037A,X
+
+  LDA frmx:STA dizzyx,X
+  LDA frmy:STA dizzyy,X
+  LDA frmattr:STA v037A,X
+
   LDA #$00
   STA v0384,X
   STA v0370,X
   STA v1680,X
+
   LDA v037A,X
   CMP #$64
   BCC l3675
+
   SEC
   SBC #$64
   STA v037A,X
+
   LDX v0345
   LDA #$00
   STA v16A8,X
+
 .l3675
   LDX v0345
+
   RTS
+
 .l3679
   STX v034E
+
   LDA #$00
   STA v164E,X
   STA v1658,X
@@ -3815,137 +4039,183 @@ ORG &30A0
   STA v1680,X
   STA v0370,X
   STA v0366,X
-  LDA #$45
-  STA v5FF8,X
+
+  LDA #$45:STA v5FF8,X
+
   JSR l37F9
+
   RTS
+
 .l369F
   LDA v0384,X
   TAY
   LDA ($FB),Y
   CMP #$FF
   BEQ l36AD
+
   INC v0384,X
+
   RTS
+
 .l36AD
   STY v033E
+
   JSR l3875
+
   CLC
   ADC v033E
   STA v033E
+
   TAY
   INC v033E
+
   SEC
   LDA #$04
   SBC v03C6
   CLC
+
   ADC v033E
   STA v0384,X
+
   LDA ($FB),Y
   RTS
-  LDA #$00
-  STA v033E
+
+  LDA #$00:STA v033E
+
   LDX v0345
+
   RTS
+
 .l36D7
   LDA v0366,X
   CMP #$40
   BEQ l3725
+
   AND #$0F
   STA frmx
+
   LDA v0366,X
   AND #$20
   BEQ l3701
+
   LDA dizzyx,X
   CMP dizzyx
   BEQ l3701
   BCS l36F9
+
   LDA #$08
   JMP l36FB
+
 .l36F9
   LDA #$04
+
 .l36FB
   ORA frmx
   STA frmx
+
 .l3701
   LDA v0366,X
   AND #$10
   BEQ l3719
+
   LDA dizzyy,X
   CMP dizzyy
   BNE l3715
+
   LDA #$00
   JMP l3719
+
 .l3715
   BCS l3720
+
   LDA #$02
+
 .l3719
   ORA frmx
   STA frmx
+
   RTS
+
 .l3720
   LDA #$01
   JMP l3719
+
 .l3725
-  LDA #$00
-  STA frmx
+  LDA #$00:STA frmx
+
   LDA dizzyx,X
   CMP v1692,X
   BEQ l373E
   BCS l3739
+
   LDA #$08
   JMP l373B
+
 .l3739
   LDA #$04
+
 .l373B
   STA frmx
+
 .l373E
   LDA dizzyy,X
   CMP v1697,X
   BEQ l3755
   BCS l374D
+
   LDA #$02
   JMP l374F
+
 .l374D
   LDA #$01
+
 .l374F
   ORA frmx
   STA frmx
+
 .l3755
   LDA frmx
   BEQ l375B
+
   RTS
+
 .l375B
   STA v0370,X
+
   RTS
+
 .l375F
   LDA dizzyx
   CLC
   ADC frmx
   STA frmattr
+
   DEC frmattr
+
   LDA dizzyy
   CLC
   ADC frmy
   CLC
   ADC #$28
   STA v033D
+
   DEC v033D
+
   LDA v033D
   LSR  A
   LSR  A
   LSR  A
   TAX
-  LDA v209F,X
-  STA v00FB
-  LDA v20B8,X
-  STA v00FC
-  LDA v200E,X
-  STA v00FD
+
+  LDA v209F,X:STA v00FB
+  LDA v20B8,X:STA v00FC
+  LDA v200E,X:STA v00FD
+
   LDA v2028,X
   SEC
   SBC #$04
   STA v00FE
+
   LDA v033D
   AND #$07
   CLC
@@ -3953,22 +4223,28 @@ ORG &30A0
   CLC
   ADC #$20
   STA v00FB
+
   LDA frmattr
   LSR  A
   CLC
   ADC #$04
   TAY
-  LDA ($FD),Y
-  STA v033F
+
+  LDA ($FD),Y:STA v033F
+
   LDA frmattr
   AND #$01
   BEQ l37C0
+
   LDA #$0F
   JMP l37C2
+
 .l37C0
   LDA #$F0
+
 .l37C2
   STA v033E
+
   LDA frmattr
   LSR  A
   TAX
@@ -3977,284 +4253,372 @@ ORG &30A0
   LDA ($FB),Y
   AND v033E
   STA v033E
+
   LDA v033F
   AND #$40
   CMP #$01
   LDA v033E
+
   RTS
+
 .delay
-  STA v0340
-  STX v0345
-.l37E7
-  LDX #$FF
-.l37E9
+{
+  STA v0340 ; delay amount
+  STX v0345 ; preserve X
+
+.loop
+  {
+  LDX #$FF ; game speed
+
+.innerloop
+  {
   NOP
   NOP
   NOP
   NOP
+
   DEX
-  BNE l37E9
+  BNE innerloop
+  }
+
   DEC v0340
-  BNE l37E7
-  LDX v0345
+  BNE loop
+  }
+
+  LDX v0345 ; restore X
+
   RTS
+}
+
 .l37F9
   STX v0345
   STY v0347
+
   LDY #$00
   LDA #$01
   STA v0342
+
   LDX v034E
 .l3809
   CPX #$00
   BEQ l3816
+
   INY
   INY
   ASL v0342
   DEX
+
   JMP l3809
+
 .l3816
   LDX v034E
   LDA dizzyx,X
   CMP #$1C
   BCC l3827
+
   CMP #$91
   BCS l3827
+
   JMP l3829
+
 .l3827
   LDA #$00
+
 .l3829
   CLC
   ROL  A
   STA SPR_0_X,Y
   BCC l383C
+
   LDA SPR_MSB_X
   ORA v0342
   STA SPR_MSB_X
+
   JMP l3847
+
 .l383C
   LDA v0342
   EOR #$FF
   AND SPR_MSB_X
   STA SPR_MSB_X
+
 .l3847
   INY
   LDA dizzyy,X
   CMP #$4A
   BCC l3856
+
   CMP #$E6
   BCS l3856
+
   JMP l3858
+
 .l3856
   LDA #$00
+
 .l3858
   STA SPR_0_X,Y
+
   LDX v0345
   LDY v0347
+
   RTS
+
 .l3862
   STX v0345
   INC v03C5
   LDX v03C5
-  LDA v1900,X
-  STA v03C6
+  LDA v1900,X:STA v03C6
   LDX v0345
+
   RTS
+
 .l3875
   STX v0346
   INC v03C5
   LDX v03C5
-  LDA v1900,X
-  AND #$03
-  CLC
-  ADC #$01
-  STA v03C6
+  LDA v1900,X:AND #$03:CLC:ADC #$01:STA v03C6
   LDX v0346
+
   RTS
+
 .l388D
-  LDA #$10
-  STA v00FC
-  LDA #$00
-  STA v00FB
+  LDA #$10;STA v00FC
+  LDA #$00:STA v00FB
   CPX #$00
   BEQ l38A7
+
 .l3899
   LDA v00FB
   CLC
   ADC #$19
   BCC l38A2
+
   INC v00FC
+
 .l38A2
   STA v00FB
   DEX
   BNE l3899
+
 .l38A7
   RTS
+
 .l38A8
   STX v0345
   STA v0340
+
   LDX v034E
   LDA v20D1,X
   AND #$00
   BEQ l38CB
+
   LDA v164E,X
   BEQ l38CB
+
   STA v037A,X
+
   LDA #$00
   STA v0370,X
   STA v0384,X
+
   JMP l3927
+
 .l38CB
   LDA v0340
   AND #$03
   BEQ l38ED
+
   AND #$01
   BEQ l38E3
+
   LDA dizzyy,X
   SEC
   SBC v03B6,X
   STA dizzyy,X
+
   JMP l38ED
+
 .l38E3
   LDA dizzyy,X
   CLC
   ADC v03B6,X
   STA dizzyy,X
+
 .l38ED
   LDA v0340
   AND #$0C
   BEQ l390F
+
   AND #$04
   BEQ l3905
+
   LDA dizzyx,X
   SEC
   SBC v03AC,X
   STA dizzyx,X
+
   JMP l390F
+
 .l3905
   LDA dizzyx,X
   CLC
   ADC v03AC,X
   STA dizzyx,X
+
 .l390F
   LDA dizzyx,X
   CMP #$E6
   BCC l3920
+
   CMP #$F3
   BCS l3920
+
 .l391A
   JSR l3679
+
   JMP l3927
+
 .l3920
   LDA dizzyy,X
   CMP #$08
   BCC l391A
+
 .l3927
   LDX v0345
+
   RTS
+
 .l392B
   STA vF084
+
   RTS
+
 .l392F
-  LDA objs_xlocs,X
-  STA frmx
-  LDA objs_ylocs,X
-  STA frmy
+  LDA objs_xlocs,X:STA frmx
+  LDA objs_ylocs,X:STA frmy
   LDA #$00
   STA frmattr
   STA v033F
+
   LDA objs_frames,X
   JSR l3132
+
   RTS
+
 .l394A
-  LDA objs_xlocs,X
-  STA frmx
-  LDA objs_ylocs,X
-  STA frmy
-  LDA objs_attrs,X
-  STA frmattr
-  LDA #$00
-  STA v033F
+  LDA objs_xlocs,X:STA frmx
+  LDA objs_ylocs,X:STA frmy
+  LDA objs_attrs,X:STA frmattr
+  LDA #$00:STA v033F
+
   LDA objs_frames,X
+
   JSR l3132
+
   RTS
+
 .l3968
   LDX v03DD
+
 .l396B
   CPX #$00
   BNE l397A
-  LDA #$86
-  STA v03DD
-  LDA #$FF
-  STA v03D5
+
+  LDA #$86:STA v03DD
+  LDA #$FF:STA v03D5
+
   RTS
+
 .l397A
   DEX
+
   LDA objs_rooms,X
   BEQ l396B
+
   CMP roomno
   BNE l396B
-  LDA objs_xlocs,X
-  STA frmx
-  LDA objs_ylocs,X
-  STA frmy
-  LDA objs_attrs,X
-  STA frmattr
+
+  LDA objs_xlocs,X:STA frmx
+  LDA objs_ylocs,X:STA frmy
+  LDA objs_attrs,X:STA frmattr
+
   LDY #$00
   CPX #$3F
   BCS l39B2
+
   AND #$07
   AND v03D5
   ORA #$08
   TAY
   JSR l39C3
+
   LDA frmattr
   AND #$A7
   ORA v00FF
   STA frmattr
+
 .l39B2
   STY v033F
-  LDA #$58
-  STA v03DC
+
+  LDA #$58:STA v03DC
+
   LDA objs_frames,X
   JSR l3132
+
   JMP l396B
+
 .l39C3
-  LDA #$08
-  STA v00FF
+  LDA #$08:STA v00FF
+
   LDA v03D5
   BEQ l39E8
+
   LDA objs_rooms,X
   CMP orig_rooms,X
   BNE l39E8
+
   LDA objs_xlocs,X
   CMP orig_xlocs,X
   BNE l39E8
+
   LDA objs_ylocs,X
   CMP orig_ylocs,X
   BNE l39E8
-  LDA #$00
-  STA v00FF
+
+  LDA #$00:STA v00FF
+
 .l39E8
   RTS
+
 .getplayerinput
-  LDA CIA1_PRA
-  EOR #$FF
-  AND #$1F
+{
+  LDA CIA1_PRA ; Read Joystick 2 state
+  EOR #$FF ; Make bitfield active high
+  AND #$1F ; Mask to just joystick input bits
   STA v03C0
+ 
+  ; Merge in keypresses from keyboard to bitfield (Z, X, Shift, Return)
   JSR l3BDE
+
+  ; Check if button was pressed before and now
   LDA v03D8
-  AND #$10
+  AND #$10 ; Mask off to just button
   AND v03C0
   BEQ l3A09
+
   LDA v03C0
   AND #$0F
   STA v03C0
+
   RTS
+
 .l3A09
-  LDA v03C0
-  STA v03D8
+  LDA v03C0:STA v03D8
+
   RTS
+}
+
 .l3A10
   STA frmx
   LDA dizzyx
