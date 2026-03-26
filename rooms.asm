@@ -1,3 +1,7 @@
+; Room related
+
+MAP_WIDTH = 32
+
 ; Room ids
 
 ROOM_TITLE = 0

@@ -6,6 +6,8 @@ ORG &033A
   EQUB &00
 .frmy ; Y position
   EQUB &00
+.frmattr ; attrib
+  EQUB &00
 
 ORG &0352
 .dizzyx

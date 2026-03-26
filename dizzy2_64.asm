@@ -87,9 +87,6 @@ v0300 = &0300
 v0314 = &0314
 v0315 = &0315
 v0339 = &0339
-v033A = &033A
-v033B = &033B
-v033C = &033C
 v033D = &033D
 v033E = &033E
 v033F = &033F
@@ -497,10 +494,10 @@ ORG &20E7
   STA v20E4
   STA v20E5
   STA v20E6
-  LDA #$4D
-  STA roomno
-  LDA #$01
-  STA SPR_0_COLOUR
+
+  LDA #ROOM_START:STA roomno
+  LDA #$01:STA SPR_0_COLOUR
+
   LDA #$00
   LDX #$08
 .l2191
@@ -533,1611 +530,2248 @@ ORG &20E7
   STA objs_frames,X
   CPX #$00
   BNE l21B7
+
   LDA #$1C
   STA v03D6
-  STA v0352
+  STA dizzyx
+
   LDA #$43
   STA v03D7
-  STA v035C
+  STA dizzyy
+
   JSR l2F77
-  LDA #$06
-  STA v56F6 ; bucket attrib
+
+  LDA #$06:STA v56F6 ; bucket attrib
+
   LDX #$00
   TXA
 .l21F5
   STA vCA00,X
   DEX
   BNE l21F5
+
   LDA #$FF
   STA v03DF
+
   LDA #$00
   STA vF084
   STA v03E0
+
   JSR l3498
   JSR l3AAA
+
   LDA #$64
   JSR delay
   JSR l30D9
+
   LDA #$02
   JSR l2EEF
+
 .l221B
   LDX #$FF
 .l221D
   INX
   CPX #$05
   BCS l2263
+
   LDA v16A8,X
   BEQ l221D
+
   AND #$80
   BNE l221D
+
   LDA v169E,X
   BNE l2243
+
   INC v16AD,X
   LDA v16AD,X
   CMP v16A3,X
   BCC l221D
-  LDA #$00
-  STA v16AD,X
+
+  LDA #$00:STA v16AD,X
+
   JMP l224B
 .l2243
   JSR l3862
+
   CMP v16A3,X
   BCC l221D
+
 .l224B
-  LDA v1694,X
-  STA v033A
-  LDA v1699,X
-  STA v033B
-  LDA v16A8,X
-  STA v033C
+  LDA v1694,X:STA frmx
+  LDA v1699,X:STA frmy
+  LDA v16A8,X:STA frmattr
+
   JSR l363E
+
   JMP l221D
+
 .l2263
   LDX #$01
 .l2265
   INX
   CPX #$08
   BCS l22A7
+
   LDA v1680,X
   BEQ l2265
+
   LDA v1662,X
   BNE l2287
+
   INC v1676,X
+
   LDA v1676,X
   CMP v166C,X
   BCC l2265
+
   LDA #$00
   STA v1676,X
+
   JMP l228F
+
 .l2287
   JSR l3862
+
   CMP v166C,X
   BCC l2265
+
 .l228F
-  LDA v0352,X
-  STA v033A
-  LDA v035C,X
-  STA v033B
-  LDA v1680,X
-  STA v033C
+  LDA dizzyx,X:STA frmx
+  LDA dizzyy,X:STA frmy
+  LDA v1680,X:STA frmattr
+
   JSR l363E
+
   JMP l2265
+
 .l22A7
   LDX #$01
 .l22A9
   INX
   CPX #$08
   BCS l22EB
+
   JSR l22DA
+
   BNE l22A9
+
   LDA v037A,X
   BEQ l22A9
+
   STX v034E
   INC v03A2,X
   LDA v03A2,X
   CMP v0398,X
   BCC l22D4
+
   LDA #$00
   STA v03A2,X
+
   LDA v038E,X
   STA v5FF8,X
+
   JMP l22A9
+
 .l22D4
   INC v5FF8,X
   JMP l22A9
+
 .l22DA
   INC v16BC,X
   LDA v16BC,X
   CMP v16B2,X
   BCC l22EA
+
   LDA #$00
   STA v16BC,X
+
 .l22EA
   RTS
+
 .l22EB
   LDX #$00
+
 .l22ED
   INX
   CPX #$08
   BCC l22F5
+
   JMP l24CD
+
 .l22F5
   LDA v037A,X
   BEQ l22ED
+
   STX v034E
+
 .l22FD
   LDA v0370,X
   BNE l230D
+
   JSR l2328
+
   LDA v037A,X
   BEQ l22ED
+
   JMP l22FD
+
 .l230D
   DEC v0370,X
   LDA v0366,X
   CMP #$10
   BCC l231A
+
   JSR l36D7
+
 .l231A
   JSR l38A8
+
   LDA v0370,X
   BEQ l22FD
+
   JSR l37F9
+
   JMP l22ED
+
 .l2328
   LDA v037A,X
   TAY
+
   LDA v1800,Y
   STA v00FB
+
   LDA v1818,Y
   STA v00FC
+
   LDA v0384,X
   TAY
   INC v0384,X
+
   LDA ($FB),Y
   BNE l2345
+
   JSR l3679
+
   RTS
+
 .l2345
   CMP #$01
   BNE l2350
+
   JSR l369F
+
   STA v0366,X
+
   RTS
+
 .l2350
   CMP #$02
   BNE l235B
+
   JSR l369F
+
   STA v0370,X
+
   RTS
+
 .l235B
   CMP #$03
   BNE l2366
+
   JSR l369F
+
   STA v03B6,X
+
   RTS
+
 .l2366
   CMP #$04
   BNE l2371
+
   JSR l369F
+
   STA v03AC,X
+
   RTS
+
 .l2371
   CMP #$05
   BNE l237F
+
   JSR l369F
-  STA v0352,X
+
+  STA dizzyx,X
+
   JSR l37F9
+
   RTS
+
 .l237F
   CMP #$06
   BNE l238D
+
   JSR l369F
-  STA v035C,X
+
+  STA dizzyy,X
+
   JSR l37F9
+
   RTS
+
 .l238D
   CMP #$0A
   BNE l2398
+
 .l2391
   JSR l369F
+
   STA v0384,X
+
   RTS
+
 .l2398
   CMP #$0B
   BNE l23A3
+
   JSR l369F
+
   STA v1644,X
+
   RTS
+
 .l23A3
   CMP #$0C
   BNE l23AE
+
   JSR l369F
+
   STA v164E,X
+
   RTS
+
 .l23AE
   CMP #$0F
   BNE l23BB
+
   JSR l369F
+
   STA v037A,X
+
   JMP l2391
+
 .l23BB
   CMP #$10
   BNE l23C6
+
   JSR l369F
   JSR l392B
+
   RTS
+
 .l23C6
   CMP #$07
   BNE l23E8
+
   JSR l369F
+
   STA v038E,X
   STA v5FF8,X
+
   JSR l369F
+
   STA v0398,X
+
   LDA #$00
   STA v03A2,X
   STA v16BC,X
+
   JSR l369F
+
   STA v16B2,X
+
   RTS
+
 .l23E8
   CMP #$08
   BNE l2400
+
   JSR l369F
+
   CMP #$80
   BCC l23F9
+
   AND v1658,X
+
   JMP l23FC
+
 .l23F9
   ORA v1658,X
+
 .l23FC
   STA v1658,X
+
   RTS
+
 .l2400
   CMP #$09
   BNE l244F
+
   JSR l369F
-  STA v033A
-  LDA #$01
-  STA v033B
+
+  STA frmx
+
+  LDA #$01:STA frmy
+
 .l240F
-  ASL v033B
+  ASL frmy
   DEX
   BNE l240F
+
   LDX v034E
   LDY #$1D
   LDA #$01
   JSR l2435
+
   LDY #$17
   LDA #$02
   JSR l2435
+
   LDY #$1C
   LDA #$04
   JSR l2435
+
   LDY #$1B
   LDA #$08
   JSR l2435
+
   RTS
+
 .l2435
-  AND v033A
+  AND frmx
   BEQ l2444
+
   LDA SPR_0_X,Y
-  ORA v033B
+  ORA frmy
+
 .l2440
   STA SPR_0_X,Y
+
   RTS
+
 .l2444
-  LDA v033B
+  LDA frmy
   EOR #$FF
   AND SPR_0_X,Y
   JMP l2440
+
 .l244F
   CMP #$0D
   BNE l246B
+
   JSR l369F
+
   STA v1662,X
+
   JSR l369F
+
   STA v166C,X
+
   JSR l369F
+
   STA v1680,X
-  LDA #$00
-  STA v1676,X
+
+  LDA #$00:STA v1676,X
+
   RTS
+
 .l246B
   CMP #$0E
   BNE l2485
-  LDA v0352,X
-  STA v033A
-  LDA v035C,X
-  STA v033B
+
+  LDA dizzyx,X:STA frmx
+  LDA dizzyy,X:STA frmy
+
   JSR l369F
-  STA v033C
+
+  STA frmattr
+
   JSR l363E
+
   RTS
+
 .l2485
   CMP #$11
   BNE l24AB
+
   LDA v0366,X
   AND #$03
   BEQ l2492
+
   EOR #$03
+
 .l2492
-  STA v033A
+  STA frmx
+
   LDA v0366,X
   AND #$0C
   BEQ l24A4
+
   EOR #$0C
-  ORA v033A
-  STA v033A
+  ORA frmx
+  STA frmx
+
 .l24A4
-  LDA v033A
-  STA v0366,X
+  LDA frmx:STA v0366,X
+
   RTS
+
 .l24AB
   CMP #$12
   BNE l24B6
+
   JSR l369F
+
   STA SPR_0_COLOUR,X
+
   RTS
+
 .l24B6
   CMP #$13
   BNE l24CC
-  LDA v1692,X
-  STA v0352,X
-  LDA v1697,X
-  STA v035C,X
-  LDA #$00
-  STA v0370,X
+
+  LDA v1692,X:STA dizzyx,X
+  LDA v1697,X:STA dizzyy,X
+  LDA #$00:STA v0370,X
+
   RTS
+
 .l24CC
   BRK
+
 .l24CD
   JSR l3BDE
+
   CPY #$3E
   BNE l24D7
+
   JMP l2105
+
 .l24D7
   CPY #$29
   BNE l24EC
+
 .l24DB
   JSR l3BDE
+
   CPY #$40
   BNE l24DB
+
 .l24E2
   JSR l3BDE
+
   CPY #$40
   BEQ l24E2
+
   JMP l250A
+
 .l24EC
   CPY #$24
   BNE l250A
+
   JSR l30D9
+
   LDA v309F
   BEQ l2500
+
   LDA #$02
+
   JSR l2EEF
+
   JMP l2503
+
 .l2500
   JSR l30F5
+
 .l2503
   JSR l3BDE
+ 
   CPY #$24
   BEQ l2503
+
 .l250A
   JSR checkcheatmode
   JSR getplayerinput
-  LDA #$00
-  STA v03C1
+
+  LDA #$00:STA v03C1
+
   LDA #$0F
   JSR delay
+
   INC v03C4
+
   NOP
   NOP
   NOP
-  LDA #$06
-  STA v0342
+
+  LDA #$06:STA v0342
+
 .l2525
   LDA v03C9
   BEQ l252D
+
   JMP l25E1
+
 .l252D
-  LDA #$16
-  STA v033B
-  LDA #$01
-  STA v033A
+  LDA #$16:STA frmy
+  LDA #$01:STA frmx
+
 .l2537
-  INC v033A
-  LDA v033A
+  INC frmx
+
+  LDA frmx
   CMP #$06
   BCS l2550
+
   JSR l375F
+
   BEQ l2537
+
   LDA v033F
   AND #$40
   BEQ l2537
+
   JMP l2558
+
 .l2550
-  LDA #$03
-  STA v03C8
-  INC v035C
+  LDA #$03:STA v03C8
+
+  INC dizzyy
+
 .l2558
   LDA v03C8
   CMP #$03
   BNE l25B4
-  LDA #$16
-  STA v033B
-  LDA #$01
-  STA v033A
+
+  LDA #$16:STA frmy
+  LDA #$01:STA frmx
+
 .l2569
-  INC v033A
-  LDA v033A
+  INC frmx
+  LDA frmx
   CMP #$06
   BCS l25A4
+
   JSR l375F
+
   LDA v033E
   BEQ l2569
+
   LDA v033F
   AND #$40
   BEQ l2569
+
   LDA v03C0
   AND #$0D
   BNE l2594
+
   LDA #$00
   STA v03C8
   STA v03C7
+
   JMP l25B4
+
 .l2594
-  LDA #$01
-  STA v03C8
-  LDA v03C2
-  STA v03C7
+  LDA #$01:STA v03C8
+  LDA v03C2:STA v03C7
   LDA #$00
+
   JMP l25B4
+
 .l25A4
   DEC v0342
   LDA v0342
   BEQ l25AF
+
   JMP l2525
+
 .l25AF
-  LDA #$00
-  STA v03C0
+  LDA #$00:STA v03C0
+
 .l25B4
   LDA v03C8
   CMP #$02
   BCS l25E1
+
   LDA v03C0
   AND #$04
   BNE l25CC
+
   LDA v03C0
   AND #$08
   BNE l25DC
+
   JMP l25E1
+
 .l25CC
   LDA #$02
+
 .l25CE
   STA v03C7
   STA v03C2
-  LDA #$01
-  STA v03C8
+
+  LDA #$01:STA v03C8
+
   JMP l25E1
+
 .l25DC
   LDA #$01
   JMP l25CE
+
 .l25E1
   LDA v03C8
   CMP #$03
   BNE l25EB
+
 .l25E8
   JMP l26D1
+
 .l25EB
   CMP #$02
   BEQ l2619
+
   LDA v03C0
   AND #$01
   BNE l25F9
+
   JMP l25E8
+
 .l25F9
   LDA v03C0
   AND #$0F
   CMP #$01
   BNE l260A
+
   LDA #$00
   STA v03C7
   STA v03C2
+
 .l260A
-  LDA #$02
-  STA v03C8
-  LDA #$00
-  STA v03C9
-  LDA #$11
-  STA v03C3
+  LDA #$02:STA v03C8
+  LDA #$00:STA v03C9
+  LDA #$11:STA v03C3
+
 .l2619
   INC v03C9
   LDA v03C9
   CMP #$09
   BCS l2661
+
   JSR l26AE
+
 .l2626
-  LDA #$00
-  STA v033B
-  LDA #$01
-  STA v033A
+  LDA #$00:STA frmy
+  LDA #$01:STA frmx
+
 .l2630
-  INC v033A
-  LDA v033A
+  INC frmx
+  LDA frmx
   CMP #$06
   BCS l2649
+
   JSR l375F
+
   BEQ l2630
+
   BCC l2630
-  LDA #$02
-  STA v03C1
+
+  LDA #$02:STA v03C1
+
   JMP l26D1
+
 .l2649
-  DEC v035C
+  DEC dizzyy
   DEC v0342
   LDA v0342
   BNE l2626
+
   LDA v03C3
   CMP #$0A
   BCC l26D1
+
   DEC v03C3
+
   JMP l26D1
+
 .l2661
   JSR l26AE
+
 .l2664
-  LDA #$16
-  STA v033B
-  LDA #$01
-  STA v033A
+  LDA #$16:STA frmy
+  LDA #$01:STA frmx
+
   LDA v03C9
   CMP v03C3
   BCC l26D1
+
 .l2676
-  INC v033A
-  LDA v033A
+  INC frmx
+  LDA frmx
   CMP #$06
   BCS l268A
+
   JSR l375F
+
   BEQ l2676
+
   BCC l2676
+
   JMP l269D
+
 .l268A
-  INC v035C
+  INC dizzyy
   DEC v0342
   LDA v0342
   BNE l2664
-  LDA #$00
-  STA v03C3
+
+  LDA #$00:STA v03C3
+
   JMP l26D1
+
 .l269D
   LDA v03C9
   CMP #$11
   BCS l26A9
-  LDA #$01
-  STA v03C1
+
+  LDA #$01:STA v03C1
+
 .l26A9
   LDA #$00
   JMP l26D1
+
 .l26AE
   LDA v03C9
   CMP #$07
   BCC l26BE
+
   CMP #$0B
   BCS l26BE
+
   LDA #$02
+
   JMP l26CD
+
 .l26BE
   CMP #$02
   BCC l26CB
+
   CMP #$10
   BCS l26CB
+
   LDA #$04
+
   JMP l26CD
+
 .l26CB
   LDA #$06
 .l26CD
   STA v0342
   RTS
+
 .l26D1
   LDA v03C8
   CMP #$02
   BCS l26F7
+
   CMP #$00
   BEQ l26E5
+
   JSR l303C
+
   DEC v03C8
+
   JMP l26F7
+
 .l26E5
   STA v03C8
   STA v03C7
   STA v03C3
   STA v03C9
   STA v03C1
+
   JMP l2708
+
 .l26F7
   LDA v03C7
   BNE l26FF
+
   JMP l2708
+
 .l26FF
   CMP #$01
   BEQ l271A
+
   LDA #$00
   JMP l271C
+
 .l2708
   LDA v03C1
   CMP #$01
   BNE l2717
+
   LDA #$00
   STA v03C1
+
   JMP l2626
+
 .l2717
   JMP l2790
+
 .l271A
   LDA #$07
+
 .l271C
-  STA v033A
+  STA frmx
+
   LDA #$01
-  STA v033B
+  STA frmy
+
   JSR l375F
+
   BCC l274B
+
   LDA v03C1
   CMP #$02
   BNE l2738
-  LDA #$00
-  STA v03C1
+
+  LDA #$00:STA v03C1
+
   JMP l2746
+
 .l2738
   LDA v03C3
   CMP #$0A
   BCC l2708
+
   LDA v03C9
   CMP #$09
   BCC l2708
+
 .l2746
   LDA v033E
   BNE l2708
+
 .l274B
-  LDA #$01
-  STA v033B
+  LDA #$01:STA frmy
+
   JSR l375F
+
   BCS l2708
-  LDA #$0C
-  STA v033B
+
+  LDA #$0C:STA frmy
+
   JSR l375F
+
   BCC l2761
+
   BNE l2708
+
 .l2761
-  LDA #$0D
-  STA v033B
+  LDA #$0D:STA frmy
+
   JSR l375F
+
   BCC l276D
+
   BNE l2708
+
 .l276D
   LDA v03C9
   BEQ l277D
+
   CMP #$09
   BCS l277D
+
   LDA v033F
   AND #$40
   BNE l2708
+
 .l277D
   LDA v03C7
   CMP #$01
   BNE l278A
-  INC v0352
+
+  INC dizzyx
+
   JMP l2790
+
 .l278A
-  DEC v0352
+  DEC dizzyx
   JMP l2790
+
 .l2790
   LDA v03C8
   CMP #$02
   BNE l27CB
+
   LDA v03C9
   CMP #$09
   BCC l27CB
+
   AND #$07
   BNE l27CB
-  LDA #$16
-  STA v033B
-  LDA #$00
-  STA v033A
+
+  LDA #$16:STA frmy
+  LDA #$00:STA frmx
+
 .l27AC
-  INC v033A
-  LDA v033A
+  INC frmx
+  LDA frmx
   CMP #$06
   BCS l27CB
+
   JSR l375F
+
   BCC l27AC
   BEQ l27AC
+
   LDA #$00
   STA v03C8
   STA v03C7
   STA v03C9
   STA v03C3
+
 .l27CB
-  LDA #$15
-  STA v033B
+  LDA #$15:STA frmy
+
 .l27D0
-  LDA #$01
-  STA v033A
+  LDA #$01:STA frmx
+
 .l27D5
-  INC v033A
-  LDA v033A
+  INC frmx
+  LDA frmx
   CMP #$06
   BCS l27EC
+
   JSR l375F
+
   BCC l27D5
   BEQ l27D5
-  DEC v035C
+
+  DEC dizzyy
+
   JMP l2790
+
 .l27EC
-  DEC v033B
-  LDA v033B
+  DEC frmy
+  LDA frmy
   CMP #$12
   BCS l27D0
-  LDA v0352
-  CMP #$39
-  BCC l280E
-  LDA #$02
-  STA v03D6
-  LDA v035C
-  STA v03D7
+
+.checkright
+{
+  ; Check Dizzy X position < 57 (not gone off screen to right)
+  LDA dizzyx
+  CMP #57
+  BCC checkleft
+
+  ; Dizzy has gone off screen to the right
+  LDA #2:STA v03D6 ; Set Dizzy position to far left
+  LDA dizzyy:STA v03D7
+
+  ; Go right a room
   INC roomno
-  JMP l2860
-.l280E
-  CMP #$02
-  BCS l2823
-  LDA #$38
-  STA v03D6
-  LDA v035C
-  STA v03D7
+
+  JMP enternewroom
+}
+
+.checkleft
+{
+  ; Check Dizzy X position >= 2 (not gone off screen to left)
+  CMP #2
+  BCS checkvertup
+
+  LDA #$38:STA v03D6
+  LDA dizzyy:STA v03D7
+
+  ; Go left a room
   DEC roomno
-  JMP l2860
-.l2823
-  LDA v035C
-  CMP #$80
-  BCC l286B
-  CMP #$C0
-  BCS l2845
-  LDA #$00
-  STA v03D7
-  LDA v0352
-  STA v03D6
-  LDA roomno
-  SEC
-  SBC #$20
-  STA roomno
-  JMP l2860
-.l2845
-  LDA v035C
-  CMP #$C0
-  BCC l286B
-  LDA #$72
-  STA v03D7
-  LDA v0352
-  STA v03D6
-  LDA roomno
-  CLC
-  ADC #$20
-  STA roomno
-.l2860
-  LDA #$00
-  STA v03E0
+
+  JMP enternewroom
+}
+
+.checkvertup
+{
+  ; Check Dizzy Y position < 128
+  LDA dizzyy
+  CMP #128
+  BCC setdizzyspritepos
+
+  CMP #192
+  BCS checkvertdown
+
+  LDA #$00:STA v03D7
+  LDA dizzyx:STA v03D6
+
+  ; Go down a room
+  LDA roomno:SEC:SBC #MAP_WIDTH:STA roomno
+
+  JMP enternewroom
+}
+
+.checkvertdown
+{
+  ; Check Dizzy Y position < 192 - this will _never_ be the case
+  LDA dizzyy
+  CMP #192
+  BCC setdizzyspritepos
+
+  ; Dizzy has gone off the top of the screen
+  LDA #114:STA v03D7 ; Set Dizzy position to bottom
+  LDA dizzyx:STA v03D6
+
+  LDA roomno:CLC:ADC #MAP_WIDTH:STA roomno
+
+  ; Fall through
+}
+
+.enternewroom
+{
+  LDA #$00:STA v03E0
+
   LDA roomno
   JSR l3498
-.l286B
-  LDA v035C
-  CLC
-  ADC #$5A
-  STA SPR_0_Y
-  LDA v0352
-  ASL  A
-  ASL  A
-  CLC
-  ADC #$38
+
+.^setdizzyspritepos
+  ; Set Dizzy hardware sprite Y position
+  LDA dizzyy:CLC:ADC #90:STA SPR_0_Y
+
+  ; Set Dizzy hardware sprite X position
+  LDA dizzyx
+  ASL  A      ; * 4
+  ASL  A      ;
+  CLC:ADC #56 ; + 56
   STA SPR_0_X
-  BCC l2889
-  LDA SPR_MSB_X
-  ORA #$01
+
+  ; Check for overflow
+  BCC sprite_lhs
+
+  ; Overflow happened (Dizzy at far rhs), so set bottom bit
+  LDA SPR_MSB_X:ORA #$01
+
   JMP l288E
-.l2889
-  LDA SPR_MSB_X
-  AND #$FE
+}
+
+.sprite_lhs
+{
+  ; No overflow (Dizzy not at far rhs), so clear bottom bit
+  LDA SPR_MSB_X:AND #$FE
+
+  ; Fall through
+}
+
 .l288E
+{
   STA SPR_MSB_X
+
   LDA v03C8
   BNE l28A3
+
   LDA v03C7
   BNE l28CC
+
+  ; Set sprite for "idle" animation
   LDA v03C4
   AND #$01
   JMP l28E6
+}
+
 .l28A3
-  CMP #$02
+{
+  CMP #2
   BNE l28CC
+
   LDA v03C7
   BNE l28B1
+
   LDA #$02
   JMP l28BC
+}
+
 .l28B1
+{
   CMP #$01
   BNE l28BA
+
   LDA #$1A
   JMP l28BC
+}
+
 .l28BA
+{
   LDA #$22
-.l28BC
+.^l28BC
   STA v00FF
+
   LDA v03C9
-  SEC
-  SBC #$01
+  SEC:SBC #1
   AND #$07
-  CLC
-  ADC v00FF
+  CLC:ADC v00FF
+
   JMP l28E6
+}
+
 .l28CC
+{
   LDA v03C2
   BEQ l28E6
+
   CMP #$01
   BNE l28DA
+
   LDA #$0A
   JMP l28DC
+
 .l28DA
   LDA #$12
+
 .l28DC
   STA v00FF
+
   LDA v03C4
   AND #$07
-  CLC
-  ADC v00FF
+  CLC:ADC v00FF
+
+  ; Fall through
+}
+
 .l28E6
+{
   STA v5FF8
-  LDA #$FF
-  STA SPR_ENABLE
+ 
+  LDA #$FF:STA SPR_ENABLE ; Show sprites
+
   LDX #$FF
   STX v20D9
   STX v20DD
+
   LDA v03C7
   BNE l2903
+
   LDA v03C8
   BNE l2903
+
   JMP l290B
+}
+
 .l2903
+{
   LDA v03C0
   AND #$EF
   STA v03C0
-.l290B
+
+.^l290B
   LDA v03C0
   AND #$10
-  BNE l2915
+  BNE checkpickup
+
   JMP l2981
-.l2915
-  LDA v0352
-  CLC
-  ADC #$1E
-  STA v033A
-  CLC
-  ADC #$08
-  STA v033C
-  LDA v035C
-  CLC
-  ADC #$1A
-  STA v033B
-  CLC
-  ADC #$22
+}
+
+.checkpickup
+{
+  LDA dizzyx:CLC:ADC #30
+  STA frmx ; X position
+
+  CLC:ADC #8
+  STA frmattr ; attribute
+
+  LDA dizzyy
+  CLC:ADC #26
+  STA frmy ; Y position
+
+  CLC:ADC #34
   STA v033D
+
   INC v03D9
+
   LDX v03D9
   CPX #$3F
-  BCC l2942
-  LDX #$00
-  STX v03D9
-.l2942
+  BCC objloop
+
+  LDX #$00:STX v03D9
+.objloop
+  {
+  ; Is object in this room ?
   LDA objs_rooms,X
   CMP roomno
-  BNE l296D
+  BNE nextobj
+
+  ; Is object X position < (dizzyx + 30) ?
   LDA objs_xlocs,X
-  CMP v033A
-  BCC l296D
-  CMP v033C
-  BCS l296D
+  CMP frmx
+  BCC nextobj
+
+  ; Is object X position >= (dizzyx + 30 + 8) ?
+  CMP frmattr
+  BCS nextobj
+
+  ; Is object Y position < (dizzyy + 26) ?
   LDA objs_ylocs,X
-  CMP v033B
-  BCC l296D
+  CMP frmy
+  BCC nextobj
+
+  ; Is object Y position >= (dizzyy + 26 + 34) ?
   CMP v033D
-  BCS l296D
+  BCS nextobj
+
+  ; At this point the object overlaps dizzy
   STX v03D9
   STX v20DD
+
   JMP l2981
-.l296D
+
+.nextobj
   INX
   CPX v03D9
   BEQ l297C
-  CPX #$3F
-  BCC l2942
+
+  ; Is it a collectable object
+  CPX #63
+  BCC objloop
+
   LDX #$FF
-  JMP l296D
+
+  JMP nextobj
+  }
+}
+
 .l297C
-  LDX #$FF
-  STX v20DD
+  LDX #$FF:STX v20DD
+
 .l2981
-  LDA #$00
-  STA v03DA
-  LDA #$03
-  STA v033A
-  LDA #$01
-  STA v033B
+  LDA #$00:STA v03DA
+  LDA #$03:STA frmx
+  LDA #$01:STA frmy
+
   JSR l375F
+
   LDA v033F
   AND #$20
   BEQ l299F
-  LDA #$0B
-  STA v03DA
+
+  LDA #$0B:STA v03DA
+
 .l299F
   LDA #$01
-  STA v033B
+  STA frmy
   STA v03E7
+
 .l29A7
-  LDA #$01
-  STA v033A
+  LDA #$01:STA frmx
+
   JSR l375F
-  LDA v033F
-  ORA v03E7
-  STA v03E7
-  LDA #$03
-  STA v033A
+
+  LDA v033F:ORA v03E7:STA v03E7
+
+  LDA #$03:STA frmx
+
   JSR l375F
-  LDA v033F
-  ORA v03E7
-  STA v03E7
-  LDA #$06
-  STA v033A
+
+  LDA v033F:ORA v03E7:STA v03E7
+
+  LDA #$06:STA frmx
   JSR l375F
-  LDA v033F
-  ORA v03E7
-  STA v03E7
-  LDA v033B
+
+  LDA v033F:ORA v03E7:STA v03E7
+
+  LDA frmy
   CLC
   ADC #$08
-  STA v033B
+  STA frmy
+
   CMP #$14
   BCC l29A7
+
   LDA v03C0
   AND #$10
   BNE l29F1
+
   JMP l2C98
+
 .l29F1
   LDA v03E7
   AND #$80
   BNE l2A0A
+
   LDA v03E7
   AND #$30
   CMP #$10
   BNE l2A07
+
   JSR lCB00
+
   JMP l2C98
+
 .l2A07
   JMP l2BED
+
 .l2A0A
   LDA roomno
   LDX v20DA
-  CMP #$4C
+  CMP #ROOM_76
   BNE l2A28
+
   CPX #$00
   BNE l2A28
+
   JSR l2EB0
+
   LDA #$4C
   STA v559D
+
   LDX #$3F
+
   JSR l2ED1
+
   JMP l2C10
+
 .l2A28
   CMP #$31
   BNE l2A3B
+
   CPX #$11
   BNE l2A3B
+
   LDA #$31
   STA v55AF
+
   JSR l2EB0
+
   JMP l2C10
+
 .l2A3B
   CMP #$53
   BNE l2A63
+
   CPX #$0E
   BNE l2A63
+
   JSR l2EB0
+
   LDX #$4A
   JSR l392F
+
   LDX #$4B
   JSR l392F
+
   LDX #$4C
   JSR l392F
+
   LDA #$FD
   STA v55A8
   STA v55A9
   STA v55AA
+
   JMP l2C10
+
 .l2A63
   CMP #$35
   BNE l2A7B
+
   CPX #$0C
   BNE l2A7B
+
   JSR l2EB0
+
   LDX #$48
+
   JSR l392F
+
   LDA #$FD
   STA v55A6
+
   JMP l2C10
+
 .l2A7B
   CMP #$6A
   BNE l2A9B
+
   CPX #$12
   BNE l2A9B
+
   JSR l2EB0
+
   LDX #$4E
   JSR l392F
+
   LDX #$4F
   JSR l392F
+
   LDA #$FD
   STA v55AC
   STA v55AD
+
   JMP l2C10
+
 .l2A9B
   CMP #$62
   BNE l2ABD
+
   CPX #$10
   BNE l2ABD
+
   JSR l2EB0
+
   LDA #$62
   STA v55A4
+
   LDA #$54
   STA v5629
+
   LDX #$45
+
   JSR l2ED1
+
   LDX #$46
   JSR l2ED1
+
   JMP l2C10
+
 .l2ABD
   CMP #$62
   BNE l2AF3
+
   CPX #$0F
   BNE l2AF3
+
   LDA v55A4
   CMP #$62
   BNE l2AF3
+
   LDA #$07
   STA v5736 ; dynamite attrib
+
   LDX #$46
   JSR l2ED1
   JSR l2EB0
+
   LDA #$FD
   STA v55A2
   STA v55A4
+
   LDA #$05
   JSR delay
+
   LDX #$46
   JSR l392F
+
   LDX #$44
   JSR l392F
+
   JMP l2C10
+
 .l2AF3
   LDA roomno
   LDX v20DA
-  CMP #$56
+  CMP #ROOM_86
   BEQ l2B00
+
   JMP l2B8C
+
 .l2B00
   LDA v03E4
   AND #$01
   BNE l2B21
+
   INC v03E4
   LDA v03E4
   CMP #$08
   BCS l2B1E
+
   LSR  A
   CLC
   ADC #$09
   TAX
+
   JSR lCB1C
+
   LDX #$06
+
   JSR l2ED1
+
 .l2B1E
   JMP l2B8C
+
 .l2B21
   CPX #$03
   BEQ l2B42
+
   CPX #$05
   BEQ l2B42
+
   CPX #$08
   BEQ l2B42
+
   CPX #$13
   BEQ l2B42
+
   CPX #$46
   BCS l2B1E
+
   LDX #$11
   JSR lCB1C
+
   LDX #$06
   JSR l2ED1
+
   JMP l2B8C
+
 .l2B42
   INC v03E4
+
   JSR l2EB0
+
   LDA v03E4
   CMP #$09
   BCS l2B8C
+
   LSR  A
   CLC
   ADC #$0C
   TAX
+
   JSR lCB1C
+
   LDX #$06
   JSR l2ED1
+
   LDA v03E4
   LSR  A
   CMP #$01
   BNE l2B69
+
   LDX #$0A
   JMP l2B81
+
 .l2B69
   CMP #$02
   BNE l2B72
+
   LDX #$0B
   JMP l2B81
+
 .l2B72
   CMP #$03
   BNE l2B7B
+
   LDX #$07
   JMP l2B81
+
 .l2B7B
   CMP #$04
   BNE l2B8C
+
   LDX #$0D
 .l2B81
   STX v20DD
-  LDA #$02
-  STA objs_rooms,X
+
+  LDA #ROOM_2:STA objs_rooms,X
+
   JMP l2C10
+
 .l2B8C
   LDA roomno
   LDX v20DA
-  CMP #$58
+  CMP #ROOM_88
   BNE l2BB1
+
   LDA v55A5
   CMP #$58
   BEQ l2BB4
+
   CPX #$0A
   BNE l2BB1
+
   LDA #$58
   STA v55A5
+
   LDX #$47
   JSR l2ED1
   JSR l2EB0
+
   JMP l2C10
+
 .l2BB1
   JMP l2BED
+
 .l2BB4
   CPX #$07
   BEQ l2BC0
+
   CPX #$0B
   BEQ l2BC0
+
   CPX #$0D
   BNE l2BB1
+
 .l2BC0
   DEC v5737
+
   LDX #$47
   JSR l2ED1
   JSR l2EB0
+
   LDA v5565
   CMP #$FD
   BNE l2BEA
+
   LDA v5569
   CMP #$FD
   BNE l2BEA
+
   LDA v556B
   CMP #$FD
   BNE l2BEA
-  LDA #$43
-  STA v5737
-  LDA #$59
-  STA v55C0
+
+  LDA #$43:STA v5737
+  LDA #$59:STA v55C0
+
 .l2BEA
   JMP l2C10
+
 .l2BED
   LDA v03DA
   BEQ l2C10
+
   LDX v20DA
   CPX #$09
   BNE l2C10
+
   JSR l2EB0
-  LDA #$14
-  STA v034E
+
+  LDA #$14:STA v034E
+
 .l2C01
   LDA #$01
   JSR l3B84
+
   LDA #$01
   JSR delay
+
   DEC v034E
   BNE l2C01
+
 .l2C10
   LDA v20DD
   CMP #$14
   BCC l2C23
+
   CMP #$32
   BCS l2C23
+
   LDA v20D9
   BEQ l2C23
+
   JMP l2C29
+
 .l2C23
-  LDX v20DA
-  STX v20D9
+  LDX v20DA:STX v20D9
+
 .l2C29
   LDX v20D9
   CPX #$FF
   BNE l2C37
+
   LDX v20DD
   CPX #$FF
   BEQ l2C95
+
 .l2C37
-  LDA #$3F
-  STA v03DD
-  LDA #$00
-  STA v03D5
+  LDA #$3F:STA v03DD
+  LDA #$00:STA v03D5
+
 .l2C41
   LDA GFX_RASTER_LINE
   CMP #$FA
   BCC l2C41
+
   JSR l3968
+
   LDX v20DD
   CPX #$FF
   BEQ l2C5A
-  LDA #$02
-  STA objs_rooms,X
+
+  LDA #ROOM_2:STA objs_rooms,X
+
   JSR l2F35
+
 .l2C5A
   LDX v20D9
   CPX #$FF
   BEQ l2C85
+
   LDA objs_rooms,X
   CMP #$FD
   BEQ l2C85
+
   LDX v20DA
-  LDA roomno
-  STA objs_rooms,X
-  LDA v0352
+  LDA roomno:STA objs_rooms,X
+
+  LDA dizzyx
   CLC
   ADC #$21
   AND #$FE
   STA objs_xlocs,X
-  LDA v035C
+
+  LDA dizzyy
   CLC
   ADC #$2D
   STA objs_ylocs,X
+
 .l2C85
-  LDA #$3F
-  STA v03DD
-  LDA #$FF
-  STA v03D5
+  LDA #$3F:STA v03DD
+  LDA #$FF:STA v03D5
   JSR l3968
   JSR l3595
+
 .l2C95
   JSR l2EFD
+
 .l2C98
   LDA roomno
-  CMP #$15
+  CMP #ROOM_21
   BEQ l2CCF
+
   LDA SPR_COLLISION
   AND #$01
   BNE l2CBD
+
   LDA v03DA
   BEQ l2CC0
+
   LDA roomno
-  CMP #$58
+  CMP #ROOM_88
   BEQ l2CBD
-  CMP #$59
+
+  CMP #ROOM_89
   BEQ l2CBD
+
   LDA v5560
   CMP #$02
   BEQ l2CC0
+
 .l2CBD
   JMP l2EE2
+
 .l2CC0
   LDA roomno
-  CMP #$69
+  CMP #ROOM_105
   BNE l2CCF
+
   CMP v55A0
   BNE l2CCF
+
   JMP l2EE2
+
 .l2CCF
   LDA v03E7
   AND #$80
   BNE l2CD9
+
   JMP l2D9D
+
 .l2CD9
   LDA roomno
-  CMP #$A5
+  CMP #ROOM_165
   BNE l2CED
+
   LDA v5638
   CMP #$2C
   BNE l2CED
+
   INC v5638
   JMP l2D9D
+
 .l2CED
   LDA roomno
-  CMP #$69
+  CMP #ROOM_105
   BNE l2D0F
+
   LDA v5571
   CMP #$02
   BNE l2D0F
+
   LDA v555F
   CMP #$02
   BEQ l2D0F
-  LDA #$69
-  STA v55A0
+
+  LDA #$69:STA v55A0
+
   LDX #$42
+
   JSR l2ED1
   JMP l2D9D
+
 .l2D0F
   LDA roomno
-  CMP #$86
+  CMP #ROOM_134
   BNE l2D33
+
 .l2D16
   LDA v56C0 ; cage Y pos
   CMP #$3C
   BCS l2D30
+
   LDA #$05
   JSR delay
+
   INC v56C0 ; cage Y pos
   INC v56C0 ; cage Y pos
+
   LDX #$56
   JSR l394A
+
   JMP l2D16
+
 .l2D30
   JMP l2EE2
+
 .l2D33
   LDA roomno
-  CMP #$64
+  CMP #ROOM_100
   BNE l2D54
+
 .l2D3A
   LDA v56C2 ; cage Y pos
   CMP #$2A
   BCS l2D30
+
   LDA #$05
   JSR delay
+
   INC v56C2 ; cage Y pos
   INC v56C2 ; cage Y pos
+
   LDX #$58
   JSR l394A
+
   JMP l2D3A
+
 .l2D54
   LDA roomno
-  CMP #$66
+  CMP #ROOM_102
   BNE l2D75
+
 .l2D5B
   LDA v56C4 ; cage Y pos
   CMP #$8A
   BCS l2D30
+
   LDA #$05
   JSR delay
+
   INC v56C4 ; cage Y pos
   INC v56C4 ; cage Y pos
+
   LDX #$5A
   JSR l394A
+
   JMP l2D5B
+
 .l2D75
   LDA roomno
-  CMP #$59
+  CMP #ROOM_89
   BNE l2D9D
+
   LDA v20E4
   CMP #$03
   BNE l2D90
+
   LDA #$05
   JSR l2EEF
+
   LDX #$13
   JSR lCB1C
+
   JMP l2105
+
 .l2D90
   LDA v20E6
   BNE l2D9D
-  LDX #$12
-  STX v20E6
+
+  LDX #$12:STX v20E6
   JSR lCB1C
+
 .l2D9D
   LDA roomno
-  CMP #$31
+  CMP #ROOM_49
   BNE l2DBF
+
   LDX #$4D
   JSR l392F
+
   LDA v56B7
   CMP #$A8
   BNE l2DB5
+
   LDA #$A6
   JMP l2DB7
+
 .l2DB5
   LDA #$A8
+
 .l2DB7
   STA v56B7
+
   LDX #$4D
   JSR l394A
+
 .l2DBF
   LDA roomno
-  CMP #$31
+  CMP #ROOM_49
   BNE l2DEF
+
   LDA v55AF
   CMP #$31
   BNE l2DEF
+
   LDX #$51
   JSR l392F
+
   DEC v56BB ; bubble Y pos
   LDA v56BB ; bubble Y pos
   CMP #$1E
   BCS l2DE1
+
   LDA #$A0
   STA v56BB ; bubble Y pos
+
 .l2DE1
   AND #$02
   LSR  A
   CLC
   ADC #$B8
   STA v57C7 ; bubble frame
+
   LDX #$51
   JSR l394A
+
 .l2DEF
   LDA roomno
-  CMP #$A5
+  CMP #ROOM_165
   BNE l2E16
+
   LDA v5638
   CMP #$2C
   BEQ l2E16
+
   CMP #$3E
   BCS l2E16
+
   AND #$FE
   STA v5638
+
   LDX #$54
   JSR l394A
+
   INC v5638
   INC v5638
+
   LDX #$54
   JSR l394A
+
 .l2E16
   LDA roomno
-  CMP #$85
+  CMP #ROOM_133
   BNE l2E3B
+
   LDA v5638
   CMP #$2C
   BEQ l2E3B
+
   LDA v56BF
   CMP #$70
   BCS l2E3B
+
   LDX #$55
   JSR l392F
+
   INC v56BF
+
   LDX #$55
   JSR l2ED1
+
   JMP l2EA7
+
 .l2E3B
   LDA v5737
   CMP #$40
   BCC l2EA7
-  LDA #$00
-  STA v03DB
+
+  LDA #$00:STA v03DB
+
   LDA roomno
-  CMP #$58
+  CMP #ROOM_88
   BEQ l2E5D
-  CMP #$59
+
+  CMP #ROOM_89
   BNE l2E65
-  LDX #$62
-  STX v03DB
+
+  LDX #$62:STX v03DB
   JSR l392F
+
   JMP l2E65
+
 .l2E5D
-  LDX #$47
-  STX v03DB
+  LDX #$47:STX v03DB
+
   JSR l392F
+
 .l2E65
   LDA v5737
   AND #$80
   BNE l2E87
+
   INC v562B
   INC v5646
+
   LDA v562B
   CMP #$5F
   BCC l2E9F
+
   LDA v5737
   ORA #$80
   STA v5737
   STA v5752
+
   JMP l2E9F
+
 .l2E87
   DEC v562B
   DEC v5646
+
   LDA v562B
   CMP #$4B
   BCS l2E9F
+
   LDA v5737
   AND #$7F
   STA v5737
   STA v5752
+
 .l2E9F
   LDX v03DB
   BEQ l2EA7
+
   JSR l394A
+
 .l2EA7
   JSR l3C52
   JSR lCD73
+
   JMP l221B
+
 .l2EB0
   LDA #$05
   JSR l3B84
   STX v034E
+
   LDA #$05
   JSR l392B
-  LDA #$0F
-  STA vCFF8
+
+  LDA #$0F:STA vCFF8
+
   LDX v20DA
   LDA #$FD
   STA objs_rooms,X
   STX v20D9
   LDX v034E
+
   RTS
+
 .l2ED1
   LDA #$58
   STA v03DC
   JSR l394A
+
   LDA #$00
   STA v03DC
   JSR l394A
+
   RTS
+
 .l2EE2
   LDA #$07
   JSR l392B
+
   LDA #$C8
   JSR delay
+
   JMP l3B24
+
 .l2EEF
+{
   PHA
+
   JSR l30D9
-  LDA #$00
-  STA v309F
+
+  LDA #$00:STA v309F
+
   PLA
+
   STA vE000
+
   RTS
+}
+
 .l2EFD
+{
   LDX v20DD
   CPX #$14
   BCC l2F15
+
   CPX #$32
   BCS l2F15
-  LDX #$FF
-  STX v20DD
+
+  LDX #$FF:STX v20DD
+
   LDX v20D9
   CPX #$FF
   BNE l2F15
+
   RTS
+}
+
 .l2F15
+{
   LDA #$04
   JSR l392B
+
   LDX #$00
 .l2F1C
-  LDA v20DA,X
-  STA v20D9,X
+  LDA v20DA,X:STA v20D9,X
   INX
   CPX #$04
   BCC l2F1C
-  LDA #$FF
-  STA v20DD
-  LDA #$10
-  STA v0342
+
+  LDA #$FF:STA v20DD
+
+  LDA #$10:STA v0342
+
   JSR lCE14
+
   RTS
+}
+
 .l2F35
   LDX v20DD
   CPX #$14
   BCC l2F64
+
   CPX #$32
   BCS l2F65
+
   LDA #$FE
   STA objs_rooms,X
   LDA #$06
@@ -2149,6 +2783,7 @@ ORG &20E7
   ADC #$01
   CMP #$0A
   BCC l2F5E
+
   INC v20E4
   LDA #$00
 .l2F5E
@@ -2156,50 +2791,63 @@ ORG &20E7
   JSR l2F91
 .l2F64
   RTS
+
 .l2F65
   CPX #$3F
   BCS l2F64
+
   LDA v5551,X
   CMP #$01
   BNE l2F64
+
   LDA roomno
   STA v5551,X
   RTS
+
 .l2F77
+{
   LDA #$FF
   STA v20D9
   STA v20DA
   STA v20DB
   STA v20DC
   STA v20DD
+
   LDA #$10
   STA v0342
+
   JSR lCE14
+
   RTS
+}
+
 .l2F91
-  LDA #$4C
-  STA v033A
-  LDA #$08
-  STA v033B
+{
+  LDA #$4C:STA frmx
+  LDA #$08:STA frmy
   STA v03E3
-  LDA #$06
-  STA v033C
+
+  LDA #$06:STA frmattr
+
   LDA v20E4
   CLC
   ADC #$30
   JSR l3132
-  LDA #$4E
-  STA v033A
-  LDA #$08
-  STA v033B
+
+  LDA #$4E:STA frmx
+  LDA #$08:STA frmy
   STA v03E3
-  LDA #$06
-  STA v033C
+
+  LDA #$06:STA frmattr
+
   LDA v20E5
   CLC
   ADC #$30
+
   JSR l3132
+
   RTS
+}
 
 ORG &2FC8
 
@@ -2295,8 +2943,8 @@ cheatcodelen = * - eclipse
   STA roomno
 
   ; Set position where Dizzy entered the room
-  LDA v0352:STA v03D6 ; x
-  LDA v035C:STA v03D7 ; y
+  LDA dizzyx:STA v03D6 ; x
+  LDA dizzyy:STA v03D7 ; y
 
   JSR l3498 ; ?? Redraw room ??
 
@@ -2452,7 +3100,7 @@ ORG &30A0
   STA v00FB
   STA v0340
   STX v0345
-  LDA v033A
+  LDA frmx
   CMP #$5D
   BCC l3142
   RTS
@@ -2462,7 +3110,7 @@ ORG &30A0
   RTS
 .l3148
   STA v00B5
-  LDA v033B
+  LDA frmy
   LSR  A
   LSR  A
   LSR  A
@@ -2477,9 +3125,9 @@ ORG &30A0
   LDA v033F
   ORA #$30
   STA v033F
-  LDA v033B
+  LDA frmy
   AND #$F8
-  STA v033B
+  STA frmy
   JMP l317C
 .l3175
   BNE l317C
@@ -2490,7 +3138,7 @@ ORG &30A0
   STA v00FB
   LDA v20B8,X
   STA v00FC
-  LDA v033B
+  LDA frmy
   AND #$07
   CLC
   ADC v00FB
@@ -2503,7 +3151,7 @@ ORG &30A0
   DEC v00FC
 .l3199
   STA v00FB
-  LDA v033A
+  LDA frmx
   AND #$FE
   ASL  A
   CLC
@@ -2517,7 +3165,7 @@ ORG &30A0
   INC v00FC
 .l31AE
   STA v00FB
-  LDA v033B
+  LDA frmy
   LSR  A
   LSR  A
   LSR  A
@@ -2533,7 +3181,7 @@ ORG &30A0
   DEC v00FE
 .l31CA
   STA v00FD
-  LDA v033A
+  LDA frmx
   LSR  A
   CLC
   ADC v00FD
@@ -2577,7 +3225,7 @@ ORG &30A0
   STA v034A
   LDA v033D
   STA v034B
-  LDA v033A
+  LDA frmx
   AND #$FE
   CMP #$22
   BCS l3234
@@ -2588,7 +3236,7 @@ ORG &30A0
   LSR  A
   STA v034A
 .l3234
-  LDA v033A
+  LDA frmx
   AND #$FE
   STA v00FF
   LDA #$5E
@@ -2602,7 +3250,7 @@ ORG &30A0
   LDA #$00
   STA v0349
 .l324E
-  LDA v033B
+  LDA frmy
   CMP v03E3
   BCS l3259
   JMP l32BB
@@ -2614,12 +3262,12 @@ ORG &30A0
   INY
   CPY v033D
   BCC l325B
-  LDA v033C
+  LDA frmattr
   AND #$80
   BEQ l3270
   JSR l33C0
 .l3270
-  LDA v033A
+  LDA frmx
   AND #$01
   BEQ l327A
   JSR l3327
@@ -2673,8 +3321,8 @@ ORG &30A0
   STA v03E1
   RTS
 .l32D8
-  INC v033B
-  LDA v033B
+  INC frmy
+  LDA frmy
   CMP v03E1
   BCS l32C0
   LDA v00B4
@@ -2684,7 +3332,7 @@ ORG &30A0
   INC v00B5
 .l32ED
   STA v00B4
-  LDA v033B
+  LDA frmy
   AND #$07
   BEQ l3305
   INC v0349
@@ -2739,7 +3387,7 @@ ORG &30A0
   LDA v033D
   CMP v034B
   BCC l3360
-  LDA v033A
+  LDA frmx
   LSR  A
   CLC
   ADC v033D
@@ -2749,33 +3397,33 @@ ORG &30A0
 .l3360
   RTS
 .l3361
-  LDA v033C
+  LDA frmattr
   AND #$07
   TAX
   LDA v2097,X
   STA v03E2
   BEQ l337E
-  LDA v033A
+  LDA frmx
   AND #$01
   BEQ l337E
-  LDA v033C
+  LDA frmattr
   ORA #$10
-  STA v033C
+  STA frmattr
 .l337E
-  LDA v033C
+  LDA frmattr
   AND #$40
   BEQ l338B
   ORA v033F
   STA v033F
 .l338B
-  LDA v033C
+  LDA frmattr
   AND #$20
   BEQ l339A
   LDA v033F
   ORA #$80
   STA v033F
 .l339A
-  LDA v033C
+  LDA frmattr
   AND #$18
   LSR  A
   LSR  A
@@ -2886,15 +3534,15 @@ ORG &30A0
   LDY #$03
   LDA ($B0),Y
   EOR #$40
-  STA v033C
+  STA frmattr
   LDA #$00
   STA v033F
   DEY
   LDA ($B0),Y
-  STA v033B
+  STA frmy
   DEY
   LDA ($B0),Y
-  STA v033A
+  STA frmx
   DEY
   LDA #$58
   STA v03DC
@@ -2978,9 +3626,9 @@ ORG &30A0
   RTS
 .l3528
   LDA #$06
-  STA v033A
+  STA frmx
 .l352D
-  LDX v033A
+  LDX frmx
   LDA v20B8,X
   STA v00FC
   LDA v209F,X
@@ -3025,8 +3673,8 @@ ORG &30A0
   LDA #$00
   CPY #$00
   BNE l356F
-  INC v033A
-  LDA v033A
+  INC frmx
+  LDA frmx
   CMP #$17
   BCC l352D
   LDA #$00
@@ -3074,7 +3722,7 @@ ORG &30A0
   BCC l3597
   RTS
 .l35D2
-  LDX v033B
+  LDX frmy
   CPX #$05
   BCC l35DA
   RTS
@@ -3088,9 +3736,9 @@ ORG &30A0
   INC v00FE
 .l35E9
   STA v00FD
-  LDY v033C
+  LDY frmattr
   LDA v2097,Y
-  LDY v033A
+  LDY frmx
   STA ($FD),Y
   LDA v20B8,X
   STA v00FE
@@ -3101,7 +3749,7 @@ ORG &30A0
   INC v00FE
 .l3605
   STA v00FD
-  LDX v033A
+  LDX frmx
   LDA v2077,X
   CLC
   ADC v033D
@@ -3134,11 +3782,11 @@ ORG &30A0
   STX v0345
   INX
   INX
-  LDA v033A
-  STA v0352,X
-  LDA v033B
-  STA v035C,X
-  LDA v033C
+  LDA frmx
+  STA dizzyx,X
+  LDA frmy
+  STA dizzyy,X
+  LDA frmattr
   STA v037A,X
   LDA #$00
   STA v0384,X
@@ -3161,8 +3809,8 @@ ORG &30A0
   LDA #$00
   STA v164E,X
   STA v1658,X
-  STA v0352,X
-  STA v035C,X
+  STA dizzyx,X
+  STA dizzyy,X
   STA v037A,X
   STA v1680,X
   STA v0370,X
@@ -3204,12 +3852,12 @@ ORG &30A0
   CMP #$40
   BEQ l3725
   AND #$0F
-  STA v033A
+  STA frmx
   LDA v0366,X
   AND #$20
   BEQ l3701
-  LDA v0352,X
-  CMP v0352
+  LDA dizzyx,X
+  CMP dizzyx
   BEQ l3701
   BCS l36F9
   LDA #$08
@@ -3217,14 +3865,14 @@ ORG &30A0
 .l36F9
   LDA #$04
 .l36FB
-  ORA v033A
-  STA v033A
+  ORA frmx
+  STA frmx
 .l3701
   LDA v0366,X
   AND #$10
   BEQ l3719
-  LDA v035C,X
-  CMP v035C
+  LDA dizzyy,X
+  CMP dizzyy
   BNE l3715
   LDA #$00
   JMP l3719
@@ -3232,16 +3880,16 @@ ORG &30A0
   BCS l3720
   LDA #$02
 .l3719
-  ORA v033A
-  STA v033A
+  ORA frmx
+  STA frmx
   RTS
 .l3720
   LDA #$01
   JMP l3719
 .l3725
   LDA #$00
-  STA v033A
-  LDA v0352,X
+  STA frmx
+  LDA dizzyx,X
   CMP v1692,X
   BEQ l373E
   BCS l3739
@@ -3250,9 +3898,9 @@ ORG &30A0
 .l3739
   LDA #$04
 .l373B
-  STA v033A
+  STA frmx
 .l373E
-  LDA v035C,X
+  LDA dizzyy,X
   CMP v1697,X
   BEQ l3755
   BCS l374D
@@ -3261,24 +3909,24 @@ ORG &30A0
 .l374D
   LDA #$01
 .l374F
-  ORA v033A
-  STA v033A
+  ORA frmx
+  STA frmx
 .l3755
-  LDA v033A
+  LDA frmx
   BEQ l375B
   RTS
 .l375B
   STA v0370,X
   RTS
 .l375F
-  LDA v0352
+  LDA dizzyx
   CLC
-  ADC v033A
-  STA v033C
-  DEC v033C
-  LDA v035C
+  ADC frmx
+  STA frmattr
+  DEC frmattr
+  LDA dizzyy
   CLC
-  ADC v033B
+  ADC frmy
   CLC
   ADC #$28
   STA v033D
@@ -3305,14 +3953,14 @@ ORG &30A0
   CLC
   ADC #$20
   STA v00FB
-  LDA v033C
+  LDA frmattr
   LSR  A
   CLC
   ADC #$04
   TAY
   LDA ($FD),Y
   STA v033F
-  LDA v033C
+  LDA frmattr
   AND #$01
   BEQ l37C0
   LDA #$0F
@@ -3321,7 +3969,7 @@ ORG &30A0
   LDA #$F0
 .l37C2
   STA v033E
-  LDA v033C
+  LDA frmattr
   LSR  A
   TAX
   LDA v2077,X
@@ -3367,7 +4015,7 @@ ORG &30A0
   JMP l3809
 .l3816
   LDX v034E
-  LDA v0352,X
+  LDA dizzyx,X
   CMP #$1C
   BCC l3827
   CMP #$91
@@ -3391,7 +4039,7 @@ ORG &30A0
   STA SPR_MSB_X
 .l3847
   INY
-  LDA v035C,X
+  LDA dizzyy,X
   CMP #$4A
   BCC l3856
   CMP #$E6
@@ -3462,34 +4110,34 @@ ORG &30A0
   BEQ l38ED
   AND #$01
   BEQ l38E3
-  LDA v035C,X
+  LDA dizzyy,X
   SEC
   SBC v03B6,X
-  STA v035C,X
+  STA dizzyy,X
   JMP l38ED
 .l38E3
-  LDA v035C,X
+  LDA dizzyy,X
   CLC
   ADC v03B6,X
-  STA v035C,X
+  STA dizzyy,X
 .l38ED
   LDA v0340
   AND #$0C
   BEQ l390F
   AND #$04
   BEQ l3905
-  LDA v0352,X
+  LDA dizzyx,X
   SEC
   SBC v03AC,X
-  STA v0352,X
+  STA dizzyx,X
   JMP l390F
 .l3905
-  LDA v0352,X
+  LDA dizzyx,X
   CLC
   ADC v03AC,X
-  STA v0352,X
+  STA dizzyx,X
 .l390F
-  LDA v0352,X
+  LDA dizzyx,X
   CMP #$E6
   BCC l3920
   CMP #$F3
@@ -3498,7 +4146,7 @@ ORG &30A0
   JSR l3679
   JMP l3927
 .l3920
-  LDA v035C,X
+  LDA dizzyy,X
   CMP #$08
   BCC l391A
 .l3927
@@ -3509,22 +4157,22 @@ ORG &30A0
   RTS
 .l392F
   LDA objs_xlocs,X
-  STA v033A
+  STA frmx
   LDA objs_ylocs,X
-  STA v033B
+  STA frmy
   LDA #$00
-  STA v033C
+  STA frmattr
   STA v033F
   LDA objs_frames,X
   JSR l3132
   RTS
 .l394A
   LDA objs_xlocs,X
-  STA v033A
+  STA frmx
   LDA objs_ylocs,X
-  STA v033B
+  STA frmy
   LDA objs_attrs,X
-  STA v033C
+  STA frmattr
   LDA #$00
   STA v033F
   LDA objs_frames,X
@@ -3547,11 +4195,11 @@ ORG &30A0
   CMP roomno
   BNE l396B
   LDA objs_xlocs,X
-  STA v033A
+  STA frmx
   LDA objs_ylocs,X
-  STA v033B
+  STA frmy
   LDA objs_attrs,X
-  STA v033C
+  STA frmattr
   LDY #$00
   CPX #$3F
   BCS l39B2
@@ -3560,10 +4208,10 @@ ORG &30A0
   ORA #$08
   TAY
   JSR l39C3
-  LDA v033C
+  LDA frmattr
   AND #$A7
   ORA v00FF
-  STA v033C
+  STA frmattr
 .l39B2
   STY v033F
   LDA #$58
@@ -3608,16 +4256,16 @@ ORG &30A0
   STA v03D8
   RTS
 .l3A10
-  STA v033A
-  LDA v0352
+  STA frmx
+  LDA dizzyx
   ASL  A
   CLC
   ADC #$1C
-  STA v0352
-  LDA v035C
+  STA dizzyx
+  LDA dizzyy
   CLC
   ADC #$5A
-  STA v035C
+  STA dizzyy
   LDX #$02
 .l3A28
   STX v034E
@@ -3633,25 +4281,25 @@ ORG &30A0
   INX
   CPX #$06
   BCC l3A28
-  LDA v0352
+  LDA dizzyx
   SEC
-  SBC v033A
+  SBC frmx
   STA v0354
   STA v0355
-  LDA v0352
+  LDA dizzyx
   CLC
-  ADC v033A
+  ADC frmx
   STA v0356
   STA v0357
-  LSR v033A
-  LDA v035C
+  LSR frmx
+  LDA dizzyy
   SEC
-  SBC v033A
+  SBC frmx
   STA v035E
   STA v0360
-  LDA v035C
+  LDA dizzyy
   CLC
-  ADC v033A
+  ADC frmx
   STA v035F
   STA v0361
   RTS
@@ -3662,7 +4310,7 @@ ORG &30A0
   LDX #$02
 .l3A86
   STX v034E
-  LDA v0352,X
+  LDA dizzyx,X
   BEQ l3A9A
   LDA v0366,X
   JSR l38A8
@@ -3679,9 +4327,9 @@ ORG &30A0
   RTS
 .l3AAA
   LDA v03D6
-  STA v0352
+  STA dizzyx
   LDA v03D7
-  STA v035C
+  STA dizzyy
   LDA #$3C
   JSR l3A10
   LDA #$37
@@ -3719,9 +4367,9 @@ ORG &30A0
   CPX #$08
   BCC l3B00
   LDA v03D6
-  STA v0352
+  STA dizzyx
   LDA v03D7
-  STA v035C
+  STA dizzyy
   LDA SPR_COLLISION
   LDA SPR_COLLISION2
   LDA SPR_COLLISION
@@ -3802,14 +4450,14 @@ ORG &30A0
   ASL  A
   CLC
   ADC #$20
-  STA v033A
+  STA frmx
   LDA #$08
-  STA v033B
+  STA frmy
   LDA #$00
   STA v033F
   STA v03E3
   LDA #$06
-  STA v033C
+  STA frmattr
   LDA v20D8,X
   CLC
   ADC #$30
@@ -3851,7 +4499,7 @@ ORG &30A0
   LDA #$00
 .l3C15
   DEX
-  STA v0352,X
+  STA dizzyx,X
   STA v0384,X
   STA v038E,X
   STA v1644,X
@@ -3861,10 +4509,10 @@ ORG &30A0
   BNE l3C15
   LDA v0342
   STA v03D7
-  STA v035C
+  STA dizzyy
   LDA v0340
   STA v03D6
-  STA v0352
+  STA dizzyx
 .v3C3E
   RTS
 
@@ -3874,7 +4522,7 @@ ORG &3C52
 .l3C52
   LDA v03DA
   BEQ l3CAD
-  LDA v035C
+  LDA dizzyy
   CMP #$08
   BCC l3CAD
   JSR l3875
@@ -3895,12 +4543,12 @@ ORG &3C52
   STY v00FF
   LDX v00FF
   STA v1B00,X
-  LDA v035C
+  LDA dizzyy
   CLC
   ADC #$38
   AND #$F8
   STA v1B72,X
-  LDA v0352
+  LDA dizzyx
   LSR  A
   CLC
   ADC #$03
@@ -3993,7 +4641,7 @@ ORG &3C52
   ASL  A
   TAX
   LDA #$04
-  STA v033A
+  STA frmx
 .l3D3A
   LDA v3C42,X
   STA v00FF
@@ -4002,7 +4650,7 @@ ORG &3C52
   STA ($FB),Y
   INY
   INX
-  DEC v033A
+  DEC frmx
   BNE l3D3A
   LDX v0345
   RTS
@@ -4506,7 +5154,7 @@ ORG &CB00
 .lCB10
   CMP #$33
   BNE lCB1C
-  LDA v0352
+  LDA dizzyx
   CMP #$32
   BCC lCB1C
   INX
@@ -4620,15 +5268,15 @@ ORG &CB00
   LDY vCFFC
   STY vCFFA
   LDA vCFFF
-  STA v033A
+  STA frmx
   LDA vCFFE
-  STA v033B
+  STA frmy
   CLC
   ADC vCFFD
   ADC #$01
   STA v03E1
   LDA #$07
-  STA v033C
+  STA frmattr
   LDA vCFF9
   AND #$01
   CLC
@@ -4638,15 +5286,15 @@ ORG &CB00
 .lCC38
   INC vCFFF
   LDA vCFFF
-  STA v033A
+  STA frmx
   LDA vCFFE
-  STA v033B
+  STA frmy
   CLC
   ADC vCFFD
   ADC #$01
   STA v03E1
   LDA #$17
-  STA v033C
+  STA frmattr
   LDY vCFFA
   LDA ($B2),Y
   JSR l3132
@@ -4661,15 +5309,15 @@ ORG &CB00
   ADC v092E,X
   CLC
   ADC #$02
-  STA v033A
+  STA frmx
   LDA vCFFE
-  STA v033B
+  STA frmy
   CLC
   ADC vCFFD
   ADC #$01
   STA v03E1
   LDA #$07
-  STA v033C
+  STA frmattr
   LDA vCFF9
   AND #$01
   CLC
@@ -4678,14 +5326,14 @@ ORG &CB00
   RTS
 .lCC9A
   LDA vCFFF
-  STA v033A
+  STA frmx
   LDA vCFFE
   CLC
   ADC vCFFD
-  STA v033B
+  STA frmy
   LDA #$07
   AND v03DB
-  STA v033C
+  STA frmattr
   LDA #$00
   STA v033F
   LDA #$6A
@@ -4696,14 +5344,14 @@ ORG &CB00
   INC vCFFF
   INC vCFFF
   LDA vCFFF
-  STA v033A
+  STA frmx
   LDA vCFFE
   CLC
   ADC vCFFD
-  STA v033B
+  STA frmy
   LDA #$07
   AND v03DB
-  STA v033C
+  STA frmattr
   LDA #$6C
   JSR l3132
   INC vCFFA
@@ -4715,14 +5363,14 @@ ORG &CB00
   INC vCFFF
   INC vCFFF
   LDA vCFFF
-  STA v033A
+  STA frmx
   LDA vCFFE
   CLC
   ADC vCFFD
-  STA v033B
+  STA frmy
   LDA #$87
   AND v03DB
-  STA v033C
+  STA frmattr
   LDA #$6B
   JSR l3132
   RTS
@@ -4810,14 +5458,14 @@ ORG &CB00
   ASL  A
   CLC
   ADC #$20
-  STA v033A
+  STA frmx
   LDA v03E0
   ASL  A
   ASL  A
   ASL  A
-  STA v033B
+  STA frmy
   LDA #$0F
-  STA v033C
+  STA frmattr
   LDA #$00
   STA v033F
   LDA v03C4
@@ -4847,12 +5495,12 @@ ORG &CB00
   LDY #$04
 .lCDEC
   TYA
-  STA v033A
-  INC v033A
+  STA frmx
+  INC frmx
   LDA v0342
-  STA v033B
+  STA frmy
   LDA #$07
-  STA v033C
+  STA frmattr
   STY v0343
   LDA ($B6),Y
   STA v00FB
@@ -4885,7 +5533,7 @@ ORG &CB00
   STA v03DB
 .lCE3F
   LDX #$02
-  STX v033B
+  STX frmy
   LDA #$FF
   STA v03D5
 .lCE49
@@ -4936,8 +5584,8 @@ ORG &CB00
   INX
   CPX #$1A
   BCC lCE7C
-  INC v033B
-  LDX v033B
+  INC frmy
+  LDX frmy
   CPX #$04
   BCC lCE49
   LDA #$00
