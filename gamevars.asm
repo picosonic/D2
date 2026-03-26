@@ -17,6 +17,10 @@ ORG &035C
 .dizzyy
   EQUB &00
 
+ORG &03C0
+.player_input
+  EQUB &00
+
 ORG &03E5
 .roomno
   EQUB &00

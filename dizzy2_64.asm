@@ -124,7 +124,6 @@ v0398 = &0398
 v03A2 = &03A2
 v03AC = &03AC
 v03B6 = &03B6
-v03C0 = &03C0
 v03C1 = &03C1
 v03C2 = &03C2
 v03C3 = &03C3
@@ -469,10 +468,10 @@ ORG &20E7
   JSR lCB1C
 .l2148
   JSR getplayerinput
-  LDA v03C0
+  LDA player_input
   AND #$10
   BNE l2159
-  JSR l3BDE
+  JSR mergekeypress
   CPY #$3C
   BNE l2148
 .l2159
@@ -1050,7 +1049,7 @@ ORG &20E7
   BRK
 
 .l24CD
-  JSR l3BDE
+  JSR mergekeypress
 
   CPY #$3E
   BNE l24D7
@@ -1062,13 +1061,13 @@ ORG &20E7
   BNE l24EC
 
 .l24DB
-  JSR l3BDE
+  JSR mergekeypress
 
   CPY #$40
   BNE l24DB
 
 .l24E2
-  JSR l3BDE
+  JSR mergekeypress
 
   CPY #$40
   BEQ l24E2
@@ -1094,7 +1093,7 @@ ORG &20E7
   JSR l30F5
 
 .l2503
-  JSR l3BDE
+  JSR mergekeypress
  
   CPY #$24
   BEQ l2503
@@ -1171,7 +1170,7 @@ ORG &20E7
   AND #$40
   BEQ l2569
 
-  LDA v03C0
+  LDA player_input
   AND #$0D
   BNE l2594
 
@@ -1196,18 +1195,18 @@ ORG &20E7
   JMP l2525
 
 .l25AF
-  LDA #$00:STA v03C0
+  LDA #$00:STA player_input
 
 .l25B4
   LDA v03C8
   CMP #$02
   BCS l25E1
 
-  LDA v03C0
+  LDA player_input
   AND #$04
   BNE l25CC
 
-  LDA v03C0
+  LDA player_input
   AND #$08
   BNE l25DC
 
@@ -1240,14 +1239,14 @@ ORG &20E7
   CMP #$02
   BEQ l2619
 
-  LDA v03C0
+  LDA player_input
   AND #$01
   BNE l25F9
 
   JMP l25E8
 
 .l25F9
-  LDA v03C0
+  LDA player_input
   AND #$0F
   CMP #$01
   BNE l260A
@@ -1766,13 +1765,15 @@ ORG &20E7
 
 .l2903
 {
-  LDA v03C0
-  AND #$EF
-  STA v03C0
+  LDA player_input
+  AND #&EF ; Mask out "FIRE" press
+  STA player_input
+}
 
-.^l290B
-  LDA v03C0
-  AND #$10
+.l290B
+{
+  LDA player_input
+  AND #JOY_FIRE ; Mask only "FIRE" press
   BNE checkpickup
 
   JMP l2981
@@ -1893,7 +1894,7 @@ ORG &20E7
   CMP #$14
   BCC l29A7
 
-  LDA v03C0
+  LDA player_input
   AND #$10
   BNE l29F1
 
@@ -4596,126 +4597,146 @@ ORG &30A0
   LDA CIA1_PRA ; Read Joystick 2 state
   EOR #$FF ; Make bitfield active high
   AND #$1F ; Mask to just joystick input bits
-  STA v03C0
+  STA player_input
  
   ; Merge in keypresses from keyboard to bitfield (Z, X, Shift, Return)
-  JSR l3BDE
+  JSR mergekeypress
 
   ; Check if button was pressed before and now
   LDA v03D8
   AND #$10 ; Mask off to just button
-  AND v03C0
-  BEQ l3A09
+  AND player_input
+  BEQ cache_input
 
-  LDA v03C0
+  LDA player_input
   AND #$0F
-  STA v03C0
+  STA player_input
 
   RTS
 
-.l3A09
-  LDA v03C0:STA v03D8
+.cache_input
+  LDA player_input:STA v03D8
 
   RTS
 }
 
 .l3A10
   STA frmx
+
   LDA dizzyx
   ASL  A
   CLC
   ADC #$1C
   STA dizzyx
+
   LDA dizzyy
   CLC
   ADC #$5A
   STA dizzyy
+
   LDX #$02
+
 .l3A28
   STX v034E
+
   JSR l3679
-  LDA #$01
-  STA SPR_0_COLOUR,X
-  LDA #$33
-  STA v5FF8,X
-  LDA #$04
-  STA v03AC,X
-  LDA #$02
-  STA v03B6,X
+
+  LDA #$01:STA SPR_0_COLOUR,X
+  LDA #$33:STA v5FF8,X
+  LDA #$04:STA v03AC,X
+  LDA #$02:STA v03B6,X
+
   INX
   CPX #$06
   BCC l3A28
+
   LDA dizzyx
   SEC
   SBC frmx
   STA v0354
   STA v0355
+
   LDA dizzyx
   CLC
   ADC frmx
   STA v0356
   STA v0357
+
   LSR frmx
+
   LDA dizzyy
   SEC
   SBC frmx
   STA v035E
   STA v0360
+
   LDA dizzyy
   CLC
   ADC frmx
   STA v035F
   STA v0361
+
   RTS
+
 .l3A7F
-  LDX #$05
-  STX v0346
+  LDX #$05:STX v0346
+
 .l3A84
   LDX #$02
+
 .l3A86
   STX v034E
+
   LDA dizzyx,X
   BEQ l3A9A
+
   LDA v0366,X
   JSR l38A8
   JSR l37F9
+
   LDX v034E
+
 .l3A9A
   INX
   CPX #$06
   BCC l3A86
+
   LDA #$08
   JSR delay
+
   DEC v0346
   BNE l3A84
+
   RTS
+
 .l3AAA
-  LDA v03D6
-  STA dizzyx
-  LDA v03D7
-  STA dizzyy
+  LDA v03D6:STA dizzyx
+  LDA v03D7:STA dizzyy
+
   LDA #$3C
   JSR l3A10
-  LDA #$37
-  STA v5FF8
-  LDX #$00
-  STX v034E
+
+  LDA #$37:STA v5FF8
+  LDX #$00:STX v034E
+
   JSR l37F9
-  LDA #$0A
-  STA v0368
-  LDA #$09
-  STA v0369
-  LDA #$06
-  STA v036A
-  LDA #$05
-  STA v036B
+
+  LDA #$0A:STA v0368
+  LDA #$09:STA v0369
+  LDA #$06:STA v036A
+  LDA #$05:STA v036B
+
   LDY #$03
+
 .l3ADE
   JSR l3A7F
+
   DEC v5FF8
   DEY
   BNE l3ADE
+
   JSR l3C05
+
   LDA #$00
   STA v03C8
   STA v03C7
@@ -4723,145 +4744,199 @@ ORG &30A0
   STA v03C2
   STA v5FF8
   STA v03C1
+
   LDX #$01
+
 .l3B00
   STX v034E
+
   JSR l3679
+
   INX
   CPX #$08
   BCC l3B00
-  LDA v03D6
-  STA dizzyx
-  LDA v03D7
-  STA dizzyy
+
+  LDA v03D6:STA dizzyx
+  LDA v03D7:STA dizzyy
+
   LDA SPR_COLLISION
   LDA SPR_COLLISION2
   LDA SPR_COLLISION
   LDA SPR_COLLISION2
+
   RTS
+
 .l3B24
   NOP
   LDA #$00
   JSR l3A10
-  LDA #$34
-  STA v5FF8
-  LDX #$00
-  STX v034E
+
+  LDA #$34:STA v5FF8
+  LDX #$00:STX v034E
   JSR l37F9
+
   LDA #$04
   JSR l2EEF
-  LDA #$05
-  STA v0368
-  LDA #$06
-  STA v0369
-  LDA #$09
-  STA v036A
-  LDA #$0A
-  STA v036B
+
+  LDA #$05:STA v0368
+  LDA #$06:STA v0369
+  LDA #$09:STA v036A
+  LDA #$0A:STA v036B
+
   LDY #$0A
+
 .l3B52
   JSR l3A7F
+
   LDA v5FF8
   CMP #$37
   BCC l3B64
-  LDA #$45
-  STA v5FF8
+
+  LDA #$45:STA v5FF8
+
   JMP l3B67
+
 .l3B64
   INC v5FF8
+
 .l3B67
   DEY
   BNE l3B52
+
   LDX #$00
+
 .l3B6C
   STX v034E
+
   JSR l3679
+
   INX
   CPX #$08
   BCC l3B6C
+
   LDA #$FF
   JSR delay
+
   LDA #$C8
   JSR delay
+
   JMP l2105
+
 .l3B84
   STA v0340
   STX v0346
+
   CMP #$0A
   BCC l3B94
+
   INC v20E0
+
   JMP l3B9B
+
 .l3B94
-  CLC
-  ADC v20E1
-  STA v20E1
+  CLC:ADC v20E1:STA v20E1
+
 .l3B9B
   LDX #$03
+
 .l3B9D
   LDA v20DE,X
   CMP #$0A
   BCC l3BAD
+
   SEC
   SBC #$0A
   STA v20DE,X
+
   INC v20DD,X
+
 .l3BAD
   DEX
   BNE l3B9D
+
   LDX #$06
+
 .l3BB2
   TXA
   ASL  A
   CLC
   ADC #$20
   STA frmx
-  LDA #$08
-  STA frmy
+
+  LDA #$08:STA frmy
+
   LDA #$00
   STA v033F
   STA v03E3
-  LDA #$06
-  STA frmattr
+
+  LDA #$06:STA frmattr
+
   LDA v20D8,X
   CLC
   ADC #$30
   JSR l3132
+
   INX
   CPX #$0C
   BCC l3BB2
+
   LDX v0346
+
   RTS
-.l3BDE
+
+.mergekeypress
+{
+  ; Check last pressed key
   LDY KEY_PRESSED
   LDX KEY_SHIFT
-  LDA v03C0
-  CPY #$0C
-  BNE l3BEF
-  ORA #$04
-  JMP l3BF5
-.l3BEF
-  CPY #$17
-  BNE l3BF5
-  ORA #$08
-.l3BF5
-  CPX #$00
-  BEQ l3BFB
-  ORA #$01
-.l3BFB
-  CPY #$01
-  BNE l3C01
-  ORA #$10
-.l3C01
-  STA v03C0
+
+  ; Load current bitfield
+  LDA player_input
+
+  CPY #KEY_Z
+  BNE checkx
+
+  ; Simulate joystick left
+  ORA #JOY_LEFT
+  JMP checkshift
+
+.checkx
+  CPY #KEY_X
+  BNE checkshift
+
+  ; Simulate joystick right
+  ORA #JOY_RIGHT
+
+.checkshift
+  CPX #0
+  BEQ checkreturn
+
+  ; Simulate joystick up
+  ORA #JOY_UP
+
+.checkreturn
+  CPY #KEY_RETURN
+  BNE done
+
+  ; Simulate joystick fire
+  ORA #JOY_FIRE
+
+.done
+  STA player_input
+
   RTS
+}
+
 .l3C05
-  LDA v03D6
-  STA v0340
-  LDA v03D7
-  STA v0342
+{
+  LDA v03D6:STA v0340
+  LDA v03D7:STA v0342
+
   LDX #$32
   LDA #$00
-.l3C15
+
+.loop
+  {
   DEX
   STA dizzyx,X
   STA v0384,X
@@ -4869,16 +4944,22 @@ ORG &30A0
   STA v1644,X
   STA v1662,X
   STA v16AD,X
+
   CPX #$00
-  BNE l3C15
+  BNE loop
+  }
+
   LDA v0342
   STA v03D7
   STA dizzyy
+
   LDA v0340
   STA v03D6
   STA dizzyx
-.v3C3E
+
+.^v3C3E
   RTS
+}
 
 ORG &3C42
 .v3C42
