@@ -1916,8 +1916,7 @@ ORG &20E7
   LDA v033F:ORA v03E7:STA v03E7
 
   LDA frmy
-  CLC
-  ADC #$08
+  CLC:ADC #$08
   STA frmy
 
   CMP #$14
@@ -2113,8 +2112,7 @@ ORG &20E7
   BCS l2B1E
 
   LSR  A
-  CLC
-  ADC #$09
+  CLC:ADC #$09
   TAX
 
   JSR lCB1C
@@ -2160,8 +2158,7 @@ ORG &20E7
   BCS l2B8C
 
   LSR  A
-  CLC
-  ADC #$0C
+  CLC:ADC #$0C
   TAX
 
   JSR lCB1C
@@ -2341,14 +2338,12 @@ ORG &20E7
   LDA roomno:STA objs_rooms,X
 
   LDA dizzyx
-  CLC
-  ADC #$21
+  CLC:ADC #$21
   AND #$FE
   STA objs_xlocs,X
 
   LDA dizzyy
-  CLC
-  ADC #$2D
+  CLC:ADC #$2D
   STA objs_ylocs,X
 
 .l2C85
@@ -2571,8 +2566,7 @@ ORG &20E7
 .l2DE1
   AND #$02
   LSR  A
-  CLC
-  ADC #$B8
+  CLC:ADC #$B8
   STA v57C7 ; bubble frame
 
   LDX #$51
@@ -2799,8 +2793,7 @@ ORG &20E7
   LDA #$0F:STA vCFF8
 
   LDA v20E5
-  CLC
-  ADC #$01
+  CLC:ADC #$01
   CMP #$0A
   BCC l2F5E
 
@@ -2852,8 +2845,7 @@ ORG &20E7
   LDA #$06:STA frmattr
 
   LDA v20E4
-  CLC
-  ADC #$30
+  CLC:ADC #$30
   JSR l3132
 
   LDA #$4E:STA frmx
@@ -2863,8 +2855,7 @@ ORG &20E7
   LDA #$06:STA frmattr
 
   LDA v20E5
-  CLC
-  ADC #$30
+  CLC:ADC #$30
 
   JSR l3132
 
@@ -2983,21 +2974,26 @@ cheatcodelen = * - eclipse
 .l303C
   LDA vCFF8
   BEQ l3045
+
   DEC vCFF8
+
   RTS
+
 .l3045
   LDA v03C8
   CMP #$01
   BNE l305F
+
   LDA v03C4
   AND #$01
   BNE l305F
+
   LDA v03C4
   AND #$02
   LSR  A
-  CLC
-  LDA #$01
+  CLC:LDA #$01
   JSR l392B
+
 .v305F
 .l305F
   RTS
@@ -3170,15 +3166,13 @@ ORG &30A0
 
   LDA frmy
   AND #$07
-  CLC
-  ADC v00FB
+  CLC:ADC v00FB
   BCC l3192
 
   INC v00FC
 
 .l3192
-  SEC
-  SBC #$60
+  SEC:SBC #$60
   BCS l3199
 
   DEC v00FC
@@ -3196,8 +3190,7 @@ ORG &30A0
   INC v00FC
 
 .l31A7
-  CLC
-  ADC v00FB
+  CLC:ADC v00FB
   BCC l31AE
 
   INC v00FC
@@ -3212,13 +3205,11 @@ ORG &30A0
   TAX
 
   LDA v2028,X
-  SEC
-  SBC v03DC
+  SEC:SBC v03DC
   STA v00FE
 
   LDA v200E,X
-  SEC
-  SBC #$0C
+  SEC:SBC #$0C
   BCS l31CA
 
   DEC v00FE
@@ -3228,8 +3219,7 @@ ORG &30A0
 
   LDA frmx
   LSR  A
-  CLC
-  ADC v00FD
+  CLC:ADC v00FD
   BCC l31D7
 
   INC v00FE
@@ -3242,15 +3232,13 @@ ORG &30A0
   BNE l31E8
 
   LDA v00FE
-  SEC
-  SBC #$04
+  SEC:SBC #$04
 
   JMP l31ED
 
 .l31E8
   LDA v00FE
-  CLC
-  ADC #$54
+  CLC:ADC #$54
 
 .l31ED
   STA v0036
@@ -3265,8 +3253,7 @@ ORG &30A0
   STA v033E
 
   LDA v00B4
-  CLC
-  ADC #$02
+  CLC:ADC #$02
   BCC l3208
 
   INC v00B5
@@ -3293,8 +3280,7 @@ ORG &30A0
   STA v00FF
 
   LDA #$22
-  SEC
-  SBC v00FF
+  SEC:SBC v00FF
   LSR  A
   STA v034A
 
@@ -3302,8 +3288,7 @@ ORG &30A0
   LDA frmx:AND #$FE:STA v00FF
 
   LDA #$5E
-  SEC
-  SBC v00FF
+  SEC:SBC v00FF
   LSR  A
   CMP v034B
   BCS l3249
@@ -3410,8 +3395,7 @@ ORG &30A0
   BCS l32C0
 
   LDA v00B4
-  CLC
-  ADC v033D
+  CLC:ADC v033D
   BCC l32ED
 
   INC v00B5
@@ -3439,8 +3423,7 @@ ORG &30A0
   STA v0349
 
   LDA v00FB
-  CLC
-  ADC #$39
+  CLC:ADC #$39
   BCC l3313
 
   INC v00FC
@@ -3449,8 +3432,7 @@ ORG &30A0
   STA v00FB
 
   LDA v00FD
-  CLC
-  ADC #$28
+  CLC:ADC #$28
   BCC l3320
 
   INC v00FE
@@ -3495,8 +3477,7 @@ ORG &30A0
 
   LDA frmx
   LSR  A
-  CLC
-  ADC v033D
+  CLC:ADC v033D
   CMP #$2F
   BCS done
 
@@ -3615,8 +3596,7 @@ ORG &30A0
 
   LDA #$80:STA v00FC
   LDA v0340
-  CLC
-  ADC v0340
+  CLC:ADC v0340
   BCC l3420
 
   INC v00FC
@@ -3634,14 +3614,12 @@ ORG &30A0
 
   LDY #$01
   LDA ($FB),Y
-  CLC
-  ADC v00B1
+  CLC:ADC v00B1
   STA v00B1
 
   DEY
   LDA ($FB),Y
-  CLC
-  ADC v00B0
+  CLC:ADC v00B0
   BCC l3441
 
   INC v00B1
@@ -3651,14 +3629,12 @@ ORG &30A0
 
   LDY #$03
   LDA ($FB),Y
-  CLC
-  ADC v00B3
+  CLC:ADC v00B3
   STA v00B3
 
   DEY
   LDA ($FB),Y
-  CLC
-  ADC v00B2
+  CLC:ADC v00B2
   BCC l3456
 
   INC v00B3
@@ -3698,8 +3674,7 @@ ORG &30A0
   JSR l3132
 
   LDA v00B0
-  CLC
-  ADC #$04
+  CLC:ADC #$04
   BCC l3493
 
   INC v00B1
@@ -3803,8 +3778,7 @@ ORG &30A0
   LDA v20B8,X:STA v00FC
 
   LDA v209F,X
-  CLC
-  ADC #$28
+  CLC:ADC #$28
   BCC l353F
 
   INC v00FC
@@ -3815,8 +3789,7 @@ ORG &30A0
   LDA v2028,X:STA v00FE
 
   LDA v200E,X
-  CLC
-  ADC #$05
+  CLC:ADC #$05
   BCC l3550
 
   INC v00FE
@@ -3827,12 +3800,10 @@ ORG &30A0
   STA v00B2
 
   LDA v00FE
-  SEC
-  SBC #$04
+  SEC:SBC #$04
   STA v00B1
 
-  SEC
-  SBC #$54
+  SEC:SBC #$54
   STA v00B3
 
   LDY #$F0
@@ -3882,12 +3853,10 @@ ORG &30A0
   LDA v2028,X
   STA v00FC
 
-  SEC
-  SBC #$04
+  SEC:SBC #$04
   STA v0036
 
-  SEC
-  SBC #$54
+  SEC:SBC #$54
   STA v00FE
 
   LDA v200E,X
@@ -3936,8 +3905,7 @@ ORG &30A0
   LDA v2028,X:STA v00FE
 
   LDA v200E,X
-  CLC
-  ADC #$04
+  CLC:ADC #$04
   BCC l35E9
 
   INC v00FE
@@ -3953,8 +3921,7 @@ ORG &30A0
   LDA v20B8,X:STA v00FE
 
   LDA v209F,X
-  CLC
-  ADC #$20
+  CLC:ADC #$20
   BCC l3605
 
   INC v00FE
@@ -3964,13 +3931,11 @@ ORG &30A0
 
   LDX frmx
   LDA v2077,X
-  CLC
-  ADC v033D
+  CLC:ADC v033D
   STA v00FF
 
   LDA v033E
-  CLC
-  ADC #$02
+  CLC:ADC #$02
   STA v033F
 
   LDX #$02
@@ -4019,8 +3984,7 @@ ORG &30A0
   CMP #$64
   BCC l3675
 
-  SEC
-  SBC #$64
+  SEC:SBC #$64
   STA v037A,X
 
   LDX v0345
@@ -4066,8 +4030,7 @@ ORG &30A0
 
   JSR l3875
 
-  CLC
-  ADC v033E
+  CLC:ADC v033E
   STA v033E
 
   TAY
@@ -4190,17 +4153,14 @@ ORG &30A0
 
 .l375F
   LDA dizzyx
-  CLC
-  ADC frmx
+  CLC:ADC frmx
   STA frmattr
 
   DEC frmattr
 
   LDA dizzyy
-  CLC
-  ADC frmy
-  CLC
-  ADC #$28
+  CLC:ADC frmy
+  CLC:ADC #$28
   STA v033D
 
   DEC v033D
@@ -4216,22 +4176,18 @@ ORG &30A0
   LDA v200E,X:STA v00FD
 
   LDA v2028,X
-  SEC
-  SBC #$04
+  SEC:SBC #$04
   STA v00FE
 
   LDA v033D
   AND #$07
-  CLC
-  ADC v00FB
-  CLC
-  ADC #$20
+  CLC:ADC v00FB
+  CLC:ADC #$20
   STA v00FB
 
   LDA frmattr
   LSR  A
-  CLC
-  ADC #$04
+  CLC:ADC #$04
   TAY
 
   LDA ($FD),Y:STA v033F
@@ -4394,8 +4350,7 @@ ORG &30A0
 
 .l3899
   LDA v00FB
-  CLC
-  ADC #$19
+  CLC:ADC #$19
   BCC l38A2
 
   INC v00FC
@@ -4437,16 +4392,14 @@ ORG &30A0
   BEQ l38E3
 
   LDA dizzyy,X
-  SEC
-  SBC v03B6,X
+  SEC:SBC v03B6,X
   STA dizzyy,X
 
   JMP l38ED
 
 .l38E3
   LDA dizzyy,X
-  CLC
-  ADC v03B6,X
+  CLC:ADC v03B6,X
   STA dizzyy,X
 
 .l38ED
@@ -4458,16 +4411,14 @@ ORG &30A0
   BEQ l3905
 
   LDA dizzyx,X
-  SEC
-  SBC v03AC,X
+  SEC:SBC v03AC,X
   STA dizzyx,X
 
   JMP l390F
 
 .l3905
   LDA dizzyx,X
-  CLC
-  ADC v03AC,X
+  CLC:ADC v03AC,X
   STA dizzyx,X
 
 .l390F
@@ -4627,13 +4578,11 @@ ORG &30A0
 
   LDA dizzyx
   ASL  A
-  CLC
-  ADC #$1C
+  CLC:ADC #$1C
   STA dizzyx
 
   LDA dizzyy
-  CLC
-  ADC #$5A
+  CLC:ADC #$5A
   STA dizzyy
 
   LDX #$02
@@ -4653,28 +4602,24 @@ ORG &30A0
   BCC l3A28
 
   LDA dizzyx
-  SEC
-  SBC frmx
+  SEC:SBC frmx
   STA v0354
   STA v0355
 
   LDA dizzyx
-  CLC
-  ADC frmx
+  CLC:ADC frmx
   STA v0356
   STA v0357
 
   LSR frmx
 
   LDA dizzyy
-  SEC
-  SBC frmx
+  SEC:SBC frmx
   STA v035E
   STA v0360
 
   LDA dizzyy
-  CLC
-  ADC frmx
+  CLC:ADC frmx
   STA v035F
   STA v0361
 
@@ -4846,8 +4791,7 @@ ORG &30A0
   CMP #$0A
   BCC l3BAD
 
-  SEC
-  SBC #$0A
+  SEC:SBC #$0A
   STA v20DE,X
 
   INC v20DD,X
@@ -4861,8 +4805,7 @@ ORG &30A0
 .l3BB2
   TXA
   ASL  A
-  CLC
-  ADC #$20
+  CLC:ADC #$20
   STA frmx
 
   LDA #$08:STA frmy
@@ -4874,8 +4817,7 @@ ORG &30A0
   LDA #$06:STA frmattr
 
   LDA v20D8,X
-  CLC
-  ADC #$30
+  CLC:ADC #$30
   JSR l3132
 
   INX
@@ -5001,15 +4943,13 @@ ORG &3C52
   STA v1B00,X
 
   LDA dizzyy
-  CLC
-  ADC #$38
+  CLC:ADC #$38
   AND #$F8
   STA v1B72,X
 
   LDA dizzyx
   LSR  A
-  CLC
-  ADC #$03
+  CLC:ADC #$03
   STA v1B39,X
 
   JSR l3875
@@ -5021,8 +4961,7 @@ ORG &3C52
   LDA #$02
 
 .l3CA3
-  CLC
-  ADC v1B39,X
+  CLC:ADC v1B39,X
   STA v1B39,X
 
   JSR l3D02
@@ -5045,8 +4984,7 @@ ORG &3C52
   STA v00FF
 
   LDA v1B72,X
-  SEC
-  SBC v00FF
+  SEC:SBC v00FF
   STA v1B72,X
 
   LDA v1B72,X
@@ -5060,8 +4998,7 @@ ORG &3C52
   LDA v200E,Y:STA v00FB
 
   LDA v2028,Y
-  SEC
-  SBC #$04
+  SEC:SBC #$04
   STA v00FC
 
   LDA v1B39,X
@@ -5846,8 +5783,7 @@ ORG &CB00
   INC vCFF9
 
   LDA vCFFE
-  CLC
-  ADC #$08
+  CLC:ADC #$08
   STA vCFFE
 
 .lCB93
@@ -5899,8 +5835,7 @@ ORG &CB00
   BEQ lCBFD
 
   LDA vCFFE
-  CLC
-  ADC #$08
+  CLC:ADC #$08
   STA vCFFE
 
   JMP lCBD8
@@ -5915,8 +5850,7 @@ ORG &CB00
   LDY vCFFC:STY vCFFA
   LDA vCFFF:STA frmx
   LDA vCFFE:STA frmy
-  CLC
-  ADC vCFFD
+  CLC:ADC vCFFD
   ADC #$01
   STA v03E1
 
@@ -5924,8 +5858,7 @@ ORG &CB00
 
   LDA vCFF9
   AND #$01
-  CLC
-  ADC #$6D
+  CLC:ADC #$6D
 
   JSR l3132
 
@@ -5937,8 +5870,7 @@ ORG &CB00
   LDA vCFFF:STA frmx
   LDA vCFFE:STA frmy
 
-  CLC
-  ADC vCFFD
+  CLC:ADC vCFFD
   ADC #$01
   STA v03E1
 
@@ -5957,16 +5889,13 @@ ORG &CB00
 
   LDX v034E
   LDA v08FC,X
-  CLC
-  ADC v092E,X
-  CLC
-  ADC #$02
+  CLC:ADC v092E,X
+  CLC:ADC #$02
   STA frmx
 
   LDA vCFFE:STA frmy
 
-  CLC
-  ADC vCFFD
+  CLC:ADC vCFFD
   ADC #$01
   STA v03E1
 
@@ -5974,8 +5903,7 @@ ORG &CB00
 
   LDA vCFF9
   AND #$01
-  CLC
-  ADC #$6F
+  CLC:ADC #$6F
   JSR l3132
 
   RTS
@@ -5984,8 +5912,7 @@ ORG &CB00
   LDA vCFFF:STA frmx
 
   LDA vCFFE
-  CLC
-  ADC vCFFD
+  CLC:ADC vCFFD
   STA frmy
 
   LDA #$07
@@ -6006,8 +5933,7 @@ ORG &CB00
   LDA vCFFF:STA frmx
 
   LDA vCFFE
-  CLC
-  ADC vCFFD
+  CLC:ADC vCFFD
   STA frmy
 
   LDA #$07
@@ -6032,8 +5958,7 @@ ORG &CB00
   LDA vCFFF:STA frmx
 
   LDA vCFFE
-  CLC
-  ADC vCFFD
+  CLC:ADC vCFFD
   STA frmy
 
   LDA #$87
@@ -6049,8 +5974,7 @@ ORG &CB00
   LDA #$AB:STA v00FC
 
   LDA v00FB
-  CLC
-  ADC v00FB
+  CLC:ADC v00FB
   BCC lCD26
 
   INC v00FC
@@ -6064,8 +5988,7 @@ ORG &CB00
 
   INY
   LDA ($FB),Y
-  CLC
-  ADC #$AD
+  CLC:ADC #$AD
   STA v00B5
 
   RTS
@@ -6095,8 +6018,7 @@ ORG &CB00
   LDA v200E,X:STA v00FB
 
   LDA v2028,X
-  SEC
-  SBC #$04
+  SEC:SBC #$04
   STA v00FC
 
   LDY #$05
@@ -6130,13 +6052,11 @@ ORG &CB00
 
 .lCD80
   LDA v2028,X
-  SEC
-  SBC #$04
+  SEC:SBC #$04
   STA v00B3
 
   LDA v200E,X
-  CLC
-  ADC #$04
+  CLC:ADC #$04
   BCC lCD92
 
   INC v00B3
@@ -6153,8 +6073,7 @@ ORG &CB00
 
   TYA
   ASL  A
-  CLC
-  ADC #$20
+  CLC:ADC #$20
   STA frmx
 
   LDA v03E0
@@ -6169,8 +6088,7 @@ ORG &CB00
   LDA v03C4
   LSR  A
   AND #$03
-  CLC
-  ADC #$65
+  CLC:ADC #$65
 
   JSR l3132
 
@@ -6252,8 +6170,7 @@ ORG &CB00
   LDA v20B8,X:STA v00FC
 
   LDA v209F,X
-  CLC
-  ADC #$28
+  CLC:ADC #$28
   BCC lCE58
 
   INC v00FC
@@ -6268,8 +6185,7 @@ ORG &CB00
   INC v00FE
 
   LDA v00FB
-  CLC
-  ADC #$40
+  CLC:ADC #$40
   BCC lCE6B
 
   INC v00FE
@@ -6278,8 +6194,7 @@ ORG &CB00
   STA v00FD
 
   LDA v00FB
-  SEC
-  SBC #$01
+  SEC:SBC #$01
   BCS lCE76
 
   DEC v0036
@@ -6328,8 +6243,7 @@ ORG &CB00
   LDA v03DB:STA v033D
 
   LDA #$08
-  SEC
-  SBC v03DB
+  SEC:SBC v03DB
   CMP #$08
   BCC lCEC2
 
@@ -7136,8 +7050,7 @@ ORG &E002
 
 .lE3DA
   LDA vE56B,X
-  SEC
-  SBC vE599
+  SEC:SBC vE599
   STA vE56B,X
   STA vD402,X
 
@@ -7770,8 +7683,7 @@ ORG &EF36
 
 .lEFAA
   LDA vEF0D,X
-  CLC
-  ADC vEEFB,X
+  CLC:ADC vEEFB,X
   STA vEF0D,X
   STA vD400,X
 
@@ -7864,8 +7776,7 @@ ORG &EF36
   BNE lF060
 
   LDA vEEF8,X
-  CLC
-  ADC vEF26,X
+  CLC:ADC vEF26,X
   STA vEEF8,X
   STA vD402,X
 
@@ -7881,8 +7792,7 @@ ORG &EF36
 
 .lF060
   LDA vEEF8,X
-  SEC
-  SBC vEF26,X
+  SEC:SBC vEF26,X
   STA vEEF8,X
   STA vD402,X
 
