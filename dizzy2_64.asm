@@ -414,7 +414,9 @@ ORG &11C0
 
 ORG &2000
 .l2000
+{
   JMP l20E7
+}
 
 .v200E
 .v2028
@@ -442,6 +444,7 @@ ORG &2000
 
 ORG &20E7
 .l20E7
+{
   JSR l3080
 
   LDX #$C9
@@ -461,7 +464,7 @@ ORG &20E7
   JSR l2F91
   JSR l2F91
 
-.l2105
+.^l2105
   LDX #$00:STX GFX_BORDER_COLOUR
 
 .l210A
@@ -601,7 +604,7 @@ ORG &20E7
   LDA #$02
   JSR l2EEF
 
-.l221B
+.^l221B
   LDX #$FF
 
 .l221D
@@ -640,11 +643,13 @@ ORG &20E7
   JSR l363E
 
   JMP l221D
+}
 
 .l2263
   LDX #$01
 
 .l2265
+{
   INX
   CPX #$08
   BCS l22A7
@@ -664,14 +669,16 @@ ORG &20E7
   LDA #$00:STA v1676,X
 
   JMP l228F
+}
 
 .l2287
+{
   JSR l3862
 
   CMP v166C,X
   BCC l2265
 
-.l228F
+.^l228F
   LDA dizzyx,X:STA frmx
   LDA dizzyy,X:STA frmy
   LDA v1680,X:STA frmattr
@@ -679,10 +686,12 @@ ORG &20E7
   JSR l363E
 
   JMP l2265
+}
 
 .l22A7
+{
   LDX #$01
-.l22A9
+.^l22A9
   INX
   CPX #$08
   BCS l22EB
@@ -704,39 +713,48 @@ ORG &20E7
   LDA v038E,X:STA v5FF8,X
 
   JMP l22A9
+}
 
 .l22D4
+{
   INC v5FF8,X
+
   JMP l22A9
+}
 
 .l22DA
+{
   INC v16BC,X
   LDA v16BC,X
   CMP v16B2,X
-  BCC l22EA
+  BCC done
 
   LDA #$00:STA v16BC,X
 
-.l22EA
+.done
   RTS
+}
 
 .l22EB
   LDX #$00
 
 .l22ED
+{
   INX
   CPX #$08
   BCC l22F5
 
   JMP l24CD
+}
 
 .l22F5
+{
   LDA v037A,X
   BEQ l22ED
 
   STX v034E
 
-.l22FD
+.^l22FD
   LDA v0370,X
   BNE l230D
 
@@ -746,8 +764,10 @@ ORG &20E7
   BEQ l22ED
 
   JMP l22FD
+}
 
 .l230D
+{
   DEC v0370,X
   LDA v0366,X
   CMP #$10
@@ -764,8 +784,10 @@ ORG &20E7
   JSR l37F9
 
   JMP l22ED
+}
 
 .l2328
+{
   LDA v037A,X
   TAY
 
@@ -782,8 +804,10 @@ ORG &20E7
   JSR l3679
 
   RTS
+}
 
 .l2345
+{
   CMP #$01
   BNE l2350
 
@@ -792,8 +816,10 @@ ORG &20E7
   STA v0366,X
 
   RTS
+}
 
 .l2350
+{
   CMP #$02
   BNE l235B
 
@@ -802,8 +828,10 @@ ORG &20E7
   STA v0370,X
 
   RTS
+}
 
 .l235B
+{
   CMP #$03
   BNE l2366
 
@@ -812,8 +840,10 @@ ORG &20E7
   STA v03B6,X
 
   RTS
+}
 
 .l2366
+{
   CMP #$04
   BNE l2371
 
@@ -822,8 +852,10 @@ ORG &20E7
   STA v03AC,X
 
   RTS
+}
 
 .l2371
+{
   CMP #$05
   BNE l237F
 
@@ -834,8 +866,10 @@ ORG &20E7
   JSR l37F9
 
   RTS
+}
 
 .l237F
+{
   CMP #$06
   BNE l238D
 
@@ -846,19 +880,23 @@ ORG &20E7
   JSR l37F9
 
   RTS
+}
 
 .l238D
+{
   CMP #$0A
   BNE l2398
 
-.l2391
+.^l2391
   JSR l369F
 
   STA v0384,X
 
   RTS
+}
 
 .l2398
+{
   CMP #$0B
   BNE l23A3
 
@@ -867,8 +905,10 @@ ORG &20E7
   STA v1644,X
 
   RTS
+}
 
 .l23A3
+{
   CMP #$0C
   BNE l23AE
 
@@ -877,8 +917,10 @@ ORG &20E7
   STA v164E,X
 
   RTS
+}
 
 .l23AE
+{
   CMP #$0F
   BNE l23BB
 
@@ -887,8 +929,10 @@ ORG &20E7
   STA v037A,X
 
   JMP l2391
+}
 
 .l23BB
+{
   CMP #$10
   BNE l23C6
 
@@ -896,8 +940,10 @@ ORG &20E7
   JSR l392B
 
   RTS
+}
 
 .l23C6
+{
   CMP #$07
   BNE l23E8
 
@@ -919,8 +965,10 @@ ORG &20E7
   STA v16B2,X
 
   RTS
+}
 
 .l23E8
+{
   CMP #$08
   BNE l2400
 
@@ -932,16 +980,20 @@ ORG &20E7
   AND v1658,X
 
   JMP l23FC
+}
 
 .l23F9
+{
   ORA v1658,X
 
-.l23FC
+.^l23FC
   STA v1658,X
 
   RTS
+}
 
 .l2400
+{
   CMP #$09
   BNE l244F
 
@@ -974,26 +1026,33 @@ ORG &20E7
   JSR l2435
 
   RTS
+}
 
 .l2435
+{
   AND frmx
   BEQ l2444
 
   LDA SPR_0_X,Y
   ORA frmy
 
-.l2440
+.^l2440
   STA SPR_0_X,Y
 
   RTS
+}
 
 .l2444
+{
   LDA frmy
   EOR #$FF
   AND SPR_0_X,Y
+
   JMP l2440
+}
 
 .l244F
+{
   CMP #$0D
   BNE l246B
 
@@ -1012,8 +1071,10 @@ ORG &20E7
   LDA #$00:STA v1676,X
 
   RTS
+}
 
 .l246B
+{
   CMP #$0E
   BNE l2485
 
@@ -1027,8 +1088,10 @@ ORG &20E7
   JSR l363E
 
   RTS
+}
 
 .l2485
+{
   CMP #$11
   BNE l24AB
 
@@ -1053,8 +1116,10 @@ ORG &20E7
   LDA frmx:STA v0366,X
 
   RTS
+}
 
 .l24AB
+{
   CMP #$12
   BNE l24B6
 
@@ -1063,8 +1128,10 @@ ORG &20E7
   STA SPR_0_COLOUR,X
 
   RTS
+}
 
 .l24B6
+{
   CMP #$13
   BNE l24CC
 
@@ -1073,19 +1140,25 @@ ORG &20E7
   LDA #$00:STA v0370,X
 
   RTS
+}
 
 .l24CC
+{
   BRK
+}
 
 .l24CD
+{
   JSR mergekeypress
 
   CPY #$3E
   BNE l24D7
 
   JMP l2105
+}
 
 .l24D7
+{
   CPY #$29
   BNE l24EC
 
@@ -1102,8 +1175,10 @@ ORG &20E7
   BEQ l24E2
 
   JMP l250A
+}
 
 .l24EC
+{
   CPY #$24
   BNE l250A
 
@@ -1117,17 +1192,19 @@ ORG &20E7
   JSR l2EEF
 
   JMP l2503
+}
 
 .l2500
+{
   JSR l30F5
 
-.l2503
+.^l2503
   JSR mergekeypress
  
   CPY #$24
   BEQ l2503
 
-.l250A
+.^l250A
   JSR checkcheatmode
   JSR getplayerinput
 
@@ -1144,13 +1221,15 @@ ORG &20E7
 
   LDA #$06:STA v0342
 
-.l2525
+.^l2525
   LDA v03C9
   BEQ l252D
 
   JMP l25E1
+}
 
 .l252D
+{
   LDA #$16:STA frmy
   LDA #$01:STA frmx
 
@@ -1170,13 +1249,15 @@ ORG &20E7
   BEQ l2537
 
   JMP l2558
+}
 
 .l2550
+{
   LDA #$03:STA v03C8
 
   INC dizzyy
 
-.l2558
+.^l2558
   LDA v03C8
   CMP #$03
   BNE l25B4
@@ -1208,13 +1289,16 @@ ORG &20E7
   STA v03C7
 
   JMP l25B4
+}
 
 .l2594
+{
   LDA #$01:STA v03C8
   LDA v03C2:STA v03C7
   LDA #$00
 
   JMP l25B4
+}
 
 .l25A4
   DEC v0342
@@ -1227,6 +1311,7 @@ ORG &20E7
   LDA #$00:STA player_input
 
 .l25B4
+{
   LDA v03C8
   CMP #$02
   BCS l25E1
@@ -1240,31 +1325,39 @@ ORG &20E7
   BNE l25DC
 
   JMP l25E1
+}
 
 .l25CC
+{
   LDA #$02
 
-.l25CE
+.^l25CE
   STA v03C7
   STA v03C2
 
   LDA #$01:STA v03C8
 
   JMP l25E1
+}
 
 .l25DC
+{
   LDA #$01
   JMP l25CE
+}
 
 .l25E1
+{
   LDA v03C8
   CMP #$03
   BNE l25EB
 
-.l25E8
+.^l25E8
   JMP l26D1
+}
 
 .l25EB
+{
   CMP #$02
   BEQ l2619
 
@@ -1273,8 +1366,10 @@ ORG &20E7
   BNE l25F9
 
   JMP l25E8
+}
 
 .l25F9
+{
   LDA player_input
   AND #$0F
   CMP #$01
@@ -1289,7 +1384,7 @@ ORG &20E7
   LDA #$00:STA v03C9
   LDA #$11:STA v03C3
 
-.l2619
+.^l2619
   INC v03C9
   LDA v03C9
   CMP #$09
@@ -1297,7 +1392,7 @@ ORG &20E7
 
   JSR l26AE
 
-.l2626
+.^l2626
   LDA #$00:STA frmy
   LDA #$01:STA frmx
 
@@ -1316,8 +1411,10 @@ ORG &20E7
   LDA #$02:STA v03C1
 
   JMP l26D1
+}
 
 .l2649
+{
   DEC dizzyy
   DEC v0342
   LDA v0342
@@ -1330,6 +1427,7 @@ ORG &20E7
   DEC v03C3
 
   JMP l26D1
+}
 
 .l2661
   JSR l26AE
@@ -1378,6 +1476,7 @@ ORG &20E7
   JMP l26D1
 
 .l26AE
+{
   LDA v03C9
   CMP #$07
   BCC l26BE
@@ -1388,8 +1487,10 @@ ORG &20E7
   LDA #$02
 
   JMP l26CD
+}
 
 .l26BE
+{
   CMP #$02
   BCC l26CB
 
@@ -1399,14 +1500,17 @@ ORG &20E7
   LDA #$04
 
   JMP l26CD
+}
 
 .l26CB
+{
   LDA #$06
 
-.l26CD
+.^l26CD
   STA v0342
 
   RTS
+}
 
 .l26D1
   LDA v03C8
@@ -2688,6 +2792,7 @@ ORG &20E7
   JMP l221B
 
 .l2EB0
+{
   LDA #$05
   JSR l3B84
   STX v034E
@@ -2705,8 +2810,10 @@ ORG &20E7
   LDX v034E
 
   RTS
+}
 
 .l2ED1
+{
   LDA #$58:STA v03DC
   JSR l394A
 
@@ -2714,8 +2821,10 @@ ORG &20E7
   JSR l394A
 
   RTS
+}
 
 .l2EE2
+{
   LDA #$07
   JSR l392B
 
@@ -2723,6 +2832,7 @@ ORG &20E7
   JSR delay
 
   JMP l3B24
+}
 
 .l2EEF
 {
@@ -2779,6 +2889,7 @@ ORG &20E7
 }
 
 .l2F35
+{
   LDX v20DD
   CPX #$14
   BCC l2F64
@@ -2805,10 +2916,12 @@ ORG &20E7
 
   JSR l2F91
 
-.l2F64
+.^l2F64
   RTS
+}
 
 .l2F65
+{
   CPX #$3F
   BCS l2F64
 
@@ -2819,6 +2932,7 @@ ORG &20E7
   LDA roomno:STA v5551,X
 
   RTS
+}
 
 .l2F77
 {
@@ -2972,21 +3086,24 @@ cheatcodelen = * - eclipse
 }
 
 .l303C
+{
   LDA vCFF8
   BEQ l3045
 
   DEC vCFF8
 
   RTS
+}
 
 .l3045
+{
   LDA v03C8
   CMP #$01
-  BNE l305F
+  BNE done
 
   LDA v03C4
   AND #$01
-  BNE l305F
+  BNE done
 
   LDA v03C4
   AND #$02
@@ -2994,9 +3111,10 @@ cheatcodelen = * - eclipse
   CLC:LDA #$01
   JSR l392B
 
-.v305F
-.l305F
+.done
   RTS
+}
+
 .v3060
 
 .l3080
@@ -3452,7 +3570,7 @@ ORG &30A0
 
 .loop
   {
-  LDA v305F,X
+  LDA v3060-1,X
   ASL  A
   ASL  A
   ASL  A
@@ -3460,12 +3578,12 @@ ORG &30A0
   ORA v3060,X
   STA v3060,X
 
-  LDA v305F,X
+  LDA v3060-1,X
   LSR  A
   LSR  A
   LSR  A
   LSR  A
-  STA v305F,X
+  STA v3060-1,X
 
   DEX
   BNE loop
@@ -3590,6 +3708,7 @@ ORG &30A0
 }
 
 .l340B
+{
   STA v0340
 
   JSR l3528
@@ -3642,7 +3761,7 @@ ORG &30A0
 .l3456
   STA v00B2
 
-.l3458
+.^l3458
   LDA v00B0
   CMP v00B2
   BNE l3465
@@ -3652,8 +3771,10 @@ ORG &30A0
   BNE l3465
 
   RTS
+}
 
 .l3465
+{
   LDY #$03
   LDA ($B0),Y
   EOR #$40
@@ -3683,8 +3804,10 @@ ORG &30A0
   STA v00B0
 
   JMP l3458
+}
 
 .l3498
+{
   LDA #$00
   STA SPR_ENABLE
   STA v03E0
@@ -3769,8 +3892,10 @@ ORG &30A0
   LDA #$FF:STA SPR_ENABLE
 
   RTS
+}
 
 .l3528
+{
   LDA #$06:STA frmx
 
 .l352D
@@ -3845,8 +3970,10 @@ ORG &30A0
   BNE l358B
 
   RTS
+}
 
 .l3595
+{
   LDX #$06
 
 .l3597
@@ -3893,15 +4020,19 @@ ORG &30A0
   BCC l3597
 
   RTS
+}
 
 .l35D2
+{
   LDX frmy
   CPX #$05
   BCC l35DA
 
   RTS
+}
 
 .l35DA
+{
   LDA v2028,X:STA v00FE
 
   LDA v200E,X
@@ -3964,8 +4095,10 @@ ORG &30A0
 
 .l363D
   RTS
+}
 
 .l363E
+{
   STX v0345
 
   INX
@@ -3994,8 +4127,10 @@ ORG &30A0
   LDX v0345
 
   RTS
+}
 
 .l3679
+{
   STX v034E
 
   LDA #$00
@@ -4013,8 +4148,10 @@ ORG &30A0
   JSR l37F9
 
   RTS
+}
 
 .l369F
+{
   LDA v0384,X
   TAY
   LDA ($FB),Y
@@ -4024,8 +4161,10 @@ ORG &30A0
   INC v0384,X
 
   RTS
+}
 
 .l36AD
+{
   STY v033E
 
   JSR l3875
@@ -4052,8 +4191,10 @@ ORG &30A0
   LDX v0345
 
   RTS
+}
 
 .l36D7
+{
   LDA v0366,X
   CMP #$40
   BEQ l3725
@@ -4072,15 +4213,17 @@ ORG &30A0
 
   LDA #$08
   JMP l36FB
+}
 
 .l36F9
+{
   LDA #$04
 
-.l36FB
+.^l36FB
   ORA frmx
   STA frmx
 
-.l3701
+.^l3701
   LDA v0366,X
   AND #$10
   BEQ l3719
@@ -4091,17 +4234,20 @@ ORG &30A0
 
   LDA #$00
   JMP l3719
+}
 
 .l3715
+{
   BCS l3720
 
   LDA #$02
 
-.l3719
+.^l3719
   ORA frmx
   STA frmx
 
   RTS
+}
 
 .l3720
   LDA #$01
@@ -4152,6 +4298,7 @@ ORG &30A0
   RTS
 
 .l375F
+{
   LDA dizzyx
   CLC:ADC frmx
   STA frmattr
@@ -4198,11 +4345,13 @@ ORG &30A0
 
   LDA #$0F
   JMP l37C2
+}
 
 .l37C0
+{
   LDA #$F0
 
-.l37C2
+.^l37C2
   STA v033E
 
   LDA frmattr
@@ -4220,6 +4369,7 @@ ORG &30A0
   LDA v033E
 
   RTS
+}
 
 .delay
 {
@@ -4251,6 +4401,7 @@ ORG &30A0
 }
 
 .l37F9
+{
   STX v0345
   STY v0347
 
@@ -4269,8 +4420,10 @@ ORG &30A0
   DEX
 
   JMP l3809
+}
 
 .l3816
+{
   LDX v034E
   LDA dizzyx,X
   CMP #$1C
@@ -4280,11 +4433,13 @@ ORG &30A0
   BCS l3827
 
   JMP l3829
+}
 
 .l3827
+{
   LDA #$00
 
-.l3829
+.^l3829
   CLC
   ROL  A
   STA SPR_0_X,Y
@@ -4295,14 +4450,16 @@ ORG &30A0
   STA SPR_MSB_X
 
   JMP l3847
+}
 
 .l383C
+{
   LDA v0342
   EOR #$FF
   AND SPR_MSB_X
   STA SPR_MSB_X
 
-.l3847
+.^l3847
   INY
   LDA dizzyy,X
   CMP #$4A
@@ -4312,19 +4469,23 @@ ORG &30A0
   BCS l3856
 
   JMP l3858
+}
 
 .l3856
+{
   LDA #$00
 
-.l3858
+.^l3858
   STA SPR_0_X,Y
 
   LDX v0345
   LDY v0347
 
   RTS
+}
 
 .l3862
+{
   STX v0345
   INC v03C5
   LDX v03C5
@@ -4332,8 +4493,10 @@ ORG &30A0
   LDX v0345
 
   RTS
+}
 
 .l3875
+{
   STX v0346
   INC v03C5
   LDX v03C5
@@ -4341,8 +4504,10 @@ ORG &30A0
   LDX v0346
 
   RTS
+}
 
 .l388D
+{
   LDA #$10;STA v00FC
   LDA #$00:STA v00FB
   CPX #$00
@@ -4362,8 +4527,10 @@ ORG &30A0
 
 .l38A7
   RTS
+}
 
 .l38A8
+{
   STX v0345
   STA v0340
 
@@ -4382,8 +4549,10 @@ ORG &30A0
   STA v0384,X
 
   JMP l3927
+}
 
 .l38CB
+{
   LDA v0340
   AND #$03
   BEQ l38ED
@@ -4396,13 +4565,15 @@ ORG &30A0
   STA dizzyy,X
 
   JMP l38ED
+}
 
 .l38E3
+{
   LDA dizzyy,X
   CLC:ADC v03B6,X
   STA dizzyy,X
 
-.l38ED
+.^l38ED
   LDA v0340
   AND #$0C
   BEQ l390F
@@ -4415,13 +4586,15 @@ ORG &30A0
   STA dizzyx,X
 
   JMP l390F
+}
 
 .l3905
+{
   LDA dizzyx,X
   CLC:ADC v03AC,X
   STA dizzyx,X
 
-.l390F
+.^l390F
   LDA dizzyx,X
   CMP #$E6
   BCC l3920
@@ -4429,27 +4602,33 @@ ORG &30A0
   CMP #$F3
   BCS l3920
 
-.l391A
+.^l391A
   JSR l3679
 
   JMP l3927
+}
 
 .l3920
+{
   LDA dizzyy,X
   CMP #$08
   BCC l391A
 
-.l3927
+.^l3927
   LDX v0345
 
   RTS
+}
 
 .l392B
+{
   STA vF084
 
   RTS
+}
 
 .l392F
+{
   LDA objs_xlocs,X:STA frmx
   LDA objs_ylocs,X:STA frmy
 
@@ -4461,8 +4640,10 @@ ORG &30A0
   JSR l3132
 
   RTS
+}
 
 .l394A
+{
   LDA objs_xlocs,X:STA frmx
   LDA objs_ylocs,X:STA frmy
   LDA objs_attrs,X:STA frmattr
@@ -4473,11 +4654,13 @@ ORG &30A0
   JSR l3132
 
   RTS
+}
 
 .l3968
+{
   LDX v03DD
 
-.l396B
+.^l396B
   CPX #$00
   BNE l397A
 
@@ -4485,8 +4668,10 @@ ORG &30A0
   LDA #$FF:STA v03D5
 
   RTS
+}
 
 .l397A
+{
   DEX
 
   LDA objs_rooms,X
@@ -4523,8 +4708,10 @@ ORG &30A0
   JSR l3132
 
   JMP l396B
+}
 
 .l39C3
+{
   LDA #$08:STA v00FF
 
   LDA v03D5
@@ -4546,6 +4733,7 @@ ORG &30A0
 
 .l39E8
   RTS
+}
 
 .getplayerinput
 {
@@ -4574,6 +4762,7 @@ ORG &30A0
 }
 
 .l3A10
+{
   STA frmx
 
   LDA dizzyx
@@ -4624,8 +4813,10 @@ ORG &30A0
   STA v0361
 
   RTS
+}
 
 .l3A7F
+{
   LDX #$05:STX v0346
 
 .l3A84
@@ -4655,8 +4846,10 @@ ORG &30A0
   BNE l3A84
 
   RTS
+}
 
 .l3AAA
+{
   LDA v03D6:STA dizzyx
   LDA v03D7:STA dizzyy
 
@@ -4712,6 +4905,7 @@ ORG &30A0
   LDA SPR_COLLISION2
 
   RTS
+}
 
 .l3B24
   NOP
@@ -4770,6 +4964,7 @@ ORG &30A0
   JMP l2105
 
 .l3B84
+{
   STA v0340
   STX v0346
 
@@ -4779,11 +4974,13 @@ ORG &30A0
   INC v20E0
 
   JMP l3B9B
+}
 
 .l3B94
+{
   CLC:ADC v20E1:STA v20E1
 
-.l3B9B
+.^l3B9B
   LDX #$03
 
 .l3B9D
@@ -4827,6 +5024,7 @@ ORG &30A0
   LDX v0346
 
   RTS
+}
 
 .mergekeypress
 {
@@ -4907,8 +5105,10 @@ ORG &30A0
 
 ORG &3C42
 .v3C42
+
 ORG &3C52
 .l3C52
+{
   LDA v03DA
   BEQ l3CAD
 
@@ -4935,8 +5135,10 @@ ORG &3C52
   BCC l3C6C
 
   JMP l3CAD
+}
 
 .l3C79
+{
   TXA
   STY v00FF
   LDX v00FF
@@ -4966,14 +5168,15 @@ ORG &3C52
 
   JSR l3D02
 
-.l3CAD
+.^l3CAD
   LDX #$00
 
-.l3CAF
+.^l3CAF
   LDA v1B00,X
   BNE l3CB7
 
   JMP l3CF9
+}
 
 .l3CB7
   JSR l3D02
@@ -5026,6 +5229,7 @@ ORG &3C52
   RTS
 
 .l3D02
+{
   STX v0345
 
   LDA v1B72,X
@@ -5048,8 +5252,10 @@ ORG &3C52
   BCC l3D2B
 
   RTS
+}
 
 .l3D2B
+{
   LDA v2077,Y
   TAY
   LDA v1B00,X
@@ -5072,6 +5278,7 @@ ORG &3C52
   LDX v0345
 
   RTS
+}
 
 ORG &3D7F
 
@@ -5597,6 +5804,7 @@ INCLUDE "objects.asm"
 .v5FF8 ; hw sprite "pointers"
 
 .l7F40
+{
   LDA #$78:STA GFX_MEM_PTR
 
   LDA GFX_VICII_REG1
@@ -5611,6 +5819,7 @@ INCLUDE "objects.asm"
   LDA #$00:STA GFX_BORDER_COLOUR
 
   RTS
+}
 
   LDA #$00
   TAY
@@ -5703,6 +5912,7 @@ INCBIN "framedefs.bin"
 
 ORG &CB00
 .lCB00
+{
   LDX #$00
 
 .lCB02
@@ -5715,8 +5925,10 @@ ORG &CB00
   BCC lCB02
 
   RTS
+}
 
 .lCB10
+{
   CMP #$33
   BNE lCB1C
 
@@ -5726,7 +5938,7 @@ ORG &CB00
 
   INX
 
-.lCB1C
+.^lCB1C
   STX v034E
 
   LDA v08FC,X:STA vCFFF
@@ -5746,7 +5958,7 @@ ORG &CB00
   STA vCFFB
   STA vCFFA
 
-.lCB58
+.^lCB58
   LDX v034E
 
   LDA v092E,X:STA v00FF
@@ -5765,20 +5977,26 @@ ORG &CB00
   CMP #$3A
   BEQ lCB78
 
-.lCB73
+.^lCB73
   INY
   INX
+
   JMP lCB65
+}
 
 .lCB78
+{
   STY vCFFB
+
   JMP lCB73
+}
 
 .lCB7E
+{
   DEY
   STY vCFFB
 
-.lCB82
+.^lCB82
   LDA #$00:STA vCFFD
   INC vCFF9
 
@@ -5807,8 +6025,10 @@ ORG &CB00
 
   STY vCFFC
   JMP lCB58
+}
 
 .lCBC1
+{
   LDX v034E
   CPX #$14
   BEQ lCBFD
@@ -5839,11 +6059,15 @@ ORG &CB00
   STA vCFFE
 
   JMP lCBD8
+}
 
 .lCBFD
+{
   RTS
+}
 
 .lCBFE
+{
   LDX v034E
   LDA v08FC,X:STA vCFFF
   INC vCFFF
@@ -5907,8 +6131,10 @@ ORG &CB00
   JSR l3132
 
   RTS
+}
 
 .lCC9A
+{
   LDA vCFFF:STA frmx
 
   LDA vCFFE
@@ -5969,8 +6195,10 @@ ORG &CB00
   JSR l3132
 
   RTS
+}
 
 .lCD19
+{
   LDA #$AB:STA v00FC
 
   LDA v00FB
@@ -5992,8 +6220,10 @@ ORG &CB00
   STA v00B5
 
   RTS
+}
 
 .lCD37
+{
   LDX v03E0
   BNE lCD53
 
@@ -6038,8 +6268,10 @@ ORG &CB00
 
 .lCD72
   RTS
+}
 
 .lCD73
+{
   LDX v03E0
   BEQ lCD7F
 
@@ -6049,8 +6281,10 @@ ORG &CB00
 
 .lCD7F
   RTS
+}
 
 .lCD80
+{
   LDA v2028,X
   SEC:SBC #$04
   STA v00B3
@@ -6104,8 +6338,10 @@ ORG &CB00
   BCC lCD99
 
   RTS
+}
 
 .lCDDA
+{
   CPX #$3F
   BCC lCDE0
 
@@ -6139,8 +6375,10 @@ ORG &CB00
   BCC lCDEC
 
   RTS
+}
 
 .lCE14
+{
   LDA #$00:STA v033D
   LDA #$07:STA v033E
 
@@ -6264,11 +6502,14 @@ ORG &CB00
   BCS lCEDD
 
   JMP lCE3F
+}
 
 .lCEDD
+{
   LDA #$FF:STA v03D5
 
   RTS
+}
 
 ORG &CEE5
   STA vDC0F
@@ -6491,6 +6732,7 @@ vCFFF = * + 1
 
 ORG &E002
 .lE002
+{
   LDX #$00
   JSR lE012
 
@@ -6501,20 +6743,25 @@ ORG &E002
   JSR lE012
 
   RTS
+}
 
 .lE012
+{
   LDA vE000
   BNE lE01B
 
   STA vD418
 
   RTS
+}
 
 .lE01B
+{
   CMP #$AB
   BEQ lE05E
 
   JMP lE0FA
+}
 
 .lE022
   LDA #$00
@@ -7465,11 +7712,14 @@ ORG &E8A7
 
 ORG &EE00
 .lEE00
+{
   JSR lEF6D
 
   RTS
+}
 
 .lEE04
+{
   LDA vF084
   TAY
   LDA vF085,Y:STA vEEF7
@@ -7486,23 +7736,31 @@ ORG &EE00
   JSR lEE29
 
   RTS
+}
 
 .lEE29
+{
   LDA vEEF7,X
   BEQ lEE31
 
   JMP lEE5F
+}
 
 .lEE31
+{
   JMP lEE43
+}
 
 .lEE34
+{
   JMP lF005
+}
 
 .lEE37
   RTS
 
 .lEE38
+{
   LDY #$17
 
 .lEE3A
@@ -7512,8 +7770,10 @@ ORG &EE00
   BPL lEE3A
 
   RTS
+}
 
 .lEE43
+{
   LDA vEF24,X
   BNE lEE59
 
@@ -7526,11 +7786,14 @@ ORG &EE00
 
 .lEE56
   JMP lEE34
+}
 
 .lEE59
+{
   DEC vEF24,X
 
   JMP lEE34
+}
 
 .lEE5F
   LDA vEEF7,X:STA vEF23,X
@@ -7646,6 +7909,7 @@ ORG &EF36
   JMP lF01D
 
 .lEF6D
+{
   LDA #$00
   STA vEF23
   STA vEF2A
@@ -7662,6 +7926,7 @@ ORG &EF36
   LDA #$0F:STA vD418
 
   RTS
+}
 
 .lEF93
   CMP #$01
@@ -7831,13 +8096,13 @@ ORG &EF36
 .vF3FD
 .vF3FE
 .vF3FF
-.lFD02
+.lFD02 ; j
 .vFD0F
-.lFD15
-.lFD50
-.lFDA3
-.lFE2D
-.lFF5B
+.lFD15 ; j
+.lFD50 ; j
+.lFDA3 ; j
+.lFE2D ; j
+.lFF5B ; j
 
 ORG &FFFF
 .c64end
