@@ -561,7 +561,8 @@ ORG &20E7
   STA SPR_PRIORITY
 
   LDX #numobjects
-.l21B7
+.objloop
+  {
   DEX
   LDA orig_rooms,X:STA objs_rooms,X
   LDA orig_xlocs,X:STA objs_xlocs,X
@@ -570,7 +571,8 @@ ORG &20E7
   LDA orig_frames,X:STA objs_frames,X
 
   CPX #&00
-  BNE l21B7
+  BNE objloop
+  }
 
   LDA #&1C
   STA v03D6
