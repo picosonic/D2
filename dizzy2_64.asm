@@ -135,7 +135,7 @@ v03B6 = &03B6
 v03C1 = &03C1
 v03C2 = &03C2
 v03C3 = &03C3
-v03C4 = &03C4
+gamecounter = &03C4
 v03C5 = &03C5
 v03C6 = &03C6
 v03C7 = &03C7
@@ -165,7 +165,8 @@ ORG &087F
   LDA #&00
   TAY
 
-.l0882
+.loop
+  {
   STA v0002,Y
   STA v0200,Y
 
@@ -180,7 +181,8 @@ ORG &087F
 
 .l0893
   INY
-  BNE l0882
+  BNE loop
+  }
 
   LDX #&3C
   LDY #&03
@@ -506,7 +508,7 @@ ORG &20E7
 
   JSR mergekeypress
 
-  CPY #&3C
+  CPY #KEY_SPACE
   BNE l2148
 
 .l2159
@@ -756,7 +758,7 @@ ORG &20E7
   CPX #&08
   BCC l22F5
 
-  JMP l24CD
+  JMP checkquit
 }
 
 .l22F5
@@ -1015,10 +1017,10 @@ ORG &20E7
 
   LDA #&01:STA frmy
 
-.l240F
+.loop
   ASL frmy
   DEX
-  BNE l240F
+  BNE loop
 
   LDX v034E
   LDY #&1D
@@ -1159,40 +1161,45 @@ ORG &20E7
   BRK
 }
 
-.l24CD
+.checkquit
 {
   JSR mergekeypress
 
-  CPY #&3E
-  BNE l24D7
+  CPY #KEY_Q
+  BNE checkpause
 
+  ; Quit to title screen
   JMP l2105
 }
 
-.l24D7
+.checkpause
 {
-  CPY #&29
-  BNE l24EC
+  CPY #KEY_P
+  BNE checkmute
 
-.l24DB
+.pauseloop
+  {
   JSR mergekeypress
 
-  CPY #&40
-  BNE l24DB
+  CPY #KEY_NONE
+  BNE pauseloop
+  }
 
-.l24E2
+.waitforkeypress
   JSR mergekeypress
 
-  CPY #&40
-  BEQ l24E2
+  CPY #KEY_NONE
+  BEQ waitforkeypress
 
-  JMP l250A
+  JMP after_mute_check
 }
 
-.l24EC
+.checkmute
 {
-  CPY #&24
-  BNE l250A
+  CPY #KEY_M
+  BNE after_mute_check
+
+  ; M has been pressed, so toggle sound
 
   JSR l30D9
 
@@ -1203,29 +1210,30 @@ ORG &20E7
 
   JSR l2EEF
 
-  JMP l2503
+  JMP waitfor_m_release
 }
 
 .l2500
 {
   JSR l30F5
 
-.^l2503
+.^waitfor_m_release
+  {
   JSR mergekeypress
  
-  CPY #&24
-  BEQ l2503
+  CPY #KEY_M
+  BEQ waitfor_m_release
+  }
 
-.^l250A
+.^after_mute_check
   JSR checkcheatmode
   JSR getplayerinput
 
   LDA #&00:STA v03C1
 
-  LDA #&0F
-  JSR delay
+  LDA #&0F:JSR delay
 
-  INC v03C4
+  INC gamecounter
 
   NOP
   NOP
@@ -1853,7 +1861,7 @@ ORG &20E7
   BNE l28CC
 
   ; Set sprite for "idle" animation
-  LDA v03C4
+  LDA gamecounter
   AND #&01
   JMP l28E6
 }
@@ -1910,7 +1918,7 @@ ORG &20E7
 .l28DC
   STA v00FF
 
-  LDA v03C4
+  LDA gamecounter
   AND #&07
   CLC:ADC v00FF
 
@@ -3214,11 +3222,11 @@ cheatcodelen = * - eclipse
   CMP #&01
   BNE done
 
-  LDA v03C4
+  LDA gamecounter
   AND #&01
   BNE done
 
-  LDA v03C4
+  LDA gamecounter
   AND #&02
   LSR  A
   CLC:LDA #&01
@@ -3926,7 +3934,7 @@ ORG &30A0
   STA v03E0
   STA v03DA
 
-  LDA v03C4:AND #&F8:STA v03C4
+  LDA gamecounter:AND #&F8:STA gamecounter
 
   LDA #&00
   TAX
@@ -6455,7 +6463,7 @@ ORG &CB00
   LDX v03E0
   BEQ done
 
-  LDA v03C4
+  LDA gamecounter
   AND #&01
   BNE lCD80
 
@@ -6499,7 +6507,7 @@ ORG &CB00
   LDA #&0F:STA frmattr
   LDA #&00:STA v033F
 
-  LDA v03C4
+  LDA gamecounter
   LSR  A
   AND #&03
   CLC:ADC #&65
