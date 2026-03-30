@@ -240,10 +240,10 @@ EQUB &F9
   LDX #&00
 }
 
-.v08FC
-.v0915
-.v092E
-.v0947
+v08FC = &08FC
+v0915 = &0915
+v092E = &092E
+v0947 = &0947
 
 ORG &0961
 .stringptr_lo
@@ -351,8 +351,8 @@ ORG &0FE8
   LDA #&00
 }
 
-.v1140
-.v1180
+v1140 = &1140
+v1180 = &1180
 
 ORG &11C0
 {
@@ -393,31 +393,31 @@ ORG &11C0
   EQUS ":::::::::::NOTHING::::::::::::"
 }
 
-.v1644
-.v164E
-.v1658
-.v1662
-.v166C
-.v1676
-.v1680
-.v1692
-.v1694
-.v1697
-.v1699
-.v169E
-.v16A3
-.v16A8
-.v16AD
-.v16B2
-.v16BC
-.v1800
-.v1818
-.v1900
-.v1A00
-.v1B00
-.l1B00
-.v1B39
-.v1B72
+v1644 = &1644
+v164E = &164E
+v1658 = &1658
+v1662 = &1662
+v166C = &166C
+v1676 = &1676
+v1680 = &1680
+v1692 = &1692
+v1694 = &1694
+v1697 = &1697
+v1699 = &1699
+v169E = &169E
+v16A3 = &16A3
+v16A8 = &16A8
+v16AD = &16AD
+v16B2 = &16B2
+v16BC = &16BC
+v1800 = &1800
+v1818 = &1818
+v1900 = &1900
+v1A00 = &1A00
+v1B00 = &1B00
+l1B00 = &1B00
+v1B39 = &1B39
+v1B72 = &1B72
 
 ORG &2000
 .l2000
@@ -425,29 +425,29 @@ ORG &2000
   JMP l20E7
 }
 
-.v200E
-.v2028
-.v2077
-.v2097
-.v209F
-.v20B8 ; lowercase alphabet
-.v20D1
-.v20D8
+v200E = &200E
+v2028 = &2028
+v2077 = &2077
+v2097 = &2097
+v209F = &209F
+v20B8 = &20B8 ; lowercase alphabet
+v20D1 = &20D1
+v20D8 = &20D8
 
-.v20D9 ; ?? just dropped object id ??
-.v20DA ; holding object id #1
-.v20DB ; holding object id #2
-.v20DC ; holding object id #3
-.v20DD ; ?? just picked up object id ??
+v20D9 = &20D9 ; ?? just dropped object id ??
+v20DA = &20DA ; holding object id #1
+v20DB = &20DB ; holding object id #2
+v20DC = &20DC ; holding object id #3
+v20DD = &20DD ; ?? just picked up object id ??
 
-.v20DE ; score (hundred thousands)
-.v20E0 ; score (thousands)
-.v20E1 ; score (hundreds)
+v20DE = &20DE ; score (hundred thousands)
+v20E0 = &20E0 ; score (thousands)
+v20E1 = &20E1 ; score (hundreds)
 
-.v20E4
+v20E4 = &20E4
 
-.v20E5 ; coins (tens)
-.v20E6 ; score (units)
+v20E5 = &20E5 ; coins (tens)
+v20E6 = &20E6 ; score (units)
 
 ORG &20E7
 .l20E7
@@ -3236,7 +3236,7 @@ cheatcodelen = * - eclipse
   RTS
 }
 
-.v3060
+v3060 = &3060
 
 .l3080
 {
@@ -3258,8 +3258,8 @@ cheatcodelen = * - eclipse
   RTS
 }
 
-.v309E ; raster count
-.v309F
+v309E = &309E ; raster count
+v309F = &309F
 
 ; ISR routine
 ORG &30A0
@@ -5978,14 +5978,14 @@ ORG &51B7
 
 INCLUDE "objects.asm"
 
-.v5800
-.v58C8
-.v5900
-.v5990
-.v5A58
-.v5A6C
-.v5B20
-.v5FF8 ; hw sprite "pointers"
+v5800 = &5800
+v58C8 = &58C8
+v5900 = &5900
+v5990 = &5990
+v5A58 = &5A58
+v5A6C = &5A6C
+v5B20 = &5B20
+v5FF8 = &5FF8 ; hw sprite "pointers"
 
 ORG &6000
 INCBIN "SCRMEM"
@@ -6095,8 +6095,8 @@ ORG &AD00
 .framedefs
 INCBIN "framedefs.bin"
 
-.vAA00
-.vCA00
+vAA00 = &AA00
+vCA00 = &CA00
 
 ORG &CB00
 .lCB00
@@ -6891,48 +6891,48 @@ vCFFC = * + 2
 vCFFF = * + 1
   ROR v0045
 
-.vD000
-.vD001
-.vD010
-.vD011
-.vD012
-.vD015
-.vD016
-.vD017
-.vD018
-.vD019
-.vD01A
-.vD01B
-.vD01C
-.vD01D
-.vD01E
-.vD01F
-.vD020
-.vD027
-.vD400
-.vD401
-.vD402
-.vD403
-.vD404
-.vD405
-.vD406
-.vD416
-.vD417
-.vD418
-.vDC00
-.vDC02
-.vDC03
-.vDC0D
-.vDC0E
-.vDC0F
-.vDD00
-.vDD03
-.vDD0D
-.vDD0E
-.vDD0F
-.vDE00
-.vE000
-.vE001
+vD000 = &D000
+vD001 = &D001
+vD010 = &D010
+vD011 = &D011
+vD012 = &D012
+vD015 = &D015
+vD016 = &D016
+vD017 = &D017
+vD018 = &D018
+vD019 = &D019
+vD01A = &D01A
+vD01B = &D01B
+vD01C = &D01C
+vD01D = &D01D
+vD01E = &D01E
+vD01F = &D01F
+vD020 = &D020
+vD027 = &D027
+vD400 = &D400
+vD401 = &D401
+vD402 = &D402
+vD403 = &D403
+vD404 = &D404
+vD405 = &D405
+vD406 = &D406
+vD416 = &D416
+vD417 = &D417
+vD418 = &D418
+vDC00 = &DC00
+vDC02 = &DC02
+vDC03 = &DC03
+vDC0D = &DC0D
+vDC0E = &DC0E
+vDC0F = &DC0F
+vDD00 = &DD00
+vDD03 = &DD03
+vDD0D = &DD0D
+vDD0E = &DD0E
+vDD0F = &DD0F
+vDE00 = &DE00
+vE000 = &E000
+vE001 = &E001
 
 ORG &E002
 .lE002
@@ -7761,70 +7761,70 @@ vE425 = * + 2
   JMP lE12A
 }
 
-.vE552
-.vE553
-.vE554
-.vE555
-.vE556
-.vE557
-.vE558
-.vE55E
-.vE565
-.vE567
-.vE569
-.vE56A
-.vE56B
-.vE56C
-.vE56D
-.vE57C
-.vE57D
-.vE57E
-.vE57F
-.vE580
-.vE582
-.vE585
-.vE586
-.vE587
-.vE589
-.vE58C
-.vE58D
-.vE58E
-.vE590
-.vE593
-.vE594
-.vE596
-.vE598
-.vE599
-.vE59A
-.vE59B
-.vE59C
-.vE59D
-.vE59E
-.vE59F
-.vE5A0
-.vE5A1
-.vE5A2
-.vE5B1
-.vE5B2
-.vE5B3
-.vE5B4
-.vE5B7
-.vE5C6
-.vE5C7
-.vE5C8
-.vE5C9
-.vE5CB
-.vE5CC
-.vE5DB
-.vE5DC
-.vE5DD
-.vE5F0
-.vE650
-.vE6B0
-.vE6B1
-.vE6BA
-.vE6D4
-.vE6D7
+vE552 = &E552
+vE553 = &E553
+vE554 = &E554
+vE555 = &E555
+vE556 = &E556
+vE557 = &E557
+vE558 = &E558
+vE55E = &E55E
+vE565 = &E565
+vE567 = &E567
+vE569 = &E569
+vE56A = &E56A
+vE56B = &E56B
+vE56C = &E56C
+vE56D = &E56D
+vE57C = &E57C
+vE57D = &E57D
+vE57E = &E57E
+vE57F = &E57F
+vE580 = &E580
+vE582 = &E582
+vE585 = &E585
+vE586 = &E586
+vE587 = &E587
+vE589 = &E589
+vE58C = &E58C
+vE58D = &E58D
+vE58E = &E58E
+vE590 = &E590
+vE593 = &E593
+vE594 = &E594
+vE596 = &E596
+vE598 = &E598
+vE599 = &E599
+vE59A = &E59A
+vE59B = &E59B
+vE59C = &E59C
+vE59D = &E59D
+vE59E = &E59E
+vE59F = &E59F
+vE5A0 = &E5A0
+vE5A1 = &E5A1
+vE5A2 = &E5A2
+vE5B1 = &E5B1
+vE5B2 = &E5B2
+vE5B3 = &E5B3
+vE5B4 = &E5B4
+vE5B7 = &E5B7
+vE5C6 = &E5C6
+vE5C7 = &E5C7
+vE5C8 = &E5C8
+vE5C9 = &E5C9
+vE5CB = &E5CB
+vE5CC = &E5CC
+vE5DB = &E5DB
+vE5DC = &E5DC
+vE5DD = &E5DD
+vE5F0 = &E5F0
+vE650 = &E650
+vE6B0 = &E6B0
+vE6B1 = &E6B1
+vE6BA = &E6BA
+vE6D4 = &E6D4
+vE6D7 = &E6D7
 
 ORG &E712
 {
@@ -7850,9 +7850,9 @@ ORG &E712
   JMP lEA31
 }
 
-.vE755
-.vE756
-.vE759
+vE755 = &E755
+vE756 = &E756
+vE759 = &E759
 
 ORG &E75A
 .lE75A
@@ -7890,29 +7890,29 @@ ORG &E75A
   JMP lE12A
 }
 
-.vE795
-.vE796
-.vE797
-.vE798
-.vE799
-.vE79A
-.vE79B
-.vE79C
-.vE7DD
-.vE7DE
-.vE7DF
-.vE7E0
-.vE7E1
-.vE7E2
-.vE7E3
-.vE825
-.vE854
-.vE883
-.vE889
-.vE88F
-.vE895
-.vE89B
-.vE8A1
+vE795 = &E795
+vE796 = &E796
+vE797 = &E797
+vE798 = &E798
+vE799 = &E799
+vE79A = &E79A
+vE79B = &E79B
+vE79C = &E79C
+vE7DD = &E7DD
+vE7DE = &E7DE
+vE7DF = &E7DF
+vE7E0 = &E7E0
+vE7E1 = &E7E1
+vE7E2 = &E7E2
+vE7E3 = &E7E3
+vE825 = &E825
+vE854 = &E854
+vE883 = &E883
+vE889 = &E889
+vE88F = &E88F
+vE895 = &E895
+vE89B = &E89B
+vE8A1 = &E8A1
 
 ORG &E8A7
 .lE8A7
@@ -7975,8 +7975,8 @@ ORG &E8A7
   JMP lE12A
 }
 
-.vE901
-.lEA31
+vE901 = &E901
+lEA31 = &EA31
 
 ORG &EE00
 .lEE00
@@ -8130,30 +8130,30 @@ ORG &EE00
   JMP lEE81
 }
 
-.vEEF7
-.vEEF8
-.vEEF9
-.vEEFA
-.vEEFB
-.vEEFC
-.vEEFD
-.vEEFE
-.vEF05
-.vEF0C
-.vEF0D
-.vEF0E
-.vEF0F
-.vEF10
-.vEF11
-.vEF22
-.vEF23
-.vEF24
-.vEF25
-.vEF26
-.vEF2A
-.vEF2B
-.vEF31
-.vEF32
+vEEF7 = &EEF7
+vEEF8 = &EEF8
+vEEF9 = &EEF9
+vEEFA = &EEFA
+vEEFB = &EEFB
+vEEFC = &EEFC
+vEEFD = &EEFD
+vEEFE = &EEFE
+vEF05 = &EF05
+vEF0C = &EF0C
+vEF0D = &EF0D
+vEF0E = &EF0E
+vEF0F = &EF0F
+vEF10 = &EF10
+vEF11 = &EF11
+vEF22 = &EF22
+vEF23 = &EF23
+vEF24 = &EF24
+vEF25 = &EF25
+vEF26 = &EF26
+vEF2A = &EF2A
+vEF2B = &EF2B
+vEF31 = &EF31
+vEF32 = &EF32
 
 ORG &EF36
 .lEF36
@@ -8385,35 +8385,35 @@ ORG &EF36
   JMP lF012
 }
 
-.vF084
-.vF085
-.vF08F
-.vF099
-.vF0AD
-.vF0C1
-.vF0D5
-.vF0E9
-.vF0FD
-.vF111
-.vF125
-.vF139
-.vF14D
-.vF161
-.vF175
-.vF189
-.vF19D
-.vF3FB
-.vF3FC
-.vF3FD
-.vF3FE
-.vF3FF
-.lFD02 ; j
-.vFD0F
-.lFD15 ; j
-.lFD50 ; j
-.lFDA3 ; j
-.lFE2D ; j
-.lFF5B ; j
+vF084 = &F084
+vF085 = &F085
+vF08F = &F08F
+vF099 = &F099
+vF0AD = &F0AD
+vF0C1 = &F0C1
+vF0D5 = &F0D5
+vF0E9 = &F0E9
+vF0FD = &F0FD
+vF111 = &F111
+vF125 = &F125
+vF139 = &F139
+vF14D = &F14D
+vF161 = &F161
+vF175 = &F175
+vF189 = &F189
+vF19D = &F19D
+vF3FB = &F3FB
+vF3FC = &F3FC
+vF3FD = &F3FD
+vF3FE = &F3FE
+vF3FF = &F3FF
+lFD02 = &FD02
+vFD0F = &FD0F
+lFD15 = &FD15
+lFD50 = &FD50
+lFDA3 = &FDA3
+lFE2D = &FE2D
+lFF5B = &FF5B
 
 ORG &FFFF
 .c64end
