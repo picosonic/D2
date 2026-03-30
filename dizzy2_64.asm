@@ -5805,7 +5805,7 @@ ORG &3FD2
 
 ; Sprites
 ORG &4000
-; TODO
+INCLUDE "dizzy_sprites.asm"
 
 ORG &51B7
 .l51B7
