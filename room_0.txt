@@ -1,0 +1,54 @@
+0 : 0x0000 to 0x00b3 (len 180)
+
+  [57 114x3 0x00] # "9"
+  [28 104x144 0x0e] # big sand left
+  [28 128x144 0x0e] # big sand right
+  [100 172x152 0x0f] # water right
+  [100 68x152 0x0f] # water left
+  [28 84x152 0x06] # big sand left
+  [28 148x152 0x06] # big sand right
+  [124 92x144 0x0e] # sand slope left
+  [124 152x144 0x8e] # sand slope right
+
+  [22 164x136 0x8a] # right palm tree trunk
+  [22 84x136 0x0a] # left palm tree trunk
+  [26 82x104 0x0a] # left palm tree trunk
+  [26 166x104 0x8a] # right palm tree trunk
+  [21 162x91 0x94] # right palm tree top
+  [21 74x91 0x14] # left palm tree top
+
+  [105 108x127 0x0c] # scroll
+  [152 140x127 0x0c] # snorkel
+
+  [132 108x165 0x06] # small sand left
+  [132 144x165 0x86] # small sand right
+  [131 148x157 0x86] # square sand right
+  [131 104x157 0x06] # square sand left
+  [28 76x160 0x06] # big sand left
+  [28 156x160 0x06] # big sand right
+  [132 100x175 0x06] # small sand left
+  [132 152x175 0x86] # small sand right
+  [131 156x167 0x86] # square sand right
+  [131 96x167 0x06] # square sand left
+  [126 80x152 0x16] # sand slope left
+  [126 172x152 0x8e] # sand slope right
+  [28 164x168 0x06] # big sand right
+  [28 68x168 0x06] # big sand left
+  [131 88x173 0x06] # square sand left
+  [131 164x173 0x86] # square sand right
+  [127 72x160 0x06] # slope sand left
+  [127 176x160 0x86] # slope sand right
+  [128 64x168 0x06] # sand edge left
+  [128 184x168 0x86] # sand edge right
+
+  [20 164x74 0x8c] # tree top right
+  [20 72x74 0x0c] # tree top left
+
+  [29 66x56 0x0f] # cloud left
+  [29 76x51 0x0f] # cloud left
+  [29 84x56 0x0f] # cloud left
+  [29 160x51 0x0f] # cloud right
+  
+  [58 80x108 0x0a] //// SPACE
+  [58 172x108 0x0a] //// SPACE
+
