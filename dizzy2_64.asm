@@ -207,10 +207,10 @@ ORG &087F
   LDX #&00
   STY v00C2
   CLC
-  JSR lFE2D
+  JSR lFE2D ; READST
 
-  LDA #&08:STA v0282
-  LDA #&04:STA v0288
+  LDA #&08:STA v0282 ; Bottom of memory for OS (hi)
+  LDA #&04:STA v0288 ; Text screen memory addr (hi)
 
   RTS
 }
@@ -503,7 +503,7 @@ ORG &20E7
   JSR getplayerinput
 
   LDA player_input
-  AND #&10
+  AND #JOY_FIRE
   BNE l2159
 
   JSR mergekeypress
@@ -5467,10 +5467,10 @@ ORG &3D7F
   LDX #&00
   STY v00C2
   CLC
-  JSR lFE2D
+  JSR lFE2D ; READST
 
-  LDA #&08:STA v0282
-  LDA #&04:STA v0288
+  LDA #&08:STA v0282 ; Bottom of memory for OS (hi)
+  LDA #&04:STA v0288 ; Text screen memory addr (hi)
 
   RTS
 }
@@ -5525,7 +5525,6 @@ ORG &3DD2
 
   TXS
   CLD
-
   JSR lFD02
 
   BNE l3E1E
@@ -5634,11 +5633,10 @@ ORG &3E7F
   LDX #&00
   STY v00C2
   CLC
+  JSR lFE2D ; READST
 
-  JSR lFE2D
-
-  LDA #&08:STA v0282
-  LDA #&04:STA v0288
+  LDA #&08:STA v0282 ; Bottom of memory for OS (hi)
+  LDA #&04:STA v0288 ; Text screen memory addr (hi)
 
   RTS
 }
@@ -5771,10 +5769,10 @@ ORG &3F7F
   LDX #&00
   STY v00C2
   CLC
-  JSR lFE2D
+  JSR lFE2D ; READST
 
-  LDA #&08:STA v0282
-  LDA #&04:STA v0288
+  LDA #&08:STA v0282 ; Bottom of memory for OS (hi)
+  LDA #&04:STA v0288 ; Text screen memory addr (hi)
 
   RTS
 }
@@ -5813,10 +5811,10 @@ ORG &51B7
   LDX #&00
   STY v00C2
   CLC
-  JSR lFE2D
+  JSR lFE2D ; READST
 
-  LDA #&08:STA v0282
-  LDA #&04:STA v0288
+  LDA #&08:STA v0282 ; Bottom of memory for OS (hi)
+  LDA #&04:STA v0288 ; Text screen memory addr (hi)
 
   RTS
 }
@@ -5973,7 +5971,7 @@ ORG &51B7
   LDX #&00
   STY v00C2
   CLC
-  JSR lFE2D
+  JSR lFE2D ; READST
 }
 
 INCLUDE "objects.asm"
@@ -6052,10 +6050,10 @@ ORG &7F40
   LDX #&00
   STY v00C2
   CLC
-  JSR lFE2D
+  JSR lFE2D ; READST
 
-  LDA #&08:STA v0282
-  LDA #&04:STA v0288
+  LDA #&08:STA v0282 ; Bottom of memory for OS (hi)
+  LDA #&04:STA v0288 ; Text screen memory addr (hi)
 
   RTS
 
@@ -6221,10 +6219,10 @@ ORG &CB00
   CPX #&14
   BEQ lCBFD
 
-.lCBC8
+.waitforfire
   JSR getplayerinput
-  AND #&10
-  BEQ lCBC8
+  AND #JOY_FIRE
+  BEQ waitforfire
 
   LDX v034E
   LDA v0915,X:STA vCFFE
@@ -6753,6 +6751,7 @@ ORG &CEE5
 .lCF1E
 {
   STX GFX_VICII_REG2
+
   JSR lFDA3
   JSR lFD50
   JSR lFD15
@@ -6849,10 +6848,10 @@ ORG &CF7F
   LDX #&00
   STY v00C2
   CLC
-  JSR lFE2D
+  JSR lFE2D ; READST
 
-  LDA #&08:STA v0282
-  LDA #&04:STA v0288
+  LDA #&08:STA v0282 ; Bottom of memory for OS (hi)
+  LDA #&04:STA v0288 ; Text screen memory addr (hi)
 
   RTS
 }
@@ -8407,13 +8406,13 @@ vF3FC = &F3FC
 vF3FD = &F3FD
 vF3FE = &F3FE
 vF3FF = &F3FF
-lFD02 = &FD02
+lFD02 = &FD02 ; Scan for autostart ROM at $8000
 vFD0F = &FD0F
-lFD15 = &FD15
-lFD50 = &FD50
-lFDA3 = &FDA3
-lFE2D = &FE2D
-lFF5B = &FF5B
+lFD15 = &FD15 ; Restore default I/O vectors
+lFD50 = &FD50 ; Test RAM and find RAM end
+lFDA3 = &FDA3 ; Initialise SID, CIA and IRQ
+lFE2D = &FE2D ; Set the top of memory
+lFF5B = &FF5B ; Initialise VIC and screen editor
 
 ORG &FFFF
 .c64end
